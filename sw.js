@@ -1,4 +1,4 @@
-const CACHE_NAME = 'homelab-v1';
+const CACHE_NAME = 'homelab-v2';
 const ASSETS = [
   './',
   './index.html',
