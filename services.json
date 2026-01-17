@@ -1,0 +1,37 @@
+[
+  {
+    "name": "Portainer",
+    "url": "https://portainer.topearebi.xyz",
+    "icon": "dns",
+    "category": "Admin",
+    "description": "Container Management"
+  },
+  {
+    "name": "Calibre Web",
+    "url": "https://books.topearebi.xyz",
+    "icon": "library_books",
+    "category": "Media",
+    "description": "E-book Library"
+  },
+  {
+    "name": "SilverBullet",
+    "url": "https://notes.topearebi.xyz",
+    "icon": "edit_note",
+    "category": "Productivity",
+    "description": "Knowledge Management"
+  },
+  {
+    "name": "Shelfmark",
+    "url": "https://annas.topearebi.xyz",
+    "icon": "movie",
+    "category": "Media",
+    "description": "Streaming Server"
+  },
+  {
+    "name": "Litkeeper",
+    "url": "http://lit.topearebi:xyz",
+    "icon": "home_iot_device",
+    "category": "IoT",
+    "description": "Home Automation"
+  }
+]
