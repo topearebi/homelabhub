@@ -82,3 +82,10 @@ document.addEventListener('DOMContentLoaded', () => {
     updateTime();
     setInterval(updateTime, 1000 * 60); // Update every minute
 });
+
+// PWA Service Worker Registration
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js')
+        .then(() => console.log('Homelab PWA Registered'))
+        .catch(err => console.error('PWA Fail:', err));
+}
