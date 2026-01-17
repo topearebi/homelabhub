@@ -9,7 +9,7 @@
     --font-stack: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
-/* --- CRITICAL ICON FIX --- */
+/* --- FIREFOX FIXED ICON CLASS --- */
 .material-symbols-rounded {
   font-family: 'Material Symbols Rounded';
   font-weight: normal;
@@ -22,11 +22,18 @@
   word-wrap: normal;
   white-space: nowrap;
   direction: ltr;
+  
+  /* Chrome/Safari */
   -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
+  
+  /* Firefox Specific Fixes */
   -moz-osx-font-smoothing: grayscale;
-  font-feature-settings: 'liga';
+  text-rendering: optimizeLegibility;
+  font-feature-settings: 'liga' 1;       /* Force Ligatures On */
+  -moz-font-feature-settings: 'liga' 1;  /* Mozilla specific */
+  font-variant-ligatures: common-ligatures;
 }
+
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
