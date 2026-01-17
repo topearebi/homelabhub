@@ -3,35 +3,70 @@
     "name": "Portainer",
     "url": "https://portainer.topearebi.xyz",
     "icon": "dns",
-    "category": "Admin",
-    "description": "Container Management"
+    "category": "Infrastructure",
+    "description": "Docker Container Management"
+  },
+  {
+    "name": "Prowlarr",
+    "url": "https://prowl.topearebi.xyz",
+    "icon": "manage_search",
+    "category": "Infrastructure",
+    "description": "Indexer Manager"
   },
   {
     "name": "Calibre Web",
     "url": "https://books.topearebi.xyz",
-    "icon": "library_books",
-    "category": "Media",
-    "description": "E-book Library"
+    "icon": "local_library",
+    "category": "Books",
+    "description": "E-book Library Manager"
+  },
+  {
+    "name": "Shelfmark",
+    "url": "https://annas.topearebi.xyz",
+    "icon": "download_for_offline",
+    "category": "Books",
+    "description": "Batch Downloader"
+  },
+  {
+    "name": "OpenBooks",
+    "url": "https://irc.topearebi.xyz",
+    "icon": "terminal",
+    "category": "Books",
+    "description": "IRC Downloader"
+  },
+  {
+    "name": "LitKeeper",
+    "url": "https://lit.topearebi.xyz",
+    "icon": "auto_stories",
+    "category": "Books",
+    "description": "LibGen & Literotica Downloader"
+  },
+  {
+    "name": "FreshRSS",
+    "url": "https://rss.topearebi.xyz",
+    "icon": "rss_feed",
+    "category": "Services",
+    "description": "News Aggregator"
   },
   {
     "name": "SilverBullet",
     "url": "https://notes.topearebi.xyz",
     "icon": "edit_note",
-    "category": "Productivity",
+    "category": "Services",
     "description": "Knowledge Management"
   },
   {
-    "name": "Shelfmark",
-    "url": "https://annas.topearebi.xyz",
-    "icon": "movie",
-    "category": "Media",
-    "description": "Streaming Server"
+    "name": "ConvertX",
+    "url": "https://convert.topearebi.xyz",
+    "icon": "transform",
+    "category": "Services",
+    "description": "File Converter"
   },
   {
-    "name": "Litkeeper",
-    "url": "http://lit.topearebi:xyz",
-    "icon": "home_iot_device",
-    "category": "IoT",
-    "description": "Home Automation"
+    "name": "LocalContentShare",
+    "url": "https://paste.topearebi.xyz",
+    "icon": "content_paste_go",
+    "category": "Services",
+    "description": "Pastebin & Sharing"
   }
 ]
