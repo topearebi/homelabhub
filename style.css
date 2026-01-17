@@ -9,7 +9,7 @@
     --font-stack: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
-/* --- ADD THIS BLOCK TO FIX ICONS --- */
+/* --- CRITICAL ICON FIX --- */
 .material-symbols-rounded {
   font-family: 'Material Symbols Rounded';
   font-weight: normal;
@@ -22,25 +22,13 @@
   word-wrap: normal;
   white-space: nowrap;
   direction: ltr;
-  
-  /* Support for all WebKit browsers. */
   -webkit-font-smoothing: antialiased;
-  /* Support for Safari and Chrome. */
   text-rendering: optimizeLegibility;
-  
-  /* Support for Firefox. */
   -moz-osx-font-smoothing: grayscale;
-  
-  /* Support for IE. */
   font-feature-settings: 'liga';
 }
-/* ----------------------------------- */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
     background-color: var(--bg-color);
@@ -48,15 +36,13 @@ body {
     font-family: var(--font-stack);
     min-height: 100vh;
     overflow-x: hidden;
+    /* Prevent pull-to-refresh on mobile for "App" feel */
+    overscroll-behavior-y: none; 
 }
 
-/* Background Ambient Glow */
 .background-gradient {
     position: fixed;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
+    top: -50%; left: -50%; width: 200%; height: 200%;
     background: radial-gradient(circle at center, rgba(124, 77, 255, 0.15) 0%, transparent 50%);
     z-index: -1;
     animation: pulse 10s ease-in-out infinite alternate;
@@ -67,147 +53,58 @@ body {
     100% { transform: scale(1.1); opacity: 1; }
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 4rem 2rem;
-}
+.container { max-width: 1200px; margin: 0 auto; padding: 4rem 2rem; }
 
 /* Header */
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin-bottom: 3rem;
-    flex-wrap: wrap;
-    gap: 2rem;
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 3rem; flex-wrap: wrap; gap: 2rem;
 }
 
-h1 {
-    font-weight: 600;
-    font-size: 2rem;
-    letter-spacing: -0.02em;
-}
+h1 { font-weight: 600; font-size: 2rem; letter-spacing: -0.02em; }
+#clock { color: var(--text-muted); font-size: 1.1rem; margin-top: 0.5rem; }
 
-#clock {
-    color: var(--text-muted);
-    font-size: 1.1rem;
-    margin-top: 0.5rem;
-}
-
-/* Search Bar */
-.search-wrapper {
-    position: relative;
-    width: 100%;
-    max-width: 350px;
-}
-
-.search-icon {
-    position: absolute;
-    left: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--text-muted);
-    pointer-events: none;
-}
+/* Search */
+.search-wrapper { position: relative; width: 100%; max-width: 350px; }
+.search-icon { position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--text-muted); pointer-events: none; }
 
 input[type="text"] {
-    width: 100%;
-    padding: 1rem 1rem 1rem 3rem;
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 12px;
-    color: white;
-    font-size: 1rem;
-    outline: none;
-    transition: all 0.2s ease;
-    backdrop-filter: blur(10px);
+    width: 100%; padding: 1rem 1rem 1rem 3rem;
+    background: var(--card-bg); border: 1px solid var(--card-border);
+    border-radius: 12px; color: white; font-size: 1rem; outline: none;
+    transition: all 0.2s ease; backdrop-filter: blur(10px);
 }
+input[type="text"]:focus { border-color: var(--accent); box-shadow: 0 0 0 2px rgba(124, 77, 255, 0.2); }
 
-input[type="text"]:focus {
-    border-color: var(--accent);
-    box-shadow: 0 0 0 2px rgba(124, 77, 255, 0.2);
-}
-
-/* Grid Layout */
-.grid-layout {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1.5rem;
-}
+/* Grid */
+.grid-layout { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
 
 /* Cards */
 .card {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    padding: 1.5rem;
-    border-radius: 16px;
-    text-decoration: none;
+    display: flex; align-items: center; gap: 1rem;
+    background: var(--card-bg); border: 1px solid var(--card-border);
+    padding: 1.5rem; border-radius: 16px; text-decoration: none;
     transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
-    position: relative;
-    overflow: hidden;
+    position: relative; overflow: hidden;
 }
-
-.card:hover {
-    background: var(--card-hover);
-    transform: translateY(-2px);
-    border-color: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
-}
+.card:hover { background: var(--card-hover); transform: translateY(-2px); border-color: rgba(255, 255, 255, 0.2); }
 
 .card-icon-wrapper {
-    width: 48px;
-    height: 48px;
+    width: 48px; height: 48px;
     background: rgba(255,255,255,0.05);
     border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex; align-items: center; justify-content: center;
 }
+.card-icon { color: var(--text-main); font-size: 24px; }
 
-.card-icon {
-    color: var(--text-main);
-    font-size: 24px;
-}
+.card-content { flex: 1; }
+.card-title { color: var(--text-main); font-size: 1rem; font-weight: 600; margin-bottom: 0.25rem; }
+.card-desc { color: var(--text-muted); font-size: 0.85rem; }
 
-.card-content {
-    flex: 1;
-}
+.card-arrow { opacity: 0; transform: translateX(-10px); transition: all 0.2s ease; color: var(--accent); }
+.card:hover .card-arrow { opacity: 1; transform: translateX(0); }
 
-.card-title {
-    color: var(--text-main);
-    font-size: 1rem;
-    font-weight: 600;
-    margin-bottom: 0.25rem;
-}
-
-.card-desc {
-    color: var(--text-muted);
-    font-size: 0.85rem;
-}
-
-.card-arrow {
-    opacity: 0;
-    transform: translateX(-10px);
-    transition: all 0.2s ease;
-    color: var(--accent);
-}
-
-.card:hover .card-arrow {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-/* Mobile Tweak */
 @media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    .search-wrapper {
-        max-width: 100%;
-    }
+    header { flex-direction: column; align-items: flex-start; }
+    .search-wrapper { max-width: 100%; }
 }
