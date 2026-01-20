@@ -68,5 +68,19 @@
     "icon": "content_paste_go",
     "category": "Services",
     "description": "Pastebin & Sharing"
+  },
+  {
+    "name": "O's Music",
+    "url": "https://oyinsmusic.topearebi.xyz",
+    "icon": "music",
+    "category": "Services",
+    "description": "Music Aggregator and Downloader"
+  },
+  {
+    "name": "A's Music",
+    "url": "https://music.topearebi.xyz",
+    "icon": "music",
+    "category": "Services",
+    "description": "Music Aggregator and Downloader"
   }
 ]
