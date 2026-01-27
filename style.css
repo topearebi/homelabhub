@@ -93,6 +93,7 @@ input[type="text"]:focus { border-color: var(--accent); box-shadow: 0 0 0 2px rg
     border-radius: 14px;
     width: fit-content;
     border: 1px solid var(--card-border);
+    transition: opacity 0.3s ease;
 }
 
 .tab-btn {
@@ -117,16 +118,23 @@ input[type="text"]:focus { border-color: var(--accent); box-shadow: 0 0 0 2px rg
     color: white;
 }
 
+/* Global Search State */
+body.is-searching .tab-container {
+    opacity: 0.4;
+    pointer-events: none;
+    filter: grayscale(1);
+}
+
+.search-status-text {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    min-height: 1.2rem;
+}
+
 @media (max-width: 768px) {
-    .tab-container {
-        width: 100%;
-        justify-content: space-between;
-    }
-    .tab-btn {
-        flex: 1;
-        text-align: center;
-        padding: 0.6rem 0.5rem;
-    }
+    .tab-container { width: 100%; justify-content: space-between; }
+    .tab-btn { flex: 1; text-align: center; }
 }
 
 /* Grid */
