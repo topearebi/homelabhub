@@ -3,84 +3,84 @@
     "name": "Portainer",
     "url": "https://portainer.topearebi.xyz",
     "icon": "dns",
-    "category": "Infrastructure",
+    "tab": "console",
     "description": "Docker Container Management"
   },
   {
     "name": "Prowlarr",
     "url": "https://prowl.topearebi.xyz",
     "icon": "manage_search",
-    "category": "Infrastructure",
+    "tab": "console",
     "description": "Indexer Manager"
   },
   {
     "name": "Calibre Web",
     "url": "https://books.topearebi.xyz",
     "icon": "local_library",
-    "category": "Books",
+    "tab": "library",
     "description": "E-book Library Manager"
   },
   {
     "name": "Shelfmark",
     "url": "https://annas.topearebi.xyz",
     "icon": "download_for_offline",
-    "category": "Books",
+    "tab": "workplace",
     "description": "Batch Downloader"
   },
   {
     "name": "OpenBooks",
     "url": "https://irc.topearebi.xyz",
     "icon": "terminal",
-    "category": "Books",
+    "tab": "workplace",
     "description": "IRC Downloader"
   },
   {
     "name": "LitKeeper",
     "url": "https://lit.topearebi.xyz",
     "icon": "auto_stories",
-    "category": "Books",
+    "tab": "workplace",
     "description": "LibGen & Literotica Downloader"
   },
   {
     "name": "FreshRSS",
     "url": "https://rss.topearebi.xyz",
     "icon": "rss_feed",
-    "category": "Services",
+    "tab": "library",
     "description": "News Aggregator"
   },
   {
     "name": "SilverBullet",
     "url": "https://notes.topearebi.xyz",
     "icon": "edit_note",
-    "category": "Services",
+    "tab": "workplace",
     "description": "Knowledge Management"
   },
   {
     "name": "ConvertX",
     "url": "https://convert.topearebi.xyz",
     "icon": "transform",
-    "category": "Services",
+    "tab": "workplace",
     "description": "File Converter"
   },
   {
     "name": "LocalContentShare",
     "url": "https://paste.topearebi.xyz",
     "icon": "content_paste_go",
-    "category": "Services",
+    "tab": "workplace",
     "description": "Pastebin & Sharing"
   },
   {
     "name": "O's Music",
     "url": "https://oyinsmusic.topearebi.xyz",
     "icon": "music",
-    "category": "Services",
+    "tab": "library",
     "description": "Music Aggregator and Downloader"
   },
   {
     "name": "A's Music",
     "url": "https://music.topearebi.xyz",
     "icon": "music",
-    "category": "Services",
+    "tab": "library",
     "description": "Music Aggregator and Downloader"
   }
 ]
