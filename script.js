@@ -9,7 +9,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function loadServices() {
         try {
-            const response = await fetch('services.json');
+            // Adding a timestamp query parameter prevents the browser 
+            // and service worker from providing a stale cached version
+            const response = await fetch(`services.json?t=${Date.now()}`);
             services = await response.json();
             renderServices(services);
         } catch (error) {
