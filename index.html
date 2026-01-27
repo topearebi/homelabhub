@@ -2,14 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <meta name="theme-color" content="#0f0f11">
     <title>Homelab Hub</title>
     
     <link rel="manifest" href="manifest.json">
+    
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Homelab">
+    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/906/906309.png">
 
     <link rel="stylesheet" href="style.css">
     
@@ -31,18 +33,18 @@
             
             <div class="search-wrapper">
                 <span class="material-symbols-rounded search-icon">search</span>
-                <input type="text" id="searchInput" placeholder="Search services... (Press '/')" autocomplete="off">
+                <input type="text" id="searchInput" placeholder="Search services... (Press '/')" autocomplete="off" spellcheck="false">
             </div>
         </header>
-        
-        <div class="tab-container">
-            <button class="tab-btn active" data-tab="library">Library</button>
-            <button class="tab-btn" data-tab="workplace">Workplace</button>
-            <button class="tab-btn" data-tab="console">Console</button>
-        </div>
-        
-        <p id="search-status" class="search-status-text"></p>
-        
+
+        <nav class="tab-container" role="tablist">
+            <button class="tab-btn active" data-tab="library" role="tab" aria-selected="true">Library</button>
+            <button class="tab-btn" data-tab="workplace" role="tab" aria-selected="false">Workplace</button>
+            <button class="tab-btn" data-tab="console" role="tab" aria-selected="false">Console</button>
+        </nav>
+
+        <p id="search-status" class="search-status-text" aria-live="polite"></p>
+
         <div id="grid-container" class="grid-layout">
             </div>
     </main>
@@ -64,12 +66,24 @@
 
     <script src="script.js"></script>
     <script>
-        // Inline PWA Registration to ensure it runs
+        // PWA Service Worker Registration
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
+                // Using a slightly delayed registration to prioritize initial content render
                 navigator.serviceWorker.register('./sw.js')
-                    .then(reg => console.log('Service Worker Registered'))
-                    .catch(err => console.log('Service Worker Failed', err));
+                    .then(reg => {
+                        console.log('SW registered');
+                        // Handle manual updates if a new version is found
+                        reg.onupdatefound = () => {
+                            const installingWorker = reg.installing;
+                            installingWorker.onstatechange = () => {
+                                if (installingWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                                    console.log('New content available; please refresh.');
+                                }
+                            };
+                        };
+                    })
+                    .catch(err => console.log('SW registration failed', err));
             });
         }
     </script>
