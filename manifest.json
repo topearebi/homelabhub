@@ -1,7 +1,7 @@
 {
   "name": "Homelab Hub",
   "short_name": "Homelab",
-  "description": "Unified dashboard for home infrastructure and services",
+  "description": "Personalized dashboard for home services and infrastructure management",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#0f0f11",
@@ -9,21 +9,16 @@
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "https://fonts.gstatic.com/s/i/short-term/release/materialsymbolsrounded/hub/default/192px.svg",
-      "sizes": "192x192",
+      "src": "icon.svg",
+      "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any"
     },
     {
-      "src": "https://fonts.gstatic.com/s/i/short-term/release/materialsymbolsrounded/hub/default/512px.svg",
-      "sizes": "512x512",
-      "type": "image/svg+xml",
-      "purpose": "any"
-    },
-    {
-      "src": "https://fonts.gstatic.com/s/i/short-term/release/materialsymbolsrounded/hub/default/512px.svg",
-      "sizes": "512x512",
+      "src": "icon.svg",
+      "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "maskable"
     }
   ]
+}
