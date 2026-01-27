@@ -9,6 +9,7 @@ const STATIC_ASSETS = [
   './index.html',
   './style.css',
   './manifest.json'
+  './icon.svg'
 ];
 
 // Resources that change frequently and should be fetched from network first
