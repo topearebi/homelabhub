@@ -1,9 +1,10 @@
-const CACHE_NAME = 'homelab-dynamic-v1';
+const CACHE_NAME = 'homelab-v3'; // Increment once to apply the new logic
 const ASSETS = [
   './',
   './index.html',
   './style.css',
   './script.js',
+  './services.json',
   './manifest.json'
 ];
 
@@ -15,33 +16,35 @@ self.addEventListener('install', (e) => {
 });
 
 self.addEventListener('activate', (e) => {
-  e.waitUntil(clients.claim());
+  e.waitUntil(
+    caches.keys().then((keys) => {
+      return Promise.all(
+        keys.map((key) => {
+          if (key !== CACHE_NAME) return caches.delete(key);
+        })
+      );
+    })
+  );
 });
 
 self.addEventListener('fetch', (e) => {
   const url = new URL(e.request.url);
 
-  // Strategy: Network-first for the services configuration
-  // This ensures you get the latest JSON if online, otherwise falls back to cache
-  if (url.pathname.includes('services.json')) {
+  // Network-first for configuration and logic
+  if (url.pathname.includes('services.json') || url.pathname.includes('script.js')) {
     e.respondWith(
       fetch(e.request)
-        .then((response) => {
-          const clonedResponse = response.clone();
-          caches.open(CACHE_NAME).then((cache) => {
-            cache.put(e.request, clonedResponse);
-          });
-          return response;
+        .then((res) => {
+          const clone = res.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(e.request, clone));
+          return res;
         })
         .catch(() => caches.match(e.request))
     );
     return;
   }
 
-  // Strategy: Cache-first for all other assets
   e.respondWith(
-    caches.match(e.request).then((response) => {
-      return response || fetch(e.request);
-    })
+    caches.match(e.request).then((response) => response || fetch(e.request))
   );
 });
