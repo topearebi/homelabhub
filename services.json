@@ -4,83 +4,95 @@
     "url": "https://portainer.topearebi.xyz",
     "icon": "dns",
     "tab": "console",
-    "description": "Docker Container Management"
+    "description": "Docker Container Management",
+    "keywords": ["docker", "containers", "admin"]
   },
   {
     "name": "Prowlarr",
     "url": "https://prowl.topearebi.xyz",
     "icon": "manage_search",
     "tab": "console",
-    "description": "Indexer Manager"
+    "description": "Indexer Manager",
+    "keywords": ["nzb", "torrent", "indexers"]
   },
   {
     "name": "Calibre Web",
     "url": "https://books.topearebi.xyz",
     "icon": "local_library",
     "tab": "library",
-    "description": "E-book Library Manager"
+    "description": "E-book Library Manager",
+    "keywords": ["books", "reading", "epub", "pdf"]
   },
   {
     "name": "Shelfmark",
     "url": "https://annas.topearebi.xyz",
     "icon": "download_for_offline",
     "tab": "workplace",
-    "description": "Batch Downloader"
+    "description": "Batch Downloader",
+    "keywords": ["books", "download", "libgen"]
   },
   {
     "name": "OpenBooks",
     "url": "https://irc.topearebi.xyz",
     "icon": "terminal",
     "tab": "workplace",
-    "description": "IRC Downloader"
+    "description": "IRC Downloader",
+    "keywords": ["books", "irc", "download"]
   },
   {
     "name": "LitKeeper",
     "url": "https://lit.topearebi.xyz",
     "icon": "auto_stories",
     "tab": "workplace",
-    "description": "LibGen & Literotica Downloader"
+    "description": "LibGen & Literotica Downloader",
+    "keywords": ["stories", "books", "download"]
   },
   {
     "name": "FreshRSS",
     "url": "https://rss.topearebi.xyz",
     "icon": "rss_feed",
     "tab": "library",
-    "description": "News Aggregator"
+    "description": "News Aggregator",
+    "keywords": ["news", "feeds", "articles"]
   },
   {
     "name": "SilverBullet",
     "url": "https://notes.topearebi.xyz",
     "icon": "edit_note",
     "tab": "workplace",
-    "description": "Knowledge Management"
+    "description": "Knowledge Management",
+    "keywords": ["notes", "writing", "markdown"]
   },
   {
     "name": "ConvertX",
     "url": "https://convert.topearebi.xyz",
     "icon": "transform",
     "tab": "workplace",
-    "description": "File Converter"
+    "description": "File Converter",
+    "keywords": ["files", "conversion", "tools"]
   },
   {
     "name": "LocalContentShare",
     "url": "https://paste.topearebi.xyz",
     "icon": "content_paste_go",
     "tab": "workplace",
-    "description": "Pastebin & Sharing"
+    "description": "Pastebin & Sharing",
+    "keywords": ["paste", "share", "clipboard"]
   },
   {
     "name": "O's Music",
     "url": "https://oyinsmusic.topearebi.xyz",
     "icon": "music",
     "tab": "library",
-    "description": "Music Aggregator and Downloader"
+    "description": "Music Aggregator and Downloader",
+    "keywords": ["audio", "songs", "streaming"]
   },
   {
     "name": "A's Music",
     "url": "https://music.topearebi.xyz",
     "icon": "music",
     "tab": "library",
-    "description": "Music Aggregator and Downloader"
+    "description": "Music Aggregator and Downloader",
+    "keywords": ["audio", "songs", "streaming"]
   }
 ]
