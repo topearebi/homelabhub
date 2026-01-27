@@ -1,9 +1,7 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const grid = document.getElementById('grid-container');
+const grid = document.getElementById('grid-container');
     const template = document.getElementById('card-template');
     const searchInput = document.getElementById('searchInput');
-    const greetingEl = document.getElementById('greeting');
-    const clockEl = document.getElementById('clock');
+    const searchStatus = document.getElementById('search-status');
     const tabBtns = document.querySelectorAll('.tab-btn');
     
     let services = [];
@@ -11,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function loadServices() {
         try {
-            // Cache-busting fetch to ensure the JSON is fresh
             const response = await fetch(`services.json?t=${Date.now()}`);
             services = await response.json();
             filterAndRender();
@@ -22,14 +19,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function filterAndRender() {
-        const query = searchInput.value.toLowerCase();
+        const query = searchInput.value.toLowerCase().trim();
+        const isSearching = query.length > 0;
         
+        document.body.classList.toggle('is-searching', isSearching);
+
         const filtered = services.filter(service => {
-            const matchesTab = service.tab === currentTab;
-            const matchesSearch = service.name.toLowerCase().includes(query) || 
-                                service.description.toLowerCase().includes(query);
-            return matchesTab && matchesSearch;
+            const matchesSearch = 
+                service.name.toLowerCase().includes(query) || 
+                service.description.toLowerCase().includes(query) ||
+                (service.keywords && service.keywords.some(k => k.toLowerCase().includes(query)));
+
+            if (isSearching) {
+                return matchesSearch; // Global Search Mode
+            } else {
+                return service.tab === currentTab; // Standard Tab Mode
+            }
         });
+
+        searchStatus.textContent = isSearching 
+            ? `Found ${filtered.length} service(s) globally` 
+            : "";
 
         renderServices(filtered);
     }
@@ -46,7 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Tab Selection Logic
     tabBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             tabBtns.forEach(b => b.classList.remove('active'));
@@ -57,7 +66,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     searchInput.addEventListener('input', filterAndRender);
-
+    
+    // Quick focus search
     document.addEventListener('keydown', (e) => {
         if (e.key === '/' && document.activeElement !== searchInput) {
             e.preventDefault();
