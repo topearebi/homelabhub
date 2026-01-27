@@ -83,6 +83,52 @@ input[type="text"] {
 }
 input[type="text"]:focus { border-color: var(--accent); box-shadow: 0 0 0 2px rgba(124, 77, 255, 0.2); }
 
+/* Tab Navigation */
+.tab-container {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    padding: 4px;
+    background: var(--card-bg);
+    border-radius: 14px;
+    width: fit-content;
+    border: 1px solid var(--card-border);
+}
+
+.tab-btn {
+    padding: 0.6rem 1.2rem;
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    font-family: var(--font-stack);
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+}
+
+.tab-btn:hover {
+    color: var(--text-main);
+}
+
+.tab-btn.active {
+    background: var(--accent);
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .tab-container {
+        width: 100%;
+        justify-content: space-between;
+    }
+    .tab-btn {
+        flex: 1;
+        text-align: center;
+        padding: 0.6rem 0.5rem;
+    }
+}
+
 /* Grid */
 .grid-layout { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
 
