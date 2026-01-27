@@ -4,20 +4,34 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.getElementById('searchInput');
     const greetingEl = document.getElementById('greeting');
     const clockEl = document.getElementById('clock');
+    const tabBtns = document.querySelectorAll('.tab-btn');
     
     let services = [];
+    let currentTab = 'library';
 
     async function loadServices() {
         try {
-            // Adding a timestamp query parameter prevents the browser 
-            // and service worker from providing a stale cached version
+            // Cache-busting fetch to ensure the JSON is fresh
             const response = await fetch(`services.json?t=${Date.now()}`);
             services = await response.json();
-            renderServices(services);
+            filterAndRender();
         } catch (error) {
             console.error('Failed to load services:', error);
             grid.innerHTML = '<p style="color:red; text-align:center;">Error loading configuration.</p>';
         }
+    }
+
+    function filterAndRender() {
+        const query = searchInput.value.toLowerCase();
+        
+        const filtered = services.filter(service => {
+            const matchesTab = service.tab === currentTab;
+            const matchesSearch = service.name.toLowerCase().includes(query) || 
+                                service.description.toLowerCase().includes(query);
+            return matchesTab && matchesSearch;
+        });
+
+        renderServices(filtered);
     }
 
     function renderServices(items) {
@@ -32,15 +46,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    searchInput.addEventListener('input', (e) => {
-        const query = e.target.value.toLowerCase();
-        const filtered = services.filter(service => 
-            service.name.toLowerCase().includes(query) || 
-            service.description.toLowerCase().includes(query) ||
-            (service.category && service.category.toLowerCase().includes(query))
-        );
-        renderServices(filtered);
+    // Tab Selection Logic
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            tabBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentTab = btn.dataset.tab;
+            filterAndRender();
+        });
     });
+
+    searchInput.addEventListener('input', filterAndRender);
 
     document.addEventListener('keydown', (e) => {
         if (e.key === '/' && document.activeElement !== searchInput) {
