@@ -1,6 +1,7 @@
 {
   "name": "Homelab Hub",
   "short_name": "Homelab",
+  "description": "Unified dashboard for home infrastructure and services",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#0f0f11",
@@ -10,12 +11,20 @@
     {
       "src": "https://cdn-icons-png.flaticon.com/512/906/906309.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     },
     {
       "src": "https://cdn-icons-png.flaticon.com/512/906/906309.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/906/906309.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ]
 }
