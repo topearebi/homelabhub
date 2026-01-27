@@ -2,97 +2,98 @@
   {
     "name": "Portainer",
     "url": "https://portainer.topearebi.xyz",
-    "icon": "dns",
+    "icon": "grid_view",
     "tab": "console",
     "description": "Docker Container Management",
-    "keywords": ["docker", "containers", "admin"]
+    "keywords": ["docker", "containers", "admin", "orchestration", "backend"]
   },
   {
     "name": "Prowlarr",
     "url": "https://prowl.topearebi.xyz",
     "icon": "manage_search",
     "tab": "console",
-    "description": "Indexer Manager",
-    "keywords": ["nzb", "torrent", "indexers"]
+    "description": "Indexer & Torrent Manager",
+    "keywords": ["nzb", "torrent", "indexers", "arr", "automation"]
   },
   {
     "name": "Calibre Web",
     "url": "https://books.topearebi.xyz",
     "icon": "local_library",
     "tab": "library",
-    "description": "E-book Library Manager",
-    "keywords": ["books", "reading", "epub", "pdf"]
+    "description": "Digital Book Library",
+    "keywords": ["books", "reading", "epub", "pdf", "kindle", "library"]
   },
   {
     "name": "Shelfmark",
     "url": "https://annas.topearebi.xyz",
     "icon": "download_for_offline",
     "tab": "workplace",
-    "description": "Batch Downloader",
-    "keywords": ["books", "download", "libgen"]
+    "description": "Books & Archive Downloader",
+    "keywords": ["books", "download", "libgen", "annas", "archive"]
   },
   {
     "name": "OpenBooks",
     "url": "https://irc.topearebi.xyz",
     "icon": "terminal",
     "tab": "workplace",
-    "description": "IRC Downloader",
-    "keywords": ["books", "irc", "download"]
+    "description": "IRC eBook Downloader",
+    "keywords": ["books", "irc", "download", "search", "ebooks"]
   },
   {
     "name": "LitKeeper",
     "url": "https://lit.topearebi.xyz",
     "icon": "auto_stories",
     "tab": "workplace",
-    "description": "LibGen & Literotica Downloader",
-    "keywords": ["stories", "books", "download"]
+    "description": "Fiction & Web Stories Downloader",
+    "keywords": ["stories", "fiction", "literotica", "download", "web"]
   },
   {
     "name": "FreshRSS",
     "url": "https://rss.topearebi.xyz",
     "icon": "rss_feed",
     "tab": "library",
-    "description": "News Aggregator",
-    "keywords": ["news", "feeds", "articles"]
+    "description": "News & Article Feed",
+    "keywords": ["news", "feeds", "rss", "articles", "reading", "updates"]
   },
   {
     "name": "SilverBullet",
     "url": "https://notes.topearebi.xyz",
     "icon": "edit_note",
     "tab": "workplace",
-    "description": "Knowledge Management",
-    "keywords": ["notes", "writing", "markdown"]
+    "description": "Knowledge & Note Management",
+    "keywords": ["notes", "writing", "markdown", "wiki", "pkm", "knowledge"]
   },
   {
     "name": "ConvertX",
     "url": "https://convert.topearebi.xyz",
     "icon": "transform",
+    "transform": "workplace",
     "tab": "workplace",
-    "description": "File Converter",
-    "keywords": ["files", "conversion", "tools"]
+    "description": "Multimedia File Converter",
+    "keywords": ["files", "conversion", "tools", "pdf", "video", "audio"]
   },
   {
     "name": "LocalContentShare",
     "url": "https://paste.topearebi.xyz",
     "icon": "content_paste_go",
     "tab": "workplace",
-    "description": "Pastebin & Sharing",
-    "keywords": ["paste", "share", "clipboard"]
+    "description": "Pastebin & File Sharing",
+    "keywords": ["paste", "share", "clipboard", "text", "temporary"]
   },
   {
     "name": "O's Music",
     "url": "https://oyinsmusic.topearebi.xyz",
-    "icon": "music",
+    "icon": "headphones",
     "tab": "library",
-    "description": "Music Aggregator and Downloader",
-    "keywords": ["audio", "songs", "streaming"]
+    "description": "Personal Music Collection",
+    "keywords": ["audio", "songs", "streaming", "music", "player"]
   },
   {
     "name": "A's Music",
     "url": "https://music.topearebi.xyz",
-    "icon": "music",
+    "icon": "music_note",
     "tab": "library",
-    "description": "Music Aggregator and Downloader",
-    "keywords": ["audio", "songs", "streaming"]
+    "description": "Personal Music Collection",
+    "keywords": ["audio", "songs", "streaming", "music", "player"]
   }
 ]
