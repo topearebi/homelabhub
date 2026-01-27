@@ -85,7 +85,7 @@
     "url": "https://oyinsmusic.topearebi.xyz",
     "icon": "headphones",
     "tab": "library",
-    "description": "Personal Music Collection",
+    "description": "Oyinda's Music Collection",
     "keywords": ["audio", "songs", "streaming", "music", "player"]
   },
   {
@@ -93,7 +93,7 @@
     "url": "https://music.topearebi.xyz",
     "icon": "music_note",
     "tab": "library",
-    "description": "Personal Music Collection",
+    "description": "Abdullahi's Music Collection",
     "keywords": ["audio", "songs", "streaming", "music", "player"]
   }
 ]
