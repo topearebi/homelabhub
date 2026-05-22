@@ -3,7 +3,7 @@
  * Strategy: Network-First for Data/Logic, Cache-First for Assets
  */
 
-const CACHE_NAME = 'homelab-v3'; // Incrementing to v3 to clear old structures
+const CACHE_NAME = 'homelab-v4'; // Incrementing to v3 to clear old structures
 const STATIC_ASSETS = [
   './',
   './index.html',
