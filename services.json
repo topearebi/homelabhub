@@ -120,11 +120,11 @@
     "keywords": ["paste", "share", "clipboard", "text", "temporary"]
   },
   {
-    "name": "HSK 1",
-    "url": "https://www.hellochinese.cc/",
-    "icon": "translate",
-    "tab": "bookmarks",
-    "description": "Simplified Mandarin Character Practice",
-    "keywords": ["language", "mandarin", "study", "characters", "simplified"]
-  },
+  "name": "HSK 1 Dashboard",
+  "url": "./hsk1/index.html",
+  "icon": "school",
+  "tab": "bookmarks",
+  "description": "38-day structured simplified character practice",
+  "keywords": ["mandarin", "hsk", "study", "language", "vocabulary", "flashcards"]
+ }
 ]
