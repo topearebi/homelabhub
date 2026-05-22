@@ -16,12 +16,60 @@
     "keywords": ["nzb", "torrent", "indexers", "arr", "automation"]
   },
   {
+    "name": "AIOManager",
+    "url": "https://aio.topearebi.xyz",
+    "icon": "settings_applications",
+    "tab": "console",
+    "description": "Stremio Addon Manager",
+    "keywords": ["stremio", "manager", "video", "streaming", "aio"]
+  },
+  {
+    "name": "AIOStreams",
+    "url": "https://streams.topearebi.xyz",
+    "icon": "filter_list",
+    "tab": "console",
+    "description": "Stremio Streams & Filtering",
+    "keywords": ["stremio", "addons", "filtering", "video"]
+  },
+  {
+    "name": "AIOMetadata",
+    "url": "https://metadata.topearebi.xyz",
+    "icon": "data_object",
+    "tab": "console",
+    "description": "Catalog & Metadata Aggregator",
+    "keywords": ["stremio", "metadata", "catalog", "info"]
+  },
+  {
+    "name": "AIOLists",
+    "url": "https://lists.topearebi.xyz",
+    "icon": "format_list_bulleted",
+    "tab": "console",
+    "description": "Stremio Custom Lists",
+    "keywords": ["stremio", "lists", "collections", "media"]
+  },
+  {
+    "name": "Poster Cache",
+    "url": "https://posters.topearebi.xyz",
+    "icon": "image",
+    "tab": "console",
+    "description": "AIOMetadata Image Cache",
+    "keywords": ["cache", "images", "posters", "nginx", "proxy"]
+  },
+  {
     "name": "Calibre Web",
     "url": "https://books.topearebi.xyz",
     "icon": "local_library",
     "tab": "library",
     "description": "Digital Book Library",
     "keywords": ["books", "reading", "epub", "pdf", "kindle", "library"]
+  },
+  {
+    "name": "FreshRSS",
+    "url": "https://rss.topearebi.xyz",
+    "icon": "rss_feed",
+    "tab": "library",
+    "description": "News & Article Feed",
+    "keywords": ["news", "feeds", "rss", "articles", "reading", "updates"]
   },
   {
     "name": "Shelfmark",
@@ -48,14 +96,6 @@
     "keywords": ["stories", "fiction", "literotica", "download", "web"]
   },
   {
-    "name": "FreshRSS",
-    "url": "https://rss.topearebi.xyz",
-    "icon": "rss_feed",
-    "tab": "library",
-    "description": "News & Article Feed",
-    "keywords": ["news", "feeds", "rss", "articles", "reading", "updates"]
-  },
-  {
     "name": "SilverBullet",
     "url": "https://notes.topearebi.xyz",
     "icon": "edit_note",
@@ -67,7 +107,6 @@
     "name": "ConvertX",
     "url": "https://convert.topearebi.xyz",
     "icon": "transform",
-    "transform": "workplace",
     "tab": "workplace",
     "description": "Multimedia File Converter",
     "keywords": ["files", "conversion", "tools", "pdf", "video", "audio"]
@@ -81,19 +120,11 @@
     "keywords": ["paste", "share", "clipboard", "text", "temporary"]
   },
   {
-    "name": "O's Music",
-    "url": "https://oyinsmusic.topearebi.xyz",
-    "icon": "headphones",
-    "tab": "library",
-    "description": "Oyinda's Music Collection",
-    "keywords": ["audio", "songs", "streaming", "music", "player"]
+    "name": "HSK 1",
+    "url": "https://www.hellochinese.cc/",
+    "icon": "translate",
+    "tab": "bookmarks",
+    "description": "Simplified Mandarin Character Practice",
+    "keywords": ["language", "mandarin", "study", "characters", "simplified"]
   },
-  {
-    "name": "A's Music",
-    "url": "https://music.topearebi.xyz",
-    "icon": "music_note",
-    "tab": "library",
-    "description": "Abdullahi's Music Collection",
-    "keywords": ["audio", "songs", "streaming", "music", "player"]
-  }
 ]
