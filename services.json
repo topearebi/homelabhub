@@ -118,5 +118,21 @@
   "tab": "bookmarks",
   "description": "38-day structured simplified character practice",
   "keywords": ["mandarin", "hsk", "study", "language", "vocabulary", "flashcards"]
+ },
+ {
+  "name": "My Portfolio",
+  "url": "https://topearebi.com",
+  "icon": "tie",
+  "tab": "bookmarks",
+  "description": "Jekyll based career portfolio",
+  "keywords": ["resume", "professional", "study", "language", "vocabulary", "flashcards"]
+ },
+ {
+  "name": "AROAMJTI",
+  "url": "https://AROAMJTI.topearebi.com",
+  "icon": "note",
+  "tab": "bookmarks",
+  "description": "Jekyll based journal and writing log",
+  "keywords": ["blog", "hsk", "study", "language", "vocabulary", "flashcards"]
  }
 ]
