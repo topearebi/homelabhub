@@ -118,29 +118,29 @@
   "tab": "bookmarks",
   "description": "38-day structured simplified character practice",
   "keywords": ["mandarin", "hsk", "study", "language", "vocabulary", "flashcards"]
- },
- {
+  },
+  {
   "name": "My Portfolio",
   "url": "https://topearebi.com",
-  "icon": "tie",
+  "icon": "work",
   "tab": "bookmarks",
-  "description": "Jekyll based career portfolio",
-  "keywords": ["resume", "professional", "study", "language", "vocabulary", "flashcards"]
- },
- {
+  "description": "Professional career portfolio and case studies",
+  "keywords": ["resume", "professional", "career", "portfolio", "projects", "cv"]
+  },
+  {
   "name": "AROAMJTI",
   "url": "https://AROAMJTI.topearebi.com",
-  "icon": "note",
+  "icon": "history_edu",
   "tab": "bookmarks",
   "description": "Jekyll based journal and writing log",
-  "keywords": ["blog", "hsk", "study", "language", "vocabulary", "flashcards"]
- },
- {
+  "keywords": ["blog", "journal", "writing", "log", "personal"]
+  },
+  {
   "name": "Thoughtfood",
   "url": "https://thoughtfood.substack.com",
-  "icon": "note",
+  "icon": "newspaper",
   "tab": "bookmarks",
-  "description": "Jekyll based journal and writing log",
-  "keywords": ["blog", "hsk", "study", "language", "vocabulary", "flashcards"]
- }
+  "description": "Substack newsletter and articles",
+  "keywords": ["newsletter", "substack", "writing", "articles", "reading"]
+  }
 ]
