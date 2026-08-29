@@ -16,6 +16,14 @@
     "keywords": ["nzb", "torrent", "indexers", "arr", "automation"]
   },
   {
+    "name": "Transmission",
+    "url": "https://p2p.topearebi.xyz",
+    "icon": "cloud_download",
+    "tab": "console",
+    "description": "BitTorrent Client",
+    "keywords": ["torrent", "p2p", "transmission", "download", "client"]
+  },
+  {
     "name": "AIOManager",
     "url": "https://aio.topearebi.xyz",
     "icon": "settings_applications",
@@ -40,6 +48,14 @@
     "keywords": ["stremio", "metadata", "catalog", "info"]
   },
   {
+    "name": "AIOLists",
+    "url": "https://lists.topearebi.xyz",
+    "icon": "list_alt",
+    "tab": "console",
+    "description": "Stremio List Integration",
+    "keywords": ["stremio", "lists", "catalog", "mdblist", "trakt"]
+  },
+  {
     "name": "Poster Cache",
     "url": "https://posters.topearebi.xyz",
     "icon": "image",
@@ -56,12 +72,28 @@
     "keywords": ["books", "reading", "epub", "pdf", "kindle", "library"]
   },
   {
+    "name": "Audiobookshelf",
+    "url": "https://audibook.topearebi.xyz",
+    "icon": "headphones",
+    "tab": "library",
+    "description": "Audiobook & Podcast Server",
+    "keywords": ["audiobooks", "podcasts", "audio", "streaming", "library"]
+  },
+  {
     "name": "FreshRSS",
     "url": "https://rss.topearebi.xyz",
     "icon": "rss_feed",
     "tab": "library",
     "description": "News & Article Feed",
     "keywords": ["news", "feeds", "rss", "articles", "reading", "updates"]
+  },
+  {
+    "name": "Wallabag",
+    "url": "https://wallabag.topearebi.xyz",
+    "icon": "bookmarks",
+    "tab": "library",
+    "description": "Read-it-Later Article Archiver",
+    "keywords": ["read-it-later", "articles", "pocket", "offline", "archive", "reading"]
   },
   {
     "name": "Shelfmark",
@@ -112,35 +144,35 @@
     "keywords": ["paste", "share", "clipboard", "text", "temporary"]
   },
   {
-  "name": "HSK 1 Dashboard",
-  "url": "./hsk1/index.html",
-  "icon": "school",
-  "tab": "bookmarks",
-  "description": "38-day structured simplified character practice",
-  "keywords": ["mandarin", "hsk", "study", "language", "vocabulary", "flashcards"]
+    "name": "HSK 1 Dashboard",
+    "url": "./hsk1/index.html",
+    "icon": "school",
+    "tab": "bookmarks",
+    "description": "38-day structured simplified character practice",
+    "keywords": ["mandarin", "hsk", "study", "language", "vocabulary", "flashcards"]
   },
   {
-  "name": "My Portfolio",
-  "url": "https://topearebi.com",
-  "icon": "work",
-  "tab": "bookmarks",
-  "description": "Professional career portfolio and case studies",
-  "keywords": ["resume", "professional", "career", "portfolio", "projects", "cv"]
+    "name": "My Portfolio",
+    "url": "https://topearebi.com",
+    "icon": "work",
+    "tab": "bookmarks",
+    "description": "Professional career portfolio and case studies",
+    "keywords": ["resume", "professional", "career", "portfolio", "projects", "cv"]
   },
   {
-  "name": "AROAMJTI",
-  "url": "https://AROAMJTI.topearebi.com",
-  "icon": "history_edu",
-  "tab": "bookmarks",
-  "description": "Jekyll based journal and writing log",
-  "keywords": ["blog", "journal", "writing", "log", "personal"]
+    "name": "AROAMJTI",
+    "url": "https://AROAMJTI.topearebi.com",
+    "icon": "history_edu",
+    "tab": "bookmarks",
+    "description": "Jekyll based journal and writing log",
+    "keywords": ["blog", "journal", "writing", "log", "personal"]
   },
   {
-  "name": "Thoughtfood",
-  "url": "https://thoughtfood.substack.com",
-  "icon": "newspaper",
-  "tab": "bookmarks",
-  "description": "Substack newsletter and articles",
-  "keywords": ["newsletter", "substack", "writing", "articles", "reading"]
+    "name": "Thoughtfood",
+    "url": "https://thoughtfood.substack.com",
+    "icon": "newspaper",
+    "tab": "bookmarks",
+    "description": "Substack newsletter and articles",
+    "keywords": ["newsletter", "substack", "writing", "articles", "reading"]
   }
 ]
