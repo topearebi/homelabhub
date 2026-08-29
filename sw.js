@@ -3,7 +3,7 @@
  * Strategy: Network-First for Data/Logic, Cache-First for Assets
  */
 
-const CACHE_NAME = 'homelab-v4'; // Incrementing to v3 to clear old structures
+const CACHE_NAME = 'homelab-v5'; // Incrementing cache version for updated stack
 const STATIC_ASSETS = [
   './',
   './index.html',
@@ -49,24 +49,19 @@ self.addEventListener('fetch', (event) => {
   const url = new URL(event.request.url);
 
   // LOGIC: Network-First for services.json and script.js
-  // This ensures your dashboard updates immediately when you push changes to GitHub.
   const isDynamic = DYNAMIC_RESOURCES.some(resource => url.pathname.includes(resource));
 
   if (isDynamic) {
     event.respondWith(
       fetch(event.request)
         .then((response) => {
-          // If successful, update the cache with the fresh version
           const clonedResponse = response.clone();
           caches.open(CACHE_NAME).then((cache) => {
             cache.put(event.request, clonedResponse);
           });
           return response;
         })
-        .catch(() => {
-          // If network fails (offline), fall back to the cached version
-          return caches.match(event.request);
-        })
+        .catch(() => caches.match(event.request))
     );
     return;
   }
