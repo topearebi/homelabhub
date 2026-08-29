@@ -120,14 +120,6 @@
     "keywords": ["stremio", "metadata", "catalog", "info"]
   },
   {
-    "name": "AIOLists",
-    "url": "https://lists.topearebi.xyz",
-    "icon": "list_alt",
-    "tab": "systems",
-    "description": "Stremio List Integration",
-    "keywords": ["stremio", "lists", "catalog", "mdblist", "trakt"]
-  },
-  {
     "name": "Poster Cache",
     "url": "https://posters.topearebi.xyz",
     "icon": "image",
