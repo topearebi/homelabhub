@@ -1,69 +1,5 @@
 [
   {
-    "name": "Portainer",
-    "url": "https://portainer.topearebi.xyz",
-    "icon": "grid_view",
-    "tab": "console",
-    "description": "Docker Container Management",
-    "keywords": ["docker", "containers", "admin", "orchestration", "backend"]
-  },
-  {
-    "name": "Prowlarr",
-    "url": "https://prowl.topearebi.xyz",
-    "icon": "manage_search",
-    "tab": "console",
-    "description": "Indexer & Torrent Manager",
-    "keywords": ["nzb", "torrent", "indexers", "arr", "automation"]
-  },
-  {
-    "name": "Transmission",
-    "url": "https://p2p.topearebi.xyz",
-    "icon": "cloud_download",
-    "tab": "console",
-    "description": "BitTorrent Client",
-    "keywords": ["torrent", "p2p", "transmission", "download", "client"]
-  },
-  {
-    "name": "AIOManager",
-    "url": "https://aio.topearebi.xyz",
-    "icon": "settings_applications",
-    "tab": "console",
-    "description": "Stremio Addon Manager",
-    "keywords": ["stremio", "manager", "video", "streaming", "aio"]
-  },
-  {
-    "name": "AIOStreams",
-    "url": "https://streams.topearebi.xyz",
-    "icon": "filter_list",
-    "tab": "console",
-    "description": "Stremio Streams & Filtering",
-    "keywords": ["stremio", "addons", "filtering", "video"]
-  },
-  {
-    "name": "AIOMetadata",
-    "url": "https://metadata.topearebi.xyz",
-    "icon": "data_object",
-    "tab": "console",
-    "description": "Catalog & Metadata Aggregator",
-    "keywords": ["stremio", "metadata", "catalog", "info"]
-  },
-  {
-    "name": "AIOLists",
-    "url": "https://lists.topearebi.xyz",
-    "icon": "list_alt",
-    "tab": "console",
-    "description": "Stremio List Integration",
-    "keywords": ["stremio", "lists", "catalog", "mdblist", "trakt"]
-  },
-  {
-    "name": "Poster Cache",
-    "url": "https://posters.topearebi.xyz",
-    "icon": "image",
-    "tab": "console",
-    "description": "AIOMetadata Image Cache",
-    "keywords": ["cache", "images", "posters", "nginx", "proxy"]
-  },
-  {
     "name": "Calibre Web",
     "url": "https://books.topearebi.xyz",
     "icon": "local_library",
@@ -84,7 +20,7 @@
     "url": "https://rss.topearebi.xyz",
     "icon": "rss_feed",
     "tab": "library",
-    "description": "News & Article Feed",
+    "description": "News & Article RSS Feed",
     "keywords": ["news", "feeds", "rss", "articles", "reading", "updates"]
   },
   {
@@ -96,44 +32,12 @@
     "keywords": ["read-it-later", "articles", "pocket", "offline", "archive", "reading"]
   },
   {
-    "name": "Shelfmark",
-    "url": "https://annas.topearebi.xyz",
-    "icon": "download_for_offline",
-    "tab": "workplace",
-    "description": "Books & Archive Downloader",
-    "keywords": ["books", "download", "libgen", "annas", "archive"]
-  },
-  {
-    "name": "OpenBooks",
-    "url": "https://irc.topearebi.xyz",
-    "icon": "terminal",
-    "tab": "workplace",
-    "description": "IRC eBook Downloader",
-    "keywords": ["books", "irc", "download", "search", "ebooks"]
-  },
-  {
-    "name": "LitKeeper",
-    "url": "https://lit.topearebi.xyz",
-    "icon": "auto_stories",
-    "tab": "workplace",
-    "description": "Fiction & Web Stories Downloader",
-    "keywords": ["stories", "fiction", "literotica", "download", "web"]
-  },
-  {
     "name": "SilverBullet",
     "url": "https://notes.topearebi.xyz",
     "icon": "edit_note",
-    "tab": "workplace",
+    "tab": "library",
     "description": "Knowledge & Note Management",
     "keywords": ["notes", "writing", "markdown", "wiki", "pkm", "knowledge"]
-  },
-  {
-    "name": "ConvertX",
-    "url": "https://convert.topearebi.xyz",
-    "icon": "transform",
-    "tab": "workplace",
-    "description": "Multimedia File Converter",
-    "keywords": ["files", "conversion", "tools", "pdf", "video", "audio"]
   },
   {
     "name": "LocalContentShare",
@@ -144,10 +48,114 @@
     "keywords": ["paste", "share", "clipboard", "text", "temporary"]
   },
   {
+    "name": "Transmission",
+    "url": "https://p2p.topearebi.xyz",
+    "icon": "cloud_download",
+    "tab": "workplace",
+    "description": "BitTorrent Download Manager",
+    "keywords": ["torrent", "p2p", "transmission", "download", "client"]
+  },
+  {
+    "name": "Shelfmark",
+    "url": "https://annas.topearebi.xyz",
+    "icon": "download_for_offline",
+    "tab": "workplace",
+    "description": "Books & Archive Batch Ingestion",
+    "keywords": ["books", "download", "libgen", "annas", "archive"]
+  },
+  {
+    "name": "OpenBooks",
+    "url": "https://irc.topearebi.xyz",
+    "icon": "terminal",
+    "tab": "workplace",
+    "description": "IRC eBook Retrieval Engine",
+    "keywords": ["books", "irc", "download", "search", "ebooks"]
+  },
+  {
+    "name": "LitKeeper",
+    "url": "https://lit.topearebi.xyz",
+    "icon": "auto_stories",
+    "tab": "workplace",
+    "description": "Web Fiction & Story Downloader",
+    "keywords": ["stories", "fiction", "literotica", "download", "web"]
+  },
+  {
+    "name": "Portainer",
+    "url": "https://portainer.topearebi.xyz",
+    "icon": "grid_view",
+    "tab": "systems",
+    "description": "Docker Container Management",
+    "keywords": ["docker", "containers", "admin", "orchestration", "backend"]
+  },
+  {
+    "name": "Prowlarr",
+    "url": "https://prowl.topearebi.xyz",
+    "icon": "manage_search",
+    "tab": "systems",
+    "description": "Indexer & Torrent Manager",
+    "keywords": ["nzb", "torrent", "indexers", "arr", "automation"]
+  },
+  {
+    "name": "AIOManager",
+    "url": "https://aio.topearebi.xyz",
+    "icon": "settings_applications",
+    "tab": "systems",
+    "description": "Stremio Addon Manager",
+    "keywords": ["stremio", "manager", "video", "streaming", "aio"]
+  },
+  {
+    "name": "AIOStreams",
+    "url": "https://streams.topearebi.xyz",
+    "icon": "filter_list",
+    "tab": "systems",
+    "description": "Stremio Streams & Filtering",
+    "keywords": ["stremio", "addons", "filtering", "video"]
+  },
+  {
+    "name": "AIOMetadata",
+    "url": "https://metadata.topearebi.xyz",
+    "icon": "data_object",
+    "tab": "systems",
+    "description": "Catalog & Metadata Aggregator",
+    "keywords": ["stremio", "metadata", "catalog", "info"]
+  },
+  {
+    "name": "AIOLists",
+    "url": "https://lists.topearebi.xyz",
+    "icon": "list_alt",
+    "tab": "systems",
+    "description": "Stremio List Integration",
+    "keywords": ["stremio", "lists", "catalog", "mdblist", "trakt"]
+  },
+  {
+    "name": "Poster Cache",
+    "url": "https://posters.topearebi.xyz",
+    "icon": "image",
+    "tab": "systems",
+    "description": "AIOMetadata Image Cache",
+    "keywords": ["cache", "images", "posters", "nginx", "proxy"]
+  },
+  {
+    "name": "Hetzner Cloud",
+    "url": "https://accounts.hetzner.com/account",
+    "icon": "dns",
+    "tab": "directory",
+    "description": "VPS Server & Cloud Infrastructure Console",
+    "keywords": ["vps", "server", "cloud", "hosting", "infrastructure", "hetzner"]
+  },
+  {
+    "name": "Hardcover",
+    "url": "https://hardcover.app/@tope",
+    "icon": "menu_book",
+    "tab": "directory",
+    "description": "Book Tracking, Stats & Reading Log",
+    "keywords": ["reading", "books", "tracker", "log", "hardcover", "profile"]
+  },
+  {
     "name": "HSK 1 Dashboard",
     "url": "./hsk1/index.html",
     "icon": "school",
-    "tab": "bookmarks",
+    "tab": "directory",
     "description": "38-day structured simplified character practice",
     "keywords": ["mandarin", "hsk", "study", "language", "vocabulary", "flashcards"]
   },
@@ -155,7 +163,7 @@
     "name": "My Portfolio",
     "url": "https://topearebi.com",
     "icon": "work",
-    "tab": "bookmarks",
+    "tab": "directory",
     "description": "Professional career portfolio and case studies",
     "keywords": ["resume", "professional", "career", "portfolio", "projects", "cv"]
   },
@@ -163,7 +171,7 @@
     "name": "AROAMJTI",
     "url": "https://AROAMJTI.topearebi.com",
     "icon": "history_edu",
-    "tab": "bookmarks",
+    "tab": "directory",
     "description": "Jekyll based journal and writing log",
     "keywords": ["blog", "journal", "writing", "log", "personal"]
   },
@@ -171,8 +179,8 @@
     "name": "Thoughtfood",
     "url": "https://thoughtfood.substack.com",
     "icon": "newspaper",
-    "tab": "bookmarks",
-    "description": "Substack newsletter and articles",
+    "tab": "directory",
+    "description": "Substack newsletter and published essays",
     "keywords": ["newsletter", "substack", "writing", "articles", "reading"]
   }
 ]
