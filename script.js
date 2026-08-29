@@ -91,12 +91,27 @@ document.addEventListener('DOMContentLoaded', () => {
             link.href = service.url;
             
             // Set Text Content
-            clone.querySelector('.card-title').textContent = service.name;
-            clone.querySelector('.card-desc').textContent = service.description;
-            
-            // Set Icon (fallback to 'web' if not specified)
+            link.querySelector('.card-title').textContent = service.name;
+            link.querySelector('.card-desc').textContent = service.description;
+
             const iconEl = clone.querySelector('.card-icon');
             iconEl.textContent = service.icon || 'web';
+    
+            // Intercept click to control window behavior
+            link.addEventListener('click', (e) => {
+                // Let internal relative routes (like ./hsk1/index.html) navigate normally
+                if (service.url.startsWith('./') || service.url.startsWith('/')) {
+                    return;
+                }
+    
+                e.preventDefault();
+                // Opens in a dedicated chromeless window popup on ChromeOS/Desktop
+                window.open(
+                    service.url,
+                    '_blank',
+                    'popup=yes,menubar=no,toolbar=no,location=no,status=no,width=1280,height=850'
+                );
+            });
             
             grid.appendChild(clone);
         });
