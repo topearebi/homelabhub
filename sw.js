@@ -3,7 +3,7 @@
  * Strategy: Network-First for Data/Logic, Cache-First for Assets
  */
 
-const CACHE_NAME = 'homelab-v6'; // Incrementing cache version for updated stack
+const CACHE_NAME = 'homelab-v6a'; // Incrementing cache version for updated stack
 const STATIC_ASSETS = [
   './',
   './index.html',
