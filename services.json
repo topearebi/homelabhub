@@ -174,5 +174,29 @@
     "tab": "directory",
     "description": "Substack newsletter and published essays",
     "keywords": ["newsletter", "substack", "writing", "articles", "reading"]
+  },
+  {
+    "name": "Kana Practice",
+    "url": "https://djtguide.neocities.org/kana/",
+    "icon": "language",
+    "tab": "directory",
+    "description": "Japanese Hiragana and Katakana character practice tool",
+    "keywords": ["japanese", "kana", "hiragana", "katakana", "practice", "study"]
+  },
+  {
+    "name": "Arch Chinese Tones",
+    "url": "https://www.archchinese.com/mandarin_chinese_tone_drill.html",
+    "icon": "hearing",
+    "tab": "directory",
+    "description": "Mandarin Chinese tone listening and practice drills",
+    "keywords": ["mandarin", "chinese", "tones", "drill", "listening", "practice"]
+  },
+  {
+    "name": "Tadou Chinese",
+    "url": "https://tadouchinese.com/",
+    "icon": "menu_book",
+    "tab": "directory",
+    "description": "Extensive reading resources and graded readers for Chinese learners",
+    "keywords": ["mandarin", "chinese", "reading", "tadou", "graded", "literature"]
   }
 ]
