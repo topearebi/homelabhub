@@ -176,6 +176,14 @@
     "keywords": ["newsletter", "substack", "writing", "articles", "reading"]
   },
   {
+    "name": "The Nigerian Odyssey",
+    "url": "https://thenigerianodyssey.substack.com/",
+    "icon": "ship",
+    "tab": "directory",
+    "description": "Publication charting the stories of Nigerians in Nigeria",
+    "keywords": ["newsletter", "substack", "writing", "articles", "nigeria", "reading"]
+  }
+  {
     "name": "Kana Practice",
     "url": "https://djtguide.neocities.org/kana/",
     "icon": "language",
