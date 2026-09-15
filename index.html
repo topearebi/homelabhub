@@ -1,97 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-    
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    
-    <meta name="theme-color" content="#0f0f11">
-    <title>Homelab Hub</title>
-    
-    <link rel="manifest" href="manifest.json">
-    
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Homelab">
-    
-    <link rel="apple-touch-icon" href="icon.svg">
-    <link rel="icon" type="image/svg+xml" href="icon.svg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#121316">
+  <meta name="description" content="Personal Homelab, Library & Self-Hosted Services Dashboard">
+  
+  <title>Homelab Hub</title>
 
-    <link rel="stylesheet" href="style.css">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
+  <!-- PWA & Favicons -->
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/svg+xml" href="icon.svg">
+  <link rel="apple-touch-icon" href="icon.svg">
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
 </head>
-    
 <body>
 
-    <div class="background-gradient"></div>
+  <div class="app-container">
+    <!-- Header Area -->
+    <header class="dashboard-header">
+      <div class="brand">
+        <img src="icon.svg" alt="Homelab Hub Logo" class="brand-logo">
+        <h1 class="brand-title">Homelab Hub</h1>
+      </div>
 
-    <main class="container">
-        <header>
-            <div class="greeting-container">
-                <h1 id="greeting">Welcome Home</h1>
-                <p id="clock">Loading...</p>
-            </div>
-            
-            <div class="search-wrapper">
-                <span class="material-symbols-rounded search-icon">search</span>
-                <input type="text" id="searchInput" placeholder="Search services... (Press '/')" autocomplete="off" spellcheck="false">
-            </div>
-        </header>
+      <div class="header-controls">
+        <button id="guestToggle" class="control-btn" title="Toggle Guest Mode" aria-label="Toggle Guest Mode">
+          <span class="material-icons" id="guestToggleIcon">visibility</span>
+          <span id="guestToggleText">All Services</span>
+        </button>
+        <button id="installBtn" class="control-btn" style="display: none;" title="Install Homelab Hub" aria-label="Install App">
+          <span class="material-icons">install_mobile</span>
+          <span>Install</span>
+        </button>
+      </div>
+    </header>
 
-        <nav class="tab-container" role="tablist">
-            <button class="tab-btn active" data-tab="library" role="tab" aria-selected="true">Library</button>
-            <button class="tab-btn" data-tab="workplace" role="tab" aria-selected="false">Workplace</button>
-            <button class="tab-btn" data-tab="systems" role="tab" aria-selected="false">Systems</button>
-            <button class="tab-btn" data-tab="directory" role="tab" aria-selected="false">Directory</button>
-        </nav>
-        
-        <p id="search-status" class="search-status-text" aria-live="polite"></p>
+    <!-- Search & Command Bar -->
+    <section class="search-section">
+      <div class="search-input-wrapper">
+        <span class="material-icons search-icon">search</span>
+        <input 
+          type="text" 
+          id="searchInput" 
+          placeholder="Search services, apps, tags..." 
+          autocomplete="off" 
+          spellcheck="false"
+        >
+        <kbd class="search-kbd" title="Press / to search">/</kbd>
+      </div>
+    </section>
 
-        <div id="grid-container" class="grid-layout">
-            </div>
+    <!-- Category Filter Tabs -->
+    <nav class="category-nav" aria-label="Service categories">
+      <button class="nav-tab active" data-tab="all">All</button>
+      <button class="nav-tab" data-tab="library">Library</button>
+      <button class="nav-tab" data-tab="streaming">Media & Streaming</button>
+      <button class="nav-tab" data-tab="study">Language & Study</button>
+      <button class="nav-tab" data-tab="projects">Projects & Writing</button>
+      <button class="nav-tab" data-tab="systems">Infrastructure</button>
+    </nav>
+
+    <!-- Services Grid Container -->
+    <main class="services-container" id="servicesGrid" aria-live="polite">
+      <!-- Cards rendered dynamically via script.js -->
     </main>
 
-    <template id="card-template">
-        <a href="#" class="card" rel="noopener noreferrer">
-            <div class="card-icon-wrapper">
-                <span class="material-symbols-rounded card-icon">web</span>
-            </div>
-            <div class="card-content">
-                <h3 class="card-title">Service Name</h3>
-                <p class="card-desc">Description</p>
-            </div>
-            <div class="card-arrow">
-                <span class="material-symbols-rounded">arrow_outward</span>
-            </div>
-        </a>
-    </template>
+    <!-- Empty State -->
+    <div id="noResults" class="empty-state" style="display: none;">
+      <span class="material-icons empty-icon">search_off</span>
+      <p class="empty-text">No matching services found</p>
+    </div>
+  </div>
 
-    <script src="script.js"></script>
-    <script>
-        // PWA Service Worker Registration
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                // Using a slightly delayed registration to prioritize initial content render
-                navigator.serviceWorker.register('./sw.js')
-                    .then(reg => {
-                        console.log('SW registered');
-                        // Handle manual updates if a new version is found
-                        reg.onupdatefound = () => {
-                            const installingWorker = reg.installing;
-                            installingWorker.onstatechange = () => {
-                                if (installingWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                                    console.log('New content available; please refresh.');
-                                }
-                            };
-                        };
-                    })
-                    .catch(err => console.log('SW registration failed', err));
-            });
-        }
-    </script>
+  <!-- Scripts -->
+  <script src="script.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js').catch((err) => {
+          console.error('Service Worker registration failed:', err);
+        });
+      });
+    }
+  </script>
 </body>
 </html>
