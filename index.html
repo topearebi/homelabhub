@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#121316">
+  <meta name="theme-color" content="#0f1115">
   <meta name="description" content="Personal Homelab, Library & Self-Hosted Services Dashboard">
   
   <title>Homelab Hub</title>
@@ -33,9 +33,9 @@
       </div>
 
       <div class="header-controls">
-        <button id="guestToggle" class="control-btn" title="Toggle Guest Mode" aria-label="Toggle Guest Mode">
+        <button id="guestToggle" class="control-btn active" title="Toggle Access View" aria-label="Toggle Access View">
           <span class="material-icons" id="guestToggleIcon">visibility</span>
-          <span id="guestToggleText">All Services</span>
+          <span id="guestToggleText">Guest View</span>
         </button>
         <button id="installBtn" class="control-btn" style="display: none;" title="Install Homelab Hub" aria-label="Install App">
           <span class="material-icons">install_mobile</span>
@@ -44,14 +44,14 @@
       </div>
     </header>
 
-    <!-- Search & Command Bar -->
+    <!-- Search Section -->
     <section class="search-section">
       <div class="search-input-wrapper">
         <span class="material-icons search-icon">search</span>
         <input 
           type="text" 
           id="searchInput" 
-          placeholder="Search services, apps, tags..." 
+          placeholder="Search services, tools, or keywords..." 
           autocomplete="off" 
           spellcheck="false"
         >
@@ -59,15 +59,8 @@
       </div>
     </section>
 
-    <!-- Category Filter Tabs -->
-    <nav class="category-nav" aria-label="Service categories">
-      <button class="nav-tab active" data-tab="all">All</button>
-      <button class="nav-tab" data-tab="library">Library</button>
-      <button class="nav-tab" data-tab="streaming">Media & Streaming</button>
-      <button class="nav-tab" data-tab="study">Language & Study</button>
-      <button class="nav-tab" data-tab="projects">Projects & Writing</button>
-      <button class="nav-tab" data-tab="systems">Infrastructure</button>
-    </nav>
+    <!-- Category Filter Navigation (Populated dynamically via script.js) -->
+    <nav class="category-nav" id="categoryNav" aria-label="Service categories"></nav>
 
     <!-- Services Grid Container -->
     <main class="services-container" id="servicesGrid" aria-live="polite">
