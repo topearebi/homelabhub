@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v2';
+const CACHE_VERSION = 'v3.1.1';
 const STATIC_CACHE_NAME = `homelab-static-${CACHE_VERSION}`;
 const DATA_CACHE_NAME = `homelab-data-${CACHE_VERSION}`;
 
