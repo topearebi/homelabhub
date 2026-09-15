@@ -210,7 +210,7 @@ body {
   gap: 1.25rem;
 }
 
-/* Service Card */
+/* Service Card Container */
 .service-card {
   display: flex;
   flex-direction: column;
@@ -220,9 +220,10 @@ body {
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
   color: inherit;
-  text-decoration: none;
   transition: var(--transition);
   position: relative;
+  cursor: pointer;
+  overflow: hidden;
 }
 
 .service-card:hover {
@@ -230,6 +231,11 @@ body {
   border-color: var(--border-hover);
   background: var(--surface-hover);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.card-main-content {
+  display: flex;
+  flex-direction: column;
 }
 
 .card-header {
@@ -300,7 +306,7 @@ body {
   overflow: hidden;
 }
 
-/* Card Footer & Mirrors */
+/* Card Footer & Flexible Wrapping */
 .card-footer {
   display: flex;
   align-items: center;
@@ -309,22 +315,26 @@ body {
   padding-top: 0.75rem;
   border-top: 1px solid rgba(255, 255, 255, 0.04);
   gap: 0.5rem;
+  min-height: 2.2rem;
 }
 
 .card-footer-left {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.35rem;
   flex-wrap: wrap;
+  max-width: calc(100% - 1.75rem);
 }
 
 .card-badge {
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 500;
-  padding: 0.2rem 0.5rem;
+  padding: 0.15rem 0.45rem;
   border-radius: var(--radius-sm);
   background: var(--badge-bg);
   color: var(--badge-text);
+  line-height: 1.2;
+  flex-shrink: 0;
 }
 
 .card-badge.badge-guest {
@@ -339,15 +349,19 @@ body {
 
 /* Mirror Chips */
 .mirror-chip {
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 500;
-  padding: 0.2rem 0.45rem;
+  padding: 0.15rem 0.4rem;
   border-radius: var(--radius-sm);
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--border-color);
   color: var(--text-secondary);
   text-decoration: none;
+  line-height: 1.2;
   transition: var(--transition);
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
 }
 
 .mirror-chip:hover {
