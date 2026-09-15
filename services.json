@@ -287,5 +287,14 @@
     "description": "VPS server and primary cloud host console",
     "keywords": ["vps", "server", "cloud", "hosting", "infrastructure", "hetzner"],
     "guest": false
+  },
+  {
+    "name": "Readover",
+    "url": "https://topearebi.github.io/readover/",
+    "icon": "dynamic_feed",
+    "tab": "projects",
+    "description": "Reels-style infinite feed for GitHub markdown note vaults and docs",
+    "keywords": ["notes", "markdown", "feed", "github", "reading", "pkm", "reels"],
+    "guest": true
   }
 ]
