@@ -1,43 +1,34 @@
-/**
- * Homelab Hub - Service Worker
- * Strategy: Network-First for Data/Logic, Cache-First for Assets
- */
+const CACHE_VERSION = 'v2';
+const STATIC_CACHE_NAME = `homelab-static-${CACHE_VERSION}`;
+const DATA_CACHE_NAME = `homelab-data-${CACHE_VERSION}`;
 
-const CACHE_NAME = 'homelab-v7'; // Incrementing cache version for updated stack
 const STATIC_ASSETS = [
   './',
   './index.html',
   './style.css',
-  './manifest.json',
-  './icon.svg'
+  './script.js',
+  './icon.svg',
+  './alticon.svg',
+  './manifest.json'
 ];
 
-// Resources that change frequently and should be fetched from network first
-const DYNAMIC_RESOURCES = [
-  'services.json',
-  'script.js'
-];
-
+// Install: Pre-cache static shell assets
 self.addEventListener('install', (event) => {
-  // Take control immediately
-  self.skipWaiting();
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      console.log('Pre-caching static assets');
+    caches.open(STATIC_CACHE_NAME).then((cache) => {
       return cache.addAll(STATIC_ASSETS);
-    })
+    }).then(() => self.skipWaiting())
   );
 });
 
+// Activate: Prune stale caches
 self.addEventListener('activate', (event) => {
-  // Clean up old caches from previous versions
   event.waitUntil(
-    caches.keys().then((cacheNames) => {
+    caches.keys().then((keys) => {
       return Promise.all(
-        cacheNames.map((cache) => {
-          if (cache !== CACHE_NAME) {
-            console.log('Deleting old cache:', cache);
-            return caches.delete(cache);
+        keys.map((key) => {
+          if (key !== STATIC_CACHE_NAME && key !== DATA_CACHE_NAME) {
+            return caches.delete(key);
           }
         })
       );
@@ -45,34 +36,49 @@ self.addEventListener('activate', (event) => {
   );
 });
 
+// Fetch: Differentiated routing strategy
 self.addEventListener('fetch', (event) => {
-  const url = new URL(event.request.url);
+  const requestUrl = new URL(event.request.url);
 
-  // LOGIC: Network-First for services.json and script.js
-  const isDynamic = DYNAMIC_RESOURCES.some(resource => url.pathname.includes(resource));
-
-  if (isDynamic) {
+  // 1. Network-First Strategy for dynamic configuration data
+  if (requestUrl.pathname.endsWith('services.json')) {
     event.respondWith(
       fetch(event.request)
-        .then((response) => {
-          const clonedResponse = response.clone();
-          caches.open(CACHE_NAME).then((cache) => {
-            cache.put(event.request, clonedResponse);
+        .then((networkResponse) => {
+          if (!networkResponse || networkResponse.status !== 200) {
+            return networkResponse;
+          }
+          const responseToCache = networkResponse.clone();
+          caches.open(DATA_CACHE_NAME).then((cache) => {
+            cache.put(event.request, responseToCache);
           });
-          return response;
+          return networkResponse;
         })
         .catch(() => caches.match(event.request))
     );
     return;
   }
 
-  // LOGIC: Cache-First for everything else (CSS, HTML, Icons)
+  // 2. Cache-First Strategy for static shell assets and icons
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {
       if (cachedResponse) {
         return cachedResponse;
       }
-      return fetch(event.request);
+      return fetch(event.request).then((networkResponse) => {
+        // Cache fetched runtime assets like Google fonts/icons
+        if (
+          networkResponse &&
+          networkResponse.status === 200 &&
+          (event.request.url.includes('fonts.googleapis.com') || event.request.url.includes('fonts.gstatic.com'))
+        ) {
+          const responseToCache = networkResponse.clone();
+          caches.open(STATIC_CACHE_NAME).then((cache) => {
+            cache.put(event.request, responseToCache);
+          });
+        }
+        return networkResponse;
+      });
     })
   );
 });
