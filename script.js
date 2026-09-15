@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentTab = '';
   let searchQuery = '';
   
-  // Default to Guest View (true) if never explicitly set by user
+  // Default to Guest View (true) if never explicitly set
   const storedGuestMode = localStorage.getItem('homelab_guest_mode');
   let guestModeOnly = storedGuestMode === null ? true : storedGuestMode === 'true';
 
@@ -100,30 +100,41 @@ document.addEventListener('DOMContentLoaded', () => {
     noResults.style.display = 'none';
     servicesGrid.innerHTML = filtered.map((service) => createCardHTML(service)).join('');
 
-    // Prevent mirror links from triggering card click
-    document.querySelectorAll('.mirror-chip').forEach(chip => {
-      chip.addEventListener('click', (e) => {
-        e.stopPropagation();
+    // Attach card delegation and mirror click isolation
+    document.querySelectorAll('.service-card').forEach((card) => {
+      card.addEventListener('click', (e) => {
+        if (e.target.closest('.mirror-chip')) return;
+
+        const url = card.dataset.url;
+        const isExternal = card.dataset.external === 'true';
+
+        if (isExternal) {
+          window.open(url, '_blank', 'noopener,noreferrer');
+        } else {
+          window.location.href = url;
+        }
       });
     });
   }
 
   function createCardHTML(service) {
     const isExternal = service.url.startsWith('http');
-    const targetAttrs = isExternal ? 'target="_blank" rel="noopener noreferrer"' : '';
     const badgeClass = service.guest ? 'badge-guest' : 'badge-private';
     const badgeLabel = service.guest ? 'Public' : 'Auth';
 
     let mirrorsHTML = '';
     if (Array.isArray(service.mirrors) && service.mirrors.length > 0) {
       mirrorsHTML = service.mirrors
-        .map(m => `<a href="${m.url}" target="_blank" rel="noopener noreferrer" class="mirror-chip" title="Alternative mirror ${escapeHTML(m.label)}">${escapeHTML(m.label)}</a>`)
+        .map(
+          (m) =>
+            `<a href="${m.url}" target="_blank" rel="noopener noreferrer" class="mirror-chip" title="Alternative mirror ${escapeHTML(m.label)}">${escapeHTML(m.label)}</a>`
+        )
         .join('');
     }
 
     return `
-      <a href="${service.url}" class="service-card" ${targetAttrs}>
-        <div>
+      <div class="service-card" data-url="${service.url}" data-external="${isExternal}">
+        <div class="card-main-content">
           <div class="card-header">
             <div class="card-icon-wrapper">
               <span class="material-icons card-icon">${service.icon || 'apps'}</span>
@@ -142,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
           <span class="material-icons card-arrow">arrow_forward</span>
         </div>
-      </a>
+      </div>
     `;
   }
 
