@@ -82,16 +82,20 @@
   },
   {
     "name": "Anna's Archive",
-    "url": "https://annas-archive.org",
+    "url": "https://annas-archive.pk",
     "icon": "travel_explore",
     "tab": "library",
     "description": "Universal shadow library search engine for books and papers",
     "keywords": ["books", "archive", "libgen", "annas", "search", "pdf", "epub"],
-    "guest": true
+    "guest": true,
+    "mirrors": [
+      { "label": ".gd", "url": "https://annas-archive.gd" },
+      { "label": ".gl", "url": "https://annas-archive.gl" }
+    ]
   },
   {
     "name": "Z-Library",
-    "url": "https://singlelogin.re",
+    "url": "https://z-lib.sk/",
     "icon": "auto_stories",
     "tab": "library",
     "description": "Direct portal for digital books and article discovery",
@@ -100,56 +104,62 @@
   },
   {
     "name": "Sci-Hub",
-    "url": "https://sci-hub.se",
+    "url": "https://sci-hub.ru",
     "icon": "science",
     "tab": "library",
     "description": "Direct DOI lookup for academic research and papers",
     "keywords": ["academic", "papers", "science", "research", "journal", "doi"],
-    "guest": true
+    "guest": true,
+    "mirrors": [
+      { "label": ".su", "url": "https://sci-hub.su" },
+      { "label": ".st", "url": "https://sci-hub.st" },
+      { "label": ".red", "url": "https://sci-hub.red" },
+      { "label": ".box", "url": "https://sci-hub.box" }
+    ]
   },
   {
     "name": "AIOStreams",
     "url": "https://streams.topearebi.xyz",
     "icon": "filter_list",
-    "tab": "streaming",
+    "tab": "media",
     "description": "Stremio Stream Provider & Filter Engine",
-    "keywords": ["stremio", "addons", "filtering", "video"],
+    "keywords": ["stremio", "addons", "filtering", "video", "media"],
     "guest": false
   },
   {
     "name": "AIOMetadata",
     "url": "https://metadata.topearebi.xyz",
     "icon": "data_object",
-    "tab": "streaming",
+    "tab": "media",
     "description": "Media Catalog & Cinemeta Metadata Provider",
-    "keywords": ["stremio", "metadata", "catalog", "info"],
+    "keywords": ["stremio", "metadata", "catalog", "info", "media"],
     "guest": false
   },
   {
     "name": "AIOManager",
     "url": "https://aio.topearebi.xyz",
     "icon": "settings_applications",
-    "tab": "streaming",
+    "tab": "media",
     "description": "Stremio Addon Configuration Dashboard",
-    "keywords": ["stremio", "manager", "video", "streaming", "aio"],
+    "keywords": ["stremio", "manager", "video", "streaming", "aio", "media"],
     "guest": false
   },
   {
     "name": "Poster Cache",
     "url": "https://posters.topearebi.xyz",
     "icon": "image",
-    "tab": "streaming",
+    "tab": "media",
     "description": "Fast Media Poster & Image Proxy Cache",
-    "keywords": ["cache", "images", "posters", "nginx", "proxy"],
+    "keywords": ["cache", "images", "posters", "nginx", "proxy", "media"],
     "guest": false
   },
   {
     "name": "Transmission",
     "url": "https://p2p.topearebi.xyz",
     "icon": "cloud_download",
-    "tab": "streaming",
+    "tab": "media",
     "description": "BitTorrent Web Client & Download Queue",
-    "keywords": ["torrent", "p2p", "transmission", "download", "client"],
+    "keywords": ["torrent", "p2p", "transmission", "download", "client", "media"],
     "guest": false
   },
   {
