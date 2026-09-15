@@ -10,6 +10,8 @@
   --accent-color: #3b82f6;
   --accent-hover: #2563eb;
   --accent-glow: rgba(59, 130, 246, 0.18);
+  --guest-accent: #10b981;
+  --guest-glow: rgba(16, 185, 129, 0.15);
   --badge-bg: rgba(255, 255, 255, 0.06);
   --badge-text: #9ca3af;
   --radius-sm: 6px;
@@ -97,9 +99,9 @@ body {
 }
 
 .control-btn.active {
-  background: var(--accent-glow);
-  border-color: var(--accent-color);
-  color: #93c5fd;
+  background: var(--guest-glow);
+  border-color: var(--guest-accent);
+  color: #6ee7b7;
 }
 
 .control-btn .material-icons {
@@ -166,7 +168,7 @@ body {
   display: flex;
   gap: 0.5rem;
   overflow-x: auto;
-  padding-bottom: 0.5rem;
+  padding: 0.25rem 0.5rem 0.5rem;
   margin-bottom: 2rem;
   scrollbar-width: none;
 }
@@ -176,7 +178,7 @@ body {
 }
 
 .nav-tab {
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 1.15rem;
   background: var(--surface-color);
   border: 1px solid var(--border-color);
   border-radius: 9999px;
@@ -185,6 +187,7 @@ body {
   font-weight: 500;
   white-space: nowrap;
   cursor: pointer;
+  text-transform: capitalize;
   transition: var(--transition);
 }
 
@@ -203,7 +206,7 @@ body {
 /* Services Grid */
 .services-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 1.25rem;
 }
 
@@ -216,8 +219,8 @@ body {
   background: var(--surface-color);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
-  text-decoration: none;
   color: inherit;
+  text-decoration: none;
   transition: var(--transition);
   position: relative;
 }
@@ -290,13 +293,14 @@ body {
   font-size: 0.85rem;
   color: var(--text-secondary);
   line-height: 1.45;
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
+/* Card Footer & Mirrors */
 .card-footer {
   display: flex;
   align-items: center;
@@ -304,6 +308,14 @@ body {
   margin-top: auto;
   padding-top: 0.75rem;
   border-top: 1px solid rgba(255, 255, 255, 0.04);
+  gap: 0.5rem;
+}
+
+.card-footer-left {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
 }
 
 .card-badge {
@@ -325,10 +337,30 @@ body {
   background: rgba(248, 113, 113, 0.1);
 }
 
+/* Mirror Chips */
+.mirror-chip {
+  font-size: 0.7rem;
+  font-weight: 500;
+  padding: 0.2rem 0.45rem;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.mirror-chip:hover {
+  background: var(--accent-glow);
+  border-color: var(--accent-color);
+  color: #93c5fd;
+}
+
 .card-arrow {
   font-size: 1rem;
   color: var(--text-muted);
   transition: transform 0.2s ease, color 0.2s ease;
+  flex-shrink: 0;
 }
 
 .service-card:hover .card-arrow {
