@@ -1,12 +1,14 @@
 {
   "name": "Homelab Hub",
   "short_name": "Homelab",
-  "description": "Personalized dashboard for home services and infrastructure management",
+  "description": "Personal Homelab, Library & Self-Hosted Services Dashboard",
   "start_url": "./index.html",
+  "scope": "./",
   "display": "standalone",
-  "background_color": "#0f0f11",
-  "theme_color": "#0f0f11",
-  "orientation": "portrait-primary",
+  "orientation": "any",
+  "background_color": "#0f1115",
+  "theme_color": "#0f1115",
+  "categories": ["utilities", "productivity", "books"],
   "icons": [
     {
       "src": "icon.svg",
@@ -15,7 +17,7 @@
       "purpose": "any"
     },
     {
-      "src": "icon.svg",
+      "src": "alticon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "maskable"
