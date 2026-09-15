@@ -19,6 +19,43 @@ document.addEventListener('DOMContentLoaded', () => {
   const guestToggleIcon = document.getElementById('guestToggleIcon');
   const installBtn = document.getElementById('installBtn');
 
+  // Haptic feedback helper
+  function triggerHaptic() {
+    if ('vibrate' in navigator) {
+      navigator.vibrate(8);
+    }
+  }
+
+  // Standalone PWA container window launcher
+  function openAppContainer(url) {
+    const width = Math.min(window.screen.availWidth || 1200, 1280);
+    const height = Math.min(window.screen.availHeight || 800, 900);
+    const left = Math.max(0, Math.round((window.screen.availWidth - width) / 2));
+    const top = Math.max(0, Math.round((window.screen.availHeight - height) / 2));
+
+    const windowFeatures = [
+      'popup=yes',
+      `width=${width}`,
+      `height=${height}`,
+      `left=${left}`,
+      `top=${top}`,
+      'menubar=no',
+      'toolbar=no',
+      'location=no',
+      'status=no',
+      'scrollbars=yes',
+      'resizable=yes',
+      'noopener',
+      'noreferrer'
+    ].join(',');
+
+    const win = window.open(url, '_blank', windowFeatures);
+    if (!win) {
+      // Fallback if browser popup blocker intercepts
+      window.open(url, '_blank', 'noopener,noreferrer');
+    }
+  }
+
   // Load and bootstrap services
   async function initServices() {
     try {
@@ -40,6 +77,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // Background auto-refresh on visibility / app resume
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') {
+      initServices();
+    }
+  });
+
   // Get available categories based on current guest filter
   function getAvailableTabs() {
     const visibleServices = services.filter(item => !guestModeOnly || item.guest);
@@ -53,7 +97,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (availableTabs.length === 0) return;
 
-    // Reset current tab if no longer visible
     if (!availableTabs.includes(currentTab)) {
       currentTab = availableTabs[0];
     }
@@ -65,6 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
       tabBtn.textContent = tab;
 
       tabBtn.addEventListener('click', () => {
+        triggerHaptic();
         document.querySelectorAll('.nav-tab').forEach(b => b.classList.remove('active'));
         tabBtn.classList.add('active');
         currentTab = tab;
@@ -100,25 +144,35 @@ document.addEventListener('DOMContentLoaded', () => {
     noResults.style.display = 'none';
     servicesGrid.innerHTML = filtered.map((service) => createCardHTML(service)).join('');
 
-    // Attach card delegation and mirror click isolation
+    // Attach card delegation and mirror click isolation with container launch
     document.querySelectorAll('.service-card').forEach((card) => {
-      card.addEventListener('click', (e) => {
-        if (e.target.closest('.mirror-chip')) return;
+      const handleAction = (e) => {
+        const mirrorLink = e.target.closest('.mirror-chip');
+        if (mirrorLink) {
+          e.preventDefault();
+          e.stopPropagation();
+          triggerHaptic();
+          openAppContainer(mirrorLink.getAttribute('href'));
+          return;
+        }
 
+        triggerHaptic();
         const url = card.dataset.url;
-        const isExternal = card.dataset.external === 'true';
+        openAppContainer(url);
+      };
 
-        if (isExternal) {
-          window.open(url, '_blank', 'noopener,noreferrer');
-        } else {
-          window.location.href = url;
+      card.addEventListener('click', handleAction);
+
+      // Support Smart TV / keyboard remote Enter key activation
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          handleAction(e);
         }
       });
     });
   }
 
   function createCardHTML(service) {
-    const isExternal = service.url.startsWith('http');
     const badgeClass = service.guest ? 'badge-guest' : 'badge-private';
     const badgeLabel = service.guest ? 'Public' : 'Auth';
 
@@ -127,13 +181,13 @@ document.addEventListener('DOMContentLoaded', () => {
       mirrorsHTML = service.mirrors
         .map(
           (m) =>
-            `<a href="${m.url}" target="_blank" rel="noopener noreferrer" class="mirror-chip" title="Alternative mirror ${escapeHTML(m.label)}">${escapeHTML(m.label)}</a>`
+            `<a href="${m.url}" class="mirror-chip" tabindex="0" title="Alternative mirror ${escapeHTML(m.label)}">${escapeHTML(m.label)}</a>`
         )
         .join('');
     }
 
     return `
-      <div class="service-card" data-url="${service.url}" data-external="${isExternal}">
+      <div class="service-card" tabindex="0" data-url="${service.url}" role="button" aria-label="${escapeHTML(service.name)}">
         <div class="card-main-content">
           <div class="card-header">
             <div class="card-icon-wrapper">
@@ -167,7 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
       .replace(/'/g, '&#039;');
   }
 
-  // Quick Search Keydown Hotkey (/) with typing collision guard
+  // Quick Search Keydown Hotkey (/) with typing guard and instant Escape clear
   window.addEventListener('keydown', (e) => {
     const tag = document.activeElement ? document.activeElement.tagName : '';
     const isEditing = tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || (document.activeElement && document.activeElement.isContentEditable);
@@ -176,7 +230,12 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       searchInput.focus();
       searchInput.select();
-    } else if (e.key === 'Escape' && document.activeElement === searchInput) {
+    } else if (e.key === 'Escape') {
+      if (searchQuery) {
+        searchQuery = '';
+        searchInput.value = '';
+        render();
+      }
       searchInput.blur();
     }
   });
@@ -203,6 +262,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (guestToggle) {
     guestToggle.addEventListener('click', () => {
+      triggerHaptic();
       guestModeOnly = !guestModeOnly;
       localStorage.setItem('homelab_guest_mode', guestModeOnly);
       updateGuestToggleUI();
@@ -220,6 +280,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (installBtn) {
     installBtn.addEventListener('click', async () => {
+      triggerHaptic();
       if (!deferredPrompt) return;
       deferredPrompt.prompt();
       const { outcome } = await deferredPrompt.userChoice;
