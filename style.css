@@ -26,6 +26,16 @@
   padding: 0;
 }
 
+html, body {
+  overscroll-behavior-y: none;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+input, textarea {
+  user-select: text;
+}
+
 body {
   background-color: var(--bg-color);
   color: var(--text-primary);
@@ -34,7 +44,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
-  padding: 2rem 1.25rem 4rem;
+  padding-top: max(1.5rem, env(safe-area-inset-top));
+  padding-bottom: max(3rem, env(safe-area-inset-bottom));
+  padding-left: max(1.25rem, env(safe-area-inset-left));
+  padding-right: max(1.25rem, env(safe-area-inset-right));
 }
 
 .app-container {
@@ -224,6 +237,7 @@ body {
   position: relative;
   cursor: pointer;
   overflow: hidden;
+  outline: none;
 }
 
 .service-card:hover {
@@ -231,6 +245,15 @@ body {
   border-color: var(--border-hover);
   background: var(--surface-hover);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+/* Focus Rings for Accessibility and TV/D-Pad remotes */
+.service-card:focus-visible,
+.nav-tab:focus-visible,
+.control-btn:focus-visible,
+.mirror-chip:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
 }
 
 .card-main-content {
@@ -362,6 +385,7 @@ body {
   cursor: pointer;
   position: relative;
   z-index: 2;
+  outline: none;
 }
 
 .mirror-chip:hover {
@@ -406,7 +430,10 @@ body {
 /* Responsive Adjustments */
 @media (max-width: 640px) {
   body {
-    padding: 1.25rem 0.85rem 3rem;
+    padding-top: max(1rem, env(safe-area-inset-top));
+    padding-bottom: max(2.5rem, env(safe-area-inset-bottom));
+    padding-left: max(0.85rem, env(safe-area-inset-left));
+    padding-right: max(0.85rem, env(safe-area-inset-right));
   }
 
   .dashboard-header {
