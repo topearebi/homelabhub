@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v3.1.2';
+const CACHE_VERSION = 'v3';
 const STATIC_CACHE_NAME = `homelab-static-${CACHE_VERSION}`;
 const DATA_CACHE_NAME = `homelab-data-${CACHE_VERSION}`;
 
@@ -12,7 +12,7 @@ const STATIC_ASSETS = [
   './manifest.json'
 ];
 
-// Install: Pre-cache static shell assets
+// Install: Pre-cache static application shell
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(STATIC_CACHE_NAME).then((cache) => {
@@ -21,7 +21,7 @@ self.addEventListener('install', (event) => {
   );
 });
 
-// Activate: Prune stale caches
+// Activate: Clean up legacy caches from previous versions
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((keys) => {
@@ -36,11 +36,11 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-// Fetch: Differentiated routing strategy
+// Fetch: Segment dynamic data from static assets
 self.addEventListener('fetch', (event) => {
   const requestUrl = new URL(event.request.url);
 
-  // 1. Network-First Strategy for dynamic configuration data
+  // 1. Network-First Strategy for live service configuration data
   if (requestUrl.pathname.endsWith('services.json')) {
     event.respondWith(
       fetch(event.request)
@@ -59,14 +59,13 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // 2. Cache-First Strategy for static shell assets and icons
+  // 2. Cache-First Strategy for static application shell and external font assets
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {
       if (cachedResponse) {
         return cachedResponse;
       }
       return fetch(event.request).then((networkResponse) => {
-        // Cache fetched runtime assets like Google fonts/icons
         if (
           networkResponse &&
           networkResponse.status === 200 &&
