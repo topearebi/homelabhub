@@ -1,191 +1,176 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // DOM Elements
-    const grid = document.getElementById('grid-container');
-    const template = document.getElementById('card-template');
-    const searchInput = document.getElementById('searchInput');
-    const searchStatus = document.getElementById('search-status');
-    const greetingEl = document.getElementById('greeting');
-    const clockEl = document.getElementById('clock');
-    const tabBtns = document.querySelectorAll('.tab-btn');
-    
-    // Application State
-    let services = [];
-    let currentTab = 'library';
+  let services = [];
+  let currentTab = 'all';
+  let searchQuery = '';
+  let guestModeOnly = localStorage.getItem('homelab_guest_mode') === 'true';
+  let deferredPrompt = null;
 
-    /**
-     * Fetch services from JSON with cache-busting
-     */
-    async function loadServices() {
-        try {
-            // Append timestamp to URL to bypass browser/CDN caching for fresh data
-            const response = await fetch(`services.json?t=${Date.now()}`);
-            if (!response.ok) throw new Error('Network response was not ok');
-            
-            services = await response.json();
-            filterAndRender();
-        } catch (error) {
-            console.error('Failed to load services:', error);
-            grid.innerHTML = `
-                <div style="grid-column: 1/-1; text-align: center; padding: 2rem; color: var(--text-muted);">
-                    <span class="material-symbols-rounded" style="font-size: 48px; margin-bottom: 1rem;">error</span>
-                    <p>Unable to load services configuration.</p>
-                </div>`;
-        }
+  // DOM Elements
+  const servicesGrid = document.getElementById('servicesGrid');
+  const searchInput = document.getElementById('searchInput');
+  const navTabs = document.querySelectorAll('.nav-tab');
+  const noResults = document.getElementById('noResults');
+  const guestToggle = document.getElementById('guestToggle');
+  const guestToggleText = document.getElementById('guestToggleText');
+  const guestToggleIcon = document.getElementById('guestToggleIcon');
+  const installBtn = document.getElementById('installBtn');
+
+  // Load and initialize services from JSON
+  async function initServices() {
+    try {
+      const response = await fetch('services.json');
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+      services = await response.json();
+      render();
+    } catch (error) {
+      console.error('Failed to load services:', error);
+      servicesGrid.innerHTML = `
+        <div class="empty-state">
+          <span class="material-icons empty-icon">error_outline</span>
+          <p class="empty-text">Failed to load services. Please check network or file syntax.</p>
+        </div>
+      `;
     }
+  }
 
-    /**
-     * Logic to determine which services to show based on Tab or Search
-     */
-    function filterAndRender() {
-        const query = searchInput.value.toLowerCase().trim();
-        const isSearching = query.length > 0;
-        
-        // Toggle global search mode visuals on the body
-        document.body.classList.toggle('is-searching', isSearching);
+  // Filter and build card markup
+  function render() {
+    const query = searchQuery.trim().toLowerCase();
 
-        const filtered = services.filter(service => {
-            // Check matches for Name, Description, and Keywords
-            const matchesSearch = 
-                service.name.toLowerCase().includes(query) || 
-                service.description.toLowerCase().includes(query) ||
-                (service.keywords && service.keywords.some(k => k.toLowerCase().includes(query)));
+    const filtered = services.filter((item) => {
+      if (guestModeOnly && !item.guest) return false;
+      if (currentTab !== 'all' && item.tab !== currentTab) return false;
+      if (!query) return true;
 
-            if (isSearching) {
-                // Global Mode: ignore tabs to find anything across the whole lab
-                return matchesSearch;
-            } else {
-                // Tab Mode: only show items belonging to the active category
-                return service.tab === currentTab;
-            }
-        });
+      const titleMatch = item.name.toLowerCase().includes(query);
+      const descMatch = item.description.toLowerCase().includes(query);
+      const keywordMatch = Array.isArray(item.keywords) && item.keywords.some((kw) => kw.toLowerCase().includes(query));
 
-        // Update search status text
-        if (isSearching) {
-            searchStatus.textContent = `Found ${filtered.length} service${filtered.length === 1 ? '' : 's'} globally`;
-        } else {
-            searchStatus.textContent = "";
-        }
-
-        renderServices(filtered);
-    }
-
-    /**
-     * Paint the filtered services to the DOM
-     */
-    function renderServices(items) {
-        grid.innerHTML = '';
-        
-        if (items.length === 0) {
-            grid.innerHTML = `
-                <p style="grid-column: 1/-1; text-align: center; color: var(--text-muted); padding: 2rem;">
-                    No services found.
-                </p>`;
-            return;
-        }
-
-        items.forEach(service => {
-            const clone = template.content.cloneNode(true);
-            
-            // Set Link and Security headers
-            const link = clone.querySelector('a');
-            link.href = service.url;
-            
-            // Set Text Content
-            link.querySelector('.card-title').textContent = service.name;
-            link.querySelector('.card-desc').textContent = service.description;
-
-            const iconEl = clone.querySelector('.card-icon');
-            iconEl.textContent = service.icon || 'web';
-    
-            // Intercept click to control window behavior
-            link.addEventListener('click', (e) => {
-                // Let internal relative routes (like ./hsk1/index.html) navigate normally
-                if (service.url.startsWith('./') || service.url.startsWith('/')) {
-                    return;
-                }
-    
-                e.preventDefault();
-                // Opens in a dedicated chromeless window popup on ChromeOS/Desktop
-                window.open(
-                    service.url,
-                    '_blank',
-                    'popup=yes,menubar=no,toolbar=no,location=no,status=no,width=1280,height=850'
-                );
-            });
-            
-            grid.appendChild(clone);
-        });
-    }
-
-    /**
-     * Handle Tab Switching
-     */
-    tabBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            // Update UI state
-            tabBtns.forEach(b => {
-                b.classList.remove('active');
-                b.setAttribute('aria-selected', 'false');
-            });
-            btn.classList.add('active');
-            btn.setAttribute('aria-selected', 'true');
-            
-            // Update Data state
-            currentTab = btn.dataset.tab;
-            
-            // Clear search when switching tabs for a clean experience
-            if (searchInput.value) {
-                searchInput.value = '';
-                document.body.classList.remove('is-searching');
-            }
-            
-            filterAndRender();
-        });
+      return titleMatch || descMatch || keywordMatch;
     });
 
-    /**
-     * Keyboard Shortcut: Focus search on "/"
-     */
-    document.addEventListener('keydown', (e) => {
-        if (e.key === '/' && document.activeElement !== searchInput) {
-            e.preventDefault();
-            searchInput.focus();
-        }
-    });
-
-    /**
-     * Search Input listener
-     */
-    searchInput.addEventListener('input', filterAndRender);
-
-    /**
-     * Time and Greeting Logic
-     */
-    function updateHeader() {
-        const now = new Date();
-        
-        // Clock: "Mon, Jan 27, 10:14 AM"
-        const options = { 
-            weekday: 'short', 
-            month: 'short', 
-            day: 'numeric', 
-            hour: '2-digit', 
-            minute: '2-digit' 
-        };
-        clockEl.textContent = now.toLocaleDateString('en-US', options);
-
-        // Greeting
-        const hour = now.getHours();
-        let greeting = "Welcome";
-        if (hour < 12) greeting = "Good Morning";
-        else if (hour < 18) greeting = "Good Afternoon";
-        else greeting = "Good Evening";
-        
-        greetingEl.textContent = greeting;
+    if (filtered.length === 0) {
+      servicesGrid.innerHTML = '';
+      noResults.style.display = 'flex';
+      return;
     }
 
-    // Initialization
-    loadServices();
-    updateHeader();
-    setInterval(updateHeader, 60000); // Update every minute
+    noResults.style.display = 'none';
+    servicesGrid.innerHTML = filtered.map((service) => createCardHTML(service)).join('');
+  }
+
+  function createCardHTML(service) {
+    const isExternal = service.url.startsWith('http');
+    const targetAttrs = isExternal ? 'target="_blank" rel="noopener noreferrer"' : '';
+    const badgeClass = service.guest ? 'badge-guest' : 'badge-private';
+    const badgeLabel = service.guest ? 'Public' : 'Auth';
+
+    return `
+      <a href="${service.url}" class="service-card" ${targetAttrs}>
+        <div>
+          <div class="card-header">
+            <div class="card-icon-wrapper">
+              <span class="material-icons card-icon">${service.icon || 'apps'}</span>
+            </div>
+            <div class="card-title-group">
+              <span class="card-title">${escapeHTML(service.name)}</span>
+              <span class="card-tag">${escapeHTML(service.tab)}</span>
+            </div>
+          </div>
+          <p class="card-description">${escapeHTML(service.description)}</p>
+        </div>
+        <div class="card-footer">
+          <span class="card-badge ${badgeClass}">${badgeLabel}</span>
+          <span class="material-icons card-arrow">arrow_forward</span>
+        </div>
+      </a>
+    `;
+  }
+
+  function escapeHTML(str) {
+    if (!str) return '';
+    return str
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+  }
+
+  // Quick Search Keydown Hotkey (/)
+  window.addEventListener('keydown', (e) => {
+    if (e.key === '/' && document.activeElement !== searchInput) {
+      e.preventDefault();
+      searchInput.focus();
+      searchInput.select();
+    } else if (e.key === 'Escape' && document.activeElement === searchInput) {
+      searchInput.blur();
+    }
+  });
+
+  // Search Input listener
+  searchInput.addEventListener('input', (e) => {
+    searchQuery = e.target.value;
+    render();
+  });
+
+  // Tab Filtering listener
+  navTabs.forEach((tabBtn) => {
+    tabBtn.addEventListener('click', () => {
+      navTabs.forEach((btn) => btn.classList.remove('active'));
+      tabBtn.classList.add('active');
+      currentTab = tabBtn.dataset.tab;
+      render();
+    });
+  });
+
+  // Guest Mode Controls
+  function updateGuestToggleUI() {
+    if (!guestToggle) return;
+    if (guestModeOnly) {
+      guestToggle.classList.add('active');
+      guestToggleText.textContent = 'Guest Mode';
+      guestToggleIcon.textContent = 'visibility_off';
+    } else {
+      guestToggle.classList.remove('active');
+      guestToggleText.textContent = 'All Services';
+      guestToggleIcon.textContent = 'visibility';
+    }
+  }
+
+  if (guestToggle) {
+    updateGuestToggleUI();
+    guestToggle.addEventListener('click', () => {
+      guestModeOnly = !guestModeOnly;
+      localStorage.setItem('homelab_guest_mode', guestModeOnly);
+      updateGuestToggleUI();
+      render();
+    });
+  }
+
+  // PWA Prompt Logic
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    if (installBtn) installBtn.style.display = 'inline-flex';
+  });
+
+  if (installBtn) {
+    installBtn.addEventListener('click', async () => {
+      if (!deferredPrompt) return;
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      if (outcome === 'accepted') {
+        installBtn.style.display = 'none';
+      }
+      deferredPrompt = null;
+    });
+  }
+
+  window.addEventListener('appinstalled', () => {
+    if (installBtn) installBtn.style.display = 'none';
+    deferredPrompt = null;
+  });
+
+  initServices();
 });
