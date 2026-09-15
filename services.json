@@ -4,207 +4,278 @@
     "url": "https://books.topearebi.xyz",
     "icon": "local_library",
     "tab": "library",
-    "description": "Digital Book Library",
-    "keywords": ["books", "reading", "epub", "pdf", "kindle", "library"]
+    "description": "Digital E-Book Library & In-Browser Reader",
+    "keywords": ["books", "reading", "epub", "pdf", "kindle", "library"],
+    "guest": true
   },
   {
     "name": "Audiobookshelf",
     "url": "https://audibook.topearebi.xyz",
     "icon": "headphones",
     "tab": "library",
-    "description": "Audiobook & Podcast Server",
-    "keywords": ["audiobooks", "podcasts", "audio", "streaming", "library"]
-  },
-  {
-    "name": "FreshRSS",
-    "url": "https://rss.topearebi.xyz",
-    "icon": "rss_feed",
-    "tab": "library",
-    "description": "News & Article RSS Feed",
-    "keywords": ["news", "feeds", "rss", "articles", "reading", "updates"]
+    "description": "Audiobook & Podcast Streaming Server",
+    "keywords": ["audiobooks", "podcasts", "audio", "streaming", "library"],
+    "guest": true
   },
   {
     "name": "Wallabag",
     "url": "https://wallabag.topearebi.xyz",
     "icon": "bookmarks",
     "tab": "library",
-    "description": "Read-it-Later Article Archiver",
-    "keywords": ["read-it-later", "articles", "pocket", "offline", "archive", "reading"]
+    "description": "Read-it-Later Clean Article Archiver",
+    "keywords": ["read-it-later", "articles", "pocket", "offline", "archive", "reading"],
+    "guest": false
+  },
+  {
+    "name": "FreshRSS",
+    "url": "https://rss.topearebi.xyz",
+    "icon": "rss_feed",
+    "tab": "library",
+    "description": "News & Article RSS Feed Aggregator",
+    "keywords": ["news", "feeds", "rss", "articles", "reading", "updates"],
+    "guest": false
+  },
+  {
+    "name": "Hardcover",
+    "url": "https://hardcover.app/@tope",
+    "icon": "menu_book",
+    "tab": "library",
+    "description": "Reading Log, Book Tracking & Annual Stats",
+    "keywords": ["reading", "books", "tracker", "log", "hardcover", "profile"],
+    "guest": true
   },
   {
     "name": "SilverBullet",
     "url": "https://notes.topearebi.xyz",
     "icon": "edit_note",
     "tab": "library",
-    "description": "Knowledge & Note Management",
-    "keywords": ["notes", "writing", "markdown", "wiki", "pkm", "knowledge"]
-  },
-  {
-    "name": "LocalContentShare",
-    "url": "https://paste.topearebi.xyz",
-    "icon": "content_paste_go",
-    "tab": "workplace",
-    "description": "Pastebin & File Sharing",
-    "keywords": ["paste", "share", "clipboard", "text", "temporary"]
-  },
-  {
-    "name": "Transmission",
-    "url": "https://p2p.topearebi.xyz",
-    "icon": "cloud_download",
-    "tab": "workplace",
-    "description": "BitTorrent Download Manager",
-    "keywords": ["torrent", "p2p", "transmission", "download", "client"]
+    "description": "PKM Markdown Notes & Research Wiki",
+    "keywords": ["notes", "writing", "markdown", "wiki", "pkm", "knowledge"],
+    "guest": false
   },
   {
     "name": "Shelfmark",
     "url": "https://annas.topearebi.xyz",
     "icon": "download_for_offline",
-    "tab": "workplace",
-    "description": "Books & Archive Batch Ingestion",
-    "keywords": ["books", "download", "libgen", "annas", "archive"]
+    "tab": "library",
+    "description": "Anna's Archive & Libgen Direct Book Ingestion",
+    "keywords": ["books", "download", "libgen", "annas", "archive"],
+    "guest": false
   },
   {
     "name": "OpenBooks",
     "url": "https://irc.topearebi.xyz",
     "icon": "terminal",
-    "tab": "workplace",
-    "description": "IRC eBook Retrieval Engine",
-    "keywords": ["books", "irc", "download", "search", "ebooks"]
+    "tab": "library",
+    "description": "IRC High-Speed E-Book Retrieval Engine",
+    "keywords": ["books", "irc", "download", "search", "ebooks"],
+    "guest": true
   },
   {
     "name": "LitKeeper",
     "url": "https://lit.topearebi.xyz",
     "icon": "auto_stories",
-    "tab": "workplace",
-    "description": "Web Fiction & Story Downloader",
-    "keywords": ["stories", "fiction", "literotica", "download", "web"]
+    "tab": "library",
+    "description": "Web Fiction & Serialized Story Downloader",
+    "keywords": ["stories", "fiction", "literotica", "download", "web"],
+    "guest": true
+  },
+  {
+    "name": "Anna's Archive",
+    "url": "https://annas-archive.org",
+    "icon": "travel_explore",
+    "tab": "library",
+    "description": "Universal shadow library search engine for books and papers",
+    "keywords": ["books", "archive", "libgen", "annas", "search", "pdf", "epub"],
+    "guest": true
+  },
+  {
+    "name": "Z-Library",
+    "url": "https://singlelogin.re",
+    "icon": "auto_stories",
+    "tab": "library",
+    "description": "Direct portal for digital books and article discovery",
+    "keywords": ["zlib", "books", "reading", "ebooks", "zlibrary"],
+    "guest": true
+  },
+  {
+    "name": "Sci-Hub",
+    "url": "https://sci-hub.se",
+    "icon": "science",
+    "tab": "library",
+    "description": "Direct DOI lookup for academic research and papers",
+    "keywords": ["academic", "papers", "science", "research", "journal", "doi"],
+    "guest": true
+  },
+  {
+    "name": "AIOStreams",
+    "url": "https://streams.topearebi.xyz",
+    "icon": "filter_list",
+    "tab": "streaming",
+    "description": "Stremio Stream Provider & Filter Engine",
+    "keywords": ["stremio", "addons", "filtering", "video"],
+    "guest": false
+  },
+  {
+    "name": "AIOMetadata",
+    "url": "https://metadata.topearebi.xyz",
+    "icon": "data_object",
+    "tab": "streaming",
+    "description": "Media Catalog & Cinemeta Metadata Provider",
+    "keywords": ["stremio", "metadata", "catalog", "info"],
+    "guest": false
+  },
+  {
+    "name": "AIOManager",
+    "url": "https://aio.topearebi.xyz",
+    "icon": "settings_applications",
+    "tab": "streaming",
+    "description": "Stremio Addon Configuration Dashboard",
+    "keywords": ["stremio", "manager", "video", "streaming", "aio"],
+    "guest": false
+  },
+  {
+    "name": "Poster Cache",
+    "url": "https://posters.topearebi.xyz",
+    "icon": "image",
+    "tab": "streaming",
+    "description": "Fast Media Poster & Image Proxy Cache",
+    "keywords": ["cache", "images", "posters", "nginx", "proxy"],
+    "guest": false
+  },
+  {
+    "name": "Transmission",
+    "url": "https://p2p.topearebi.xyz",
+    "icon": "cloud_download",
+    "tab": "streaming",
+    "description": "BitTorrent Web Client & Download Queue",
+    "keywords": ["torrent", "p2p", "transmission", "download", "client"],
+    "guest": false
+  },
+  {
+    "name": "HSK 1 Dashboard",
+    "url": "./hsk1/index.html",
+    "icon": "school",
+    "tab": "study",
+    "description": "38-day structured simplified character practice",
+    "keywords": ["mandarin", "hsk", "study", "language", "vocabulary", "flashcards"],
+    "guest": true
+  },
+  {
+    "name": "Arch Chinese Tones",
+    "url": "https://www.archchinese.com/mandarin_chinese_tone_drill.html",
+    "icon": "hearing",
+    "tab": "study",
+    "description": "Mandarin Chinese tone listening and practice drills",
+    "keywords": ["mandarin", "chinese", "tones", "drill", "listening", "practice"],
+    "guest": true
+  },
+  {
+    "name": "Tadou Chinese",
+    "url": "https://tadouchinese.com/",
+    "icon": "menu_book",
+    "tab": "study",
+    "description": "Extensive reading resources and graded readers for Chinese learners",
+    "keywords": ["mandarin", "chinese", "reading", "tadou", "graded", "literature"],
+    "guest": true
+  },
+  {
+    "name": "Kana Practice",
+    "url": "https://djtguide.neocities.org/kana/",
+    "icon": "language",
+    "tab": "study",
+    "description": "Japanese Hiragana and Katakana character practice tool",
+    "keywords": ["japanese", "kana", "hiragana", "katakana", "practice", "study"],
+    "guest": true
+  },
+  {
+    "name": "Forvo",
+    "url": "https://forvo.com",
+    "icon": "record_voice_over",
+    "tab": "study",
+    "description": "Crowdsourced native pronunciation audio dictionary in all languages",
+    "keywords": ["pronunciation", "audio", "dictionary", "forvo", "language", "accent"],
+    "guest": true
+  },
+  {
+    "name": "My Portfolio",
+    "url": "https://topearebi.com",
+    "icon": "work",
+    "tab": "projects",
+    "description": "Professional career portfolio and case studies",
+    "keywords": ["resume", "professional", "career", "portfolio", "projects", "cv"],
+    "guest": true
+  },
+  {
+    "name": "Thoughtfood",
+    "url": "https://thoughtfood.substack.com",
+    "icon": "newspaper",
+    "tab": "projects",
+    "description": "Substack newsletter and published essays",
+    "keywords": ["newsletter", "substack", "writing", "articles", "reading"],
+    "guest": true
+  },
+  {
+    "name": "The Nigerian Odyssey",
+    "url": "https://thenigerianodyssey.substack.com/",
+    "icon": "sailing",
+    "tab": "projects",
+    "description": "Publication charting the stories of Nigerians in Nigeria",
+    "keywords": ["newsletter", "substack", "writing", "articles", "nigeria", "reading", "culture"],
+    "guest": true
+  },
+  {
+    "name": "AROAMJTI",
+    "url": "https://AROAMJTI.topearebi.com",
+    "icon": "history_edu",
+    "tab": "projects",
+    "description": "Jekyll based journal and writing log",
+    "keywords": ["blog", "journal", "writing", "log", "personal"],
+    "guest": true
+  },
+  {
+    "name": "LocalContentShare",
+    "url": "https://paste.topearebi.xyz",
+    "icon": "content_paste_go",
+    "tab": "systems",
+    "description": "Temporary pastebin and local clipboard drop",
+    "keywords": ["paste", "share", "clipboard", "text", "temporary"],
+    "guest": true
+  },
+  {
+    "name": "FreeConvert",
+    "url": "https://www.freeconvert.com",
+    "icon": "transform",
+    "tab": "systems",
+    "description": "Free web batch converter and compressor for images, videos, and docs",
+    "keywords": ["convert", "compress", "resize", "pdf", "image", "tools"],
+    "guest": true
   },
   {
     "name": "Portainer",
     "url": "https://portainer.topearebi.xyz",
     "icon": "grid_view",
     "tab": "systems",
-    "description": "Docker Container Management",
-    "keywords": ["docker", "containers", "admin", "orchestration", "backend"]
+    "description": "Docker container and stack orchestration manager",
+    "keywords": ["docker", "containers", "admin", "orchestration", "backend"],
+    "guest": false
   },
   {
     "name": "Prowlarr",
     "url": "https://prowl.topearebi.xyz",
     "icon": "manage_search",
     "tab": "systems",
-    "description": "Indexer & Torrent Manager",
-    "keywords": ["nzb", "torrent", "indexers", "arr", "automation"]
-  },
-  {
-    "name": "AIOManager",
-    "url": "https://aio.topearebi.xyz",
-    "icon": "settings_applications",
-    "tab": "systems",
-    "description": "Stremio Addon Manager",
-    "keywords": ["stremio", "manager", "video", "streaming", "aio"]
-  },
-  {
-    "name": "AIOStreams",
-    "url": "https://streams.topearebi.xyz",
-    "icon": "filter_list",
-    "tab": "systems",
-    "description": "Stremio Streams & Filtering",
-    "keywords": ["stremio", "addons", "filtering", "video"]
-  },
-  {
-    "name": "AIOMetadata",
-    "url": "https://metadata.topearebi.xyz",
-    "icon": "data_object",
-    "tab": "systems",
-    "description": "Catalog & Metadata Aggregator",
-    "keywords": ["stremio", "metadata", "catalog", "info"]
-  },
-  {
-    "name": "Poster Cache",
-    "url": "https://posters.topearebi.xyz",
-    "icon": "image",
-    "tab": "systems",
-    "description": "AIOMetadata Image Cache",
-    "keywords": ["cache", "images", "posters", "nginx", "proxy"]
+    "description": "Indexer sync manager for media automation",
+    "keywords": ["nzb", "torrent", "indexers", "arr", "automation"],
+    "guest": false
   },
   {
     "name": "Hetzner Cloud",
     "url": "https://accounts.hetzner.com/account",
     "icon": "dns",
-    "tab": "directory",
-    "description": "VPS Server & Cloud Infrastructure Console",
-    "keywords": ["vps", "server", "cloud", "hosting", "infrastructure", "hetzner"]
-  },
-  {
-    "name": "Hardcover",
-    "url": "https://hardcover.app/@tope",
-    "icon": "menu_book",
-    "tab": "directory",
-    "description": "Book Tracking, Stats & Reading Log",
-    "keywords": ["reading", "books", "tracker", "log", "hardcover", "profile"]
-  },
-  {
-    "name": "HSK 1 Dashboard",
-    "url": "./hsk1/index.html",
-    "icon": "school",
-    "tab": "directory",
-    "description": "38-day structured simplified character practice",
-    "keywords": ["mandarin", "hsk", "study", "language", "vocabulary", "flashcards"]
-  },
-  {
-    "name": "My Portfolio",
-    "url": "https://topearebi.com",
-    "icon": "work",
-    "tab": "directory",
-    "description": "Professional career portfolio and case studies",
-    "keywords": ["resume", "professional", "career", "portfolio", "projects", "cv"]
-  },
-  {
-    "name": "AROAMJTI",
-    "url": "https://AROAMJTI.topearebi.com",
-    "icon": "history_edu",
-    "tab": "directory",
-    "description": "Jekyll based journal and writing log",
-    "keywords": ["blog", "journal", "writing", "log", "personal"]
-  },
-  {
-    "name": "Thoughtfood",
-    "url": "https://thoughtfood.substack.com",
-    "icon": "newspaper",
-    "tab": "directory",
-    "description": "Substack newsletter and published essays",
-    "keywords": ["newsletter", "substack", "writing", "articles", "reading"]
-  },
-  {
-    "name": "The Nigerian Odyssey",
-    "url": "https://thenigerianodyssey.substack.com/",
-    "icon": "sailing",
-    "tab": "directory",
-    "description": "Publication charting the stories of Nigerians in Nigeria",
-    "keywords": ["newsletter", "substack", "writing", "articles", "nigeria", "reading", "culture"]
-  },
-  {
-    "name": "Kana Practice",
-    "url": "https://djtguide.neocities.org/kana/",
-    "icon": "language",
-    "tab": "directory",
-    "description": "Japanese Hiragana and Katakana character practice tool",
-    "keywords": ["japanese", "kana", "hiragana", "katakana", "practice", "study"]
-  },
-  {
-    "name": "Arch Chinese Tones",
-    "url": "https://www.archchinese.com/mandarin_chinese_tone_drill.html",
-    "icon": "hearing",
-    "tab": "directory",
-    "description": "Mandarin Chinese tone listening and practice drills",
-    "keywords": ["mandarin", "chinese", "tones", "drill", "listening", "practice"]
-  },
-  {
-    "name": "Tadou Chinese",
-    "url": "https://tadouchinese.com/",
-    "icon": "menu_book",
-    "tab": "directory",
-    "description": "Extensive reading resources and graded readers for Chinese learners",
-    "keywords": ["mandarin", "chinese", "reading", "tadou", "graded", "literature"]
+    "tab": "systems",
+    "description": "VPS server and primary cloud host console",
+    "keywords": ["vps", "server", "cloud", "hosting", "infrastructure", "hetzner"],
+    "guest": false
   }
 ]
