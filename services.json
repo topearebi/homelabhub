@@ -1,5 +1,244 @@
 [
   {
+    "id": "calibre-web",
+    "name": "Calibre-Web",
+    "url": "https://books.topearebi.xyz",
+    "icon": "book-open",
+    "tab": "LIBRARY",
+    "subtab": "READING",
+    "description": "E-book library catalog, reader, and OPDS distribution hub.",
+    "keywords": "books epub mobi pdf reader calibre library",
+    "roles": ["kid", "guest", "admin"],
+    "mirrors": [
+      { "name": "Local LAN", "url": "http://192.168.1.100:8083" }
+    ]
+  },
+  {
+    "id": "audiobookshelf",
+    "name": "Audiobookshelf",
+    "url": "https://audio.topearebi.xyz",
+    "icon": "headphones",
+    "tab": "LIBRARY",
+    "subtab": "READING",
+    "description": "Self-hosted audiobook and podcast streaming server.",
+    "keywords": "audiobooks spoken podcasts mp3 m4b media",
+    "roles": ["kid", "guest", "admin"],
+    "mirrors": [
+      { "name": "Local LAN", "url": "http://192.168.1.100:13378" }
+    ]
+  },
+  {
+    "id": "shelfmark",
+    "name": "Shelfmark",
+    "url": "https://shelfmark.topearebi.xyz",
+    "icon": "folder-plus",
+    "tab": "LIBRARY",
+    "subtab": "DOWNLOADS",
+    "description": "Automated book downloading and pipeline manager.",
+    "keywords": "books download ingest automated shelfmark",
+    "roles": ["admin"],
+    "mirrors": []
+  },
+  {
+    "id": "openbooks",
+    "name": "OpenBooks",
+    "url": "https://openbooks.topearebi.xyz",
+    "icon": "download-cloud",
+    "tab": "LIBRARY",
+    "subtab": "DOWNLOADS",
+    "description": "Fast e-book search and retrieval interface over IRC.",
+    "keywords": "irc books epub download search",
+    "roles": ["admin"],
+    "mirrors": []
+  },
+  {
+    "id": "litkeeper",
+    "name": "LitKeeper",
+    "url": "https://litkeeper.topearebi.xyz",
+    "icon": "archive",
+    "tab": "LIBRARY",
+    "subtab": "MANAGEMENT",
+    "description": "Literature preservation, metadata scraping, and archive manager.",
+    "keywords": "literature archive metadata books litkeeper",
+    "roles": ["admin"],
+    "mirrors": []
+  },
+  {
+    "id": "annas-archive",
+    "name": "Anna's Archive",
+    "url": "https://annas-archive.org",
+    "icon": "search",
+    "tab": "LIBRARY",
+    "subtab": "DOWNLOADS",
+    "description": "Universal shadow library search engine for books and papers.",
+    "keywords": "books shadow library papers articles search research",
+    "roles": ["guest", "admin"],
+    "mirrors": [
+      { "name": ".se", "url": "https://annas-archive.se" },
+      { "name": ".li", "url": "https://annas-archive.li" }
+    ]
+  },
+  {
+    "id": "hardcover",
+    "name": "Hardcover",
+    "url": "https://hardcover.app",
+    "icon": "bookmark",
+    "tab": "LIBRARY",
+    "subtab": "TRACKING",
+    "description": "Social reading tracker, reading logs, and book lists.",
+    "keywords": "books tracking reviews reading log hardcover",
+    "roles": ["kid", "guest", "admin"],
+    "mirrors": []
+  },
+  {
+    "id": "wallabag",
+    "name": "Wallabag",
+    "url": "https://wallabag.topearebi.xyz",
+    "icon": "paperclip",
+    "tab": "LIBRARY",
+    "subtab": "MANAGEMENT",
+    "description": "Read-it-later article archiver and content extractor.",
+    "keywords": "read later articles bookmark web archive wallabag",
+    "roles": ["guest", "admin"],
+    "mirrors": []
+  },
+  {
+    "id": "stremio-web",
+    "name": "Stremio Web",
+    "url": "https://web.stremio.com",
+    "icon": "play-circle",
+    "tab": "MEDIA",
+    "subtab": "VIDEO",
+    "description": "Streaming aggregator, catalog, and web player.",
+    "keywords": "movies tv shows video player streaming stremio",
+    "roles": ["guest", "admin"],
+    "mirrors": []
+  },
+  {
+    "id": "freshrss",
+    "name": "FreshRSS",
+    "url": "https://rss.topearebi.xyz",
+    "icon": "rss",
+    "tab": "MEDIA",
+    "subtab": "FEEDS",
+    "description": "Self-hosted aggregator for RSS and Atom feeds.",
+    "keywords": "rss feeds news blogs aggregator freshrss",
+    "roles": ["guest", "admin"],
+    "mirrors": []
+  },
+  {
+    "id": "transmission",
+    "name": "Transmission",
+    "url": "https://torrent.topearebi.xyz",
+    "icon": "download",
+    "tab": "MEDIA",
+    "subtab": "MANAGEMENT",
+    "description": "BitTorrent client management interface.",
+    "keywords": "torrents bittorrent download p2p transmission",
+    "roles": ["admin"],
+    "mirrors": [
+      { "name": "Local LAN", "url": "http://192.168.1.100:9091" }
+    ]
+  },
+  {
+    "id": "prowlarr",
+    "name": "Prowlarr",
+    "url": "https://prowlarr.topearebi.xyz",
+    "icon": "radio",
+    "tab": "MEDIA",
+    "subtab": "MANAGEMENT",
+    "description": "Indexer proxy and tracker synchronization manager.",
+    "keywords": "indexers trackers torrents usenet prowlarr",
+    "roles": ["admin"],
+    "mirrors": []
+  },
+  {
+    "id": "hsk1-module",
+    "name": "HSK 1 Mandarin",
+    "url": "./hsk1/index.html",
+    "icon": "cpu",
+    "tab": "STUDY",
+    "subtab": "FLASHCARDS",
+    "description": "Interactive Mandarin character study and stroke drill cards.",
+    "keywords": "mandarin chinese hsk1 vocabulary flashcards study",
+    "roles": ["kid", "guest", "admin"],
+    "mirrors": []
+  },
+  {
+    "id": "convertx",
+    "name": "ConvertX",
+    "url": "https://convert.topearebi.xyz",
+    "icon": "repeat",
+    "tab": "STUDY",
+    "subtab": "REFERENCE",
+    "description": "Self-hosted multi-format document and media file converter.",
+    "keywords": "convert pdf epub docx converter utility convertx",
+    "roles": ["guest", "admin"],
+    "mirrors": []
+  },
+  {
+    "id": "silverbullet",
+    "name": "SilverBullet",
+    "url": "https://notes.topearebi.xyz",
+    "icon": "edit-3",
+    "tab": "PROJECTS",
+    "subtab": "NOTES",
+    "description": "Extensible, markdown-based personal notebook and knowledge base.",
+    "keywords": "notes markdown pkm wiki documentation silverbullet",
+    "roles": ["guest", "admin"],
+    "mirrors": []
+  },
+  {
+    "id": "localcontentshare",
+    "name": "LocalContentShare",
+    "url": "https://share.topearebi.xyz",
+    "icon": "share-2",
+    "tab": "PROJECTS",
+    "subtab": "TOOLS",
+    "description": "Local network file drop and immediate snippet transfer.",
+    "keywords": "share transfer files local network p2p drop",
+    "roles": ["kid", "guest", "admin"],
+    "mirrors": []
+  },
+  {
+    "id": "portainer",
+    "name": "Portainer",
+    "url": "https://portainer.topearebi.xyz",
+    "icon": "box",
+    "tab": "SYSTEMS",
+    "subtab": "CONTAINERS",
+    "description": "Docker container orchestration and stack manager.",
+    "keywords": "docker containers stacks homelab admin portainer",
+    "roles": ["admin"],
+    "mirrors": [
+      { "name": "Local LAN", "url": "http://192.168.1.100:9443" }
+    ]
+  },
+  {
+    "id": "tailscale-admin",
+    "name": "Tailscale Console",
+    "url": "https://login.tailscale.com/admin/machines",
+    "icon": "shield",
+    "tab": "SYSTEMS",
+    "subtab": "NETWORK",
+    "description": "Tailscale mesh network topology, ACLs, and node coordinator.",
+    "keywords": "tailscale vpn mesh network security nodes",
+    "roles": ["admin"],
+    "mirrors": []
+  },
+  {
+    "id": "cloud-shell",
+    "name": "Cloud Shell Terminal",
+    "url": "https://shell.cloud.google.com/?show=terminal",
+    "icon": "terminal",
+    "tab": "SYSTEMS",
+    "subtab": "TERMINAL",
+    "description": "Zero-install Debian terminal container with Google Cloud SDK.",
+    "keywords": "terminal bash cli ssh cloud shell console",
+    "roles": ["admin"],
+    "mirrors": []
+  },
+  {
     "name": "Calibre Web",
     "url": "https://books.topearebi.xyz",
     "icon": "local_library",
