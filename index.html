@@ -2,93 +2,131 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no">
-  <meta name="theme-color" content="#0f1115">
-  <meta name="description" content="Personal Homelab, Library & Self-Hosted Services Dashboard">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0d0e12">
+  <meta name="description" content="Central jumpbox, telemetry switchboard, and homelab command hub.">
+  <title>HOMELAB // SWITCHBOARD</title>
   
-  <!-- Apple / iOS Standalone Web App Meta -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="Homelab">
-  <link rel="apple-touch-icon" href="icon.svg">
-
-  <title>Homelab Hub</title>
-
-  <!-- PWA & Favicons -->
-  <link rel="manifest" href="manifest.json">
-  <link rel="icon" type="image/svg+xml" href="icon.svg">
-
-  <!-- Fonts & Icons -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" type="image/svg+xml" href="./icon.svg">
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-
-  <div class="app-container">
-    <!-- Header Area -->
-    <header class="dashboard-header">
-      <div class="brand">
-        <img src="icon.svg" alt="Homelab Hub Logo" class="brand-logo">
-        <h1 class="brand-title">Homelab Hub</h1>
+  <div class="app-viewport">
+    
+    <!-- Top Telemetry & Diagnostic Ribbon -->
+    <header class="telemetry-ribbon" role="region" aria-label="System Telemetry">
+      <div class="hud-item clock-block">
+        <span class="hud-label">CHRONO</span>
+        <span id="hud-clock" class="hud-val phosphor">00:00:00</span>
       </div>
 
-      <div class="header-controls">
-        <button id="guestToggle" class="control-btn active" title="Toggle Access View" aria-label="Toggle Access View">
-          <span class="material-icons" id="guestToggleIcon">visibility</span>
-          <span id="guestToggleText">Guest View</span>
+      <div class="hud-divider"></div>
+
+      <div class="hud-item ip-block">
+        <span class="hud-label">NET.IP</span>
+        <span id="hud-ip" class="hud-val">POLLING...</span>
+      </div>
+
+      <div class="hud-divider"></div>
+
+      <div class="hud-item edge-block">
+        <span class="hud-label">EDGE.RTT</span>
+        <span id="hud-ping" class="hud-val">-- ms</span>
+      </div>
+
+      <div class="hud-divider"></div>
+
+      <div class="hud-item weather-block">
+        <span class="hud-label">ATMOS</span>
+        <span id="hud-weather" class="hud-val">--°C</span>
+      </div>
+
+      <div class="hud-actions">
+        <button id="btn-shell" class="hud-btn" title="Open Cloud Shell Terminal" aria-label="Open Cloud Shell">
+          <span class="hud-icon">&gt;_</span>
+          <span class="btn-text">SHELL</span>
         </button>
-        <button id="installBtn" class="control-btn" style="display: none;" title="Install Homelab Hub" aria-label="Install App">
-          <span class="material-icons">install_mobile</span>
-          <span>Install</span>
+
+        <button id="btn-role-gate" class="hud-btn role-indicator" aria-label="Switch User Access Role">
+          <span class="hud-label">CLEARANCE:</span>
+          <span id="current-role-label" class="role-badge">ADMIN</span>
         </button>
       </div>
     </header>
 
-    <!-- Search Section -->
-    <section class="search-section">
-      <div class="search-input-wrapper">
-        <span class="material-icons search-icon">search</span>
+    <!-- Main Navigation & Search Controls -->
+    <section class="control-deck">
+      <div class="search-bracket">
+        <div class="search-prefix">SYS://SEARCH &gt;</div>
         <input 
           type="text" 
-          id="searchInput" 
-          placeholder="Search services, tools, or keywords..." 
+          id="search-input" 
+          placeholder="Filter resources by name, tag, or keyword... [/ to focus]" 
           autocomplete="off" 
           spellcheck="false"
+          aria-label="Filter resources"
         >
-        <kbd class="search-kbd" title="Press / to search">/</kbd>
+        <button id="search-clear" class="search-clear-btn" aria-label="Clear search query" hidden>&times;</button>
+      </div>
+
+      <!-- Tier 1: Primary Category Tabs -->
+      <nav id="primary-tabs" class="primary-tabs" role="tablist" aria-label="Primary Navigation">
+        <!-- Rendered dynamically via script.js -->
+      </nav>
+
+      <!-- Tier 2: Contextual Sub-filters -->
+      <div id="sub-filters" class="sub-filters" role="toolbar" aria-label="Contextual Sub-filters">
+        <!-- Rendered dynamically based on active primary tab -->
       </div>
     </section>
 
-    <!-- Category Filter Navigation (Populated dynamically via script.js) -->
-    <nav class="category-nav" id="categoryNav" aria-label="Service categories"></nav>
-
-    <!-- Services Grid Container -->
-    <main class="services-container" id="servicesGrid" aria-live="polite">
-      <!-- Cards rendered dynamically via script.js -->
+    <!-- Dynamic Card Grid -->
+    <main class="grid-viewport">
+      <div id="services-grid" class="services-grid" role="region" aria-live="polite">
+        <!-- Service cards rendered dynamically via script.js -->
+      </div>
     </main>
 
-    <!-- Empty State -->
-    <div id="noResults" class="empty-state" style="display: none;">
-      <span class="material-icons empty-icon">search_off</span>
-      <p class="empty-text">No matching services found</p>
+    <!-- PIN Pad Gatekeeper Modal -->
+    <div id="pin-modal" class="modal-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="pin-modal-title">
+      <div class="pin-terminal">
+        <div class="terminal-header">
+          <span class="terminal-title" id="pin-modal-title">SECURITY OVERRIDE</span>
+          <button id="pin-close-btn" class="terminal-close" aria-label="Close PIN Pad">&times;</button>
+        </div>
+        <div class="pin-display">
+          <span class="pin-prompt">ENTER 4-DIGIT AUTHORIZATION PIN</span>
+          <div class="pin-dots" id="pin-dots">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+          <div id="pin-error" class="pin-error-msg" hidden>ACCESS CODE INVALID</div>
+        </div>
+        <div class="pin-keypad" id="pin-keypad">
+          <button type="button" class="keypad-btn" data-key="1">1</button>
+          <button type="button" class="keypad-btn" data-key="2">2</button>
+          <button type="button" class="keypad-btn" data-key="3">3</button>
+          <button type="button" class="keypad-btn" data-key="4">4</button>
+          <button type="button" class="keypad-btn" data-key="5">5</button>
+          <button type="button" class="keypad-btn" data-key="6">6</button>
+          <button type="button" class="keypad-btn" data-key="7">7</button>
+          <button type="button" class="keypad-btn" data-key="8">8</button>
+          <button type="button" class="keypad-btn" data-key="9">9</button>
+          <button type="button" class="keypad-btn keypad-action" data-action="clear">CLR</button>
+          <button type="button" class="keypad-btn" data-key="0">0</button>
+          <button type="button" class="keypad-btn keypad-action" data-action="back">DEL</button>
+        </div>
+        <div class="pin-footer-actions">
+          <button type="button" id="btn-drop-kid" class="pin-switch-kid-btn">LOCK TO KID PROFILE</button>
+        </div>
+      </div>
     </div>
+
   </div>
 
-  <!-- Scripts -->
-  <script src="script.js"></script>
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js').catch((err) => {
-          console.error('Service Worker registration failed:', err);
-        });
-      });
-    }
-  </script>
+  <script src="./script.js"></script>
 </body>
 </html>
