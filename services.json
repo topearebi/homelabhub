@@ -7,7 +7,7 @@
     "tab": "LIBRARY",
     "subtab": "READING",
     "description": "E-book library catalog, reader, and OPDS distribution hub.",
-    "keywords": "books epub mobi pdf reader calibre library",
+    "keywords": "books epub mobi pdf reader calibre library kindle reading",
     "roles": ["kid", "guest", "admin"],
     "mirrors": [
       { "name": "Local LAN", "url": "http://192.168.1.100:8083" }
@@ -16,12 +16,12 @@
   {
     "id": "audiobookshelf",
     "name": "Audiobookshelf",
-    "url": "https://audio.topearebi.xyz",
+    "url": "https://audibook.topearebi.xyz",
     "icon": "headphones",
     "tab": "LIBRARY",
     "subtab": "READING",
     "description": "Self-hosted audiobook and podcast streaming server.",
-    "keywords": "audiobooks spoken podcasts mp3 m4b media",
+    "keywords": "audiobooks spoken podcasts mp3 m4b media audio streaming library",
     "roles": ["kid", "guest", "admin"],
     "mirrors": [
       { "name": "Local LAN", "url": "http://192.168.1.100:13378" }
@@ -30,63 +30,94 @@
   {
     "id": "shelfmark",
     "name": "Shelfmark",
-    "url": "https://shelfmark.topearebi.xyz",
+    "url": "https://annas.topearebi.xyz",
     "icon": "folder-plus",
     "tab": "LIBRARY",
     "subtab": "DOWNLOADS",
-    "description": "Automated book downloading and pipeline manager.",
-    "keywords": "books download ingest automated shelfmark",
+    "description": "Automated book downloading, Libgen, and pipeline manager.",
+    "keywords": "books download ingest automated shelfmark libgen annas archive",
     "roles": ["admin"],
     "mirrors": []
   },
   {
     "id": "openbooks",
     "name": "OpenBooks",
-    "url": "https://openbooks.topearebi.xyz",
+    "url": "https://irc.topearebi.xyz",
     "icon": "download-cloud",
     "tab": "LIBRARY",
     "subtab": "DOWNLOADS",
     "description": "Fast e-book search and retrieval interface over IRC.",
-    "keywords": "irc books epub download search",
-    "roles": ["admin"],
+    "keywords": "irc books epub download search ebooks",
+    "roles": ["guest", "admin"],
     "mirrors": []
   },
   {
     "id": "litkeeper",
     "name": "LitKeeper",
-    "url": "https://litkeeper.topearebi.xyz",
+    "url": "https://lit.topearebi.xyz",
     "icon": "archive",
     "tab": "LIBRARY",
     "subtab": "MANAGEMENT",
-    "description": "Literature preservation, metadata scraping, and archive manager.",
-    "keywords": "literature archive metadata books litkeeper",
-    "roles": ["admin"],
+    "description": "Literature preservation, web fiction scraping, and archive manager.",
+    "keywords": "literature archive metadata books litkeeper stories fiction literotica download web",
+    "roles": ["guest", "admin"],
     "mirrors": []
   },
   {
     "id": "annas-archive",
     "name": "Anna's Archive",
-    "url": "https://annas-archive.org",
+    "url": "https://annas-archive.pk",
     "icon": "search",
     "tab": "LIBRARY",
     "subtab": "DOWNLOADS",
     "description": "Universal shadow library search engine for books and papers.",
-    "keywords": "books shadow library papers articles search research",
+    "keywords": "books shadow library papers articles search research libgen annas pdf epub",
     "roles": ["guest", "admin"],
     "mirrors": [
       { "name": ".se", "url": "https://annas-archive.se" },
-      { "name": ".li", "url": "https://annas-archive.li" }
+      { "name": ".li", "url": "https://annas-archive.li" },
+      { "name": ".gd", "url": "https://annas-archive.gd" },
+      { "name": ".gl", "url": "https://annas-archive.gl" }
+    ]
+  },
+  {
+    "id": "z-library",
+    "name": "Z-Library",
+    "url": "https://z-lib.sk/",
+    "icon": "book",
+    "tab": "LIBRARY",
+    "subtab": "DOWNLOADS",
+    "description": "Direct portal for digital books and article discovery.",
+    "keywords": "zlib books reading ebooks zlibrary shadow library",
+    "roles": ["guest", "admin"],
+    "mirrors": []
+  },
+  {
+    "id": "sci-hub",
+    "name": "Sci-Hub",
+    "url": "https://sci-hub.ru",
+    "icon": "file-text",
+    "tab": "LIBRARY",
+    "subtab": "DOWNLOADS",
+    "description": "Direct DOI lookup for academic research and papers.",
+    "keywords": "academic papers science research journal doi papers",
+    "roles": ["guest", "admin"],
+    "mirrors": [
+      { "name": ".su", "url": "https://sci-hub.su" },
+      { "name": ".st", "url": "https://sci-hub.st" },
+      { "name": ".red", "url": "https://sci-hub.red" },
+      { "name": ".box", "url": "https://sci-hub.box" }
     ]
   },
   {
     "id": "hardcover",
     "name": "Hardcover",
-    "url": "https://hardcover.app",
+    "url": "https://hardcover.app/@tope",
     "icon": "bookmark",
     "tab": "LIBRARY",
     "subtab": "TRACKING",
-    "description": "Social reading tracker, reading logs, and book lists.",
-    "keywords": "books tracking reviews reading log hardcover",
+    "description": "Social reading tracker, reading logs, profile, and annual stats.",
+    "keywords": "books tracking reviews reading log hardcover profile stats",
     "roles": ["kid", "guest", "admin"],
     "mirrors": []
   },
@@ -98,8 +129,8 @@
     "tab": "LIBRARY",
     "subtab": "MANAGEMENT",
     "description": "Read-it-later article archiver and content extractor.",
-    "keywords": "read later articles bookmark web archive wallabag",
-    "roles": ["guest", "admin"],
+    "keywords": "read later articles bookmark web archive wallabag pocket offline",
+    "roles": ["admin"],
     "mirrors": []
   },
   {
@@ -115,6 +146,54 @@
     "mirrors": []
   },
   {
+    "id": "aiostreams",
+    "name": "AIOStreams",
+    "url": "https://streams.topearebi.xyz",
+    "icon": "filter",
+    "tab": "MEDIA",
+    "subtab": "VIDEO",
+    "description": "Stremio stream provider and filter engine.",
+    "keywords": "stremio addons filtering video media streams",
+    "roles": ["admin"],
+    "mirrors": []
+  },
+  {
+    "id": "aiometadata",
+    "name": "AIOMetadata",
+    "url": "https://metadata.topearebi.xyz",
+    "icon": "database",
+    "tab": "MEDIA",
+    "subtab": "VIDEO",
+    "description": "Media catalog and Cinemeta metadata provider.",
+    "keywords": "stremio metadata catalog info media cinemeta",
+    "roles": ["admin"],
+    "mirrors": []
+  },
+  {
+    "id": "aiomanager",
+    "name": "AIOManager",
+    "url": "https://aio.topearebi.xyz",
+    "icon": "sliders",
+    "tab": "MEDIA",
+    "subtab": "MANAGEMENT",
+    "description": "Stremio addon configuration dashboard.",
+    "keywords": "stremio manager video streaming aio media configuration",
+    "roles": ["admin"],
+    "mirrors": []
+  },
+  {
+    "id": "poster-cache",
+    "name": "Poster Cache",
+    "url": "https://posters.topearebi.xyz",
+    "icon": "image",
+    "tab": "MEDIA",
+    "subtab": "MANAGEMENT",
+    "description": "Fast media poster and image proxy cache.",
+    "keywords": "cache images posters nginx proxy media",
+    "roles": ["admin"],
+    "mirrors": []
+  },
+  {
     "id": "freshrss",
     "name": "FreshRSS",
     "url": "https://rss.topearebi.xyz",
@@ -122,19 +201,19 @@
     "tab": "MEDIA",
     "subtab": "FEEDS",
     "description": "Self-hosted aggregator for RSS and Atom feeds.",
-    "keywords": "rss feeds news blogs aggregator freshrss",
-    "roles": ["guest", "admin"],
+    "keywords": "rss feeds news blogs aggregator freshrss updates",
+    "roles": ["admin"],
     "mirrors": []
   },
   {
     "id": "transmission",
     "name": "Transmission",
-    "url": "https://torrent.topearebi.xyz",
+    "url": "https://p2p.topearebi.xyz",
     "icon": "download",
     "tab": "MEDIA",
     "subtab": "MANAGEMENT",
-    "description": "BitTorrent client management interface.",
-    "keywords": "torrents bittorrent download p2p transmission",
+    "description": "BitTorrent client management interface and download queue.",
+    "keywords": "torrents bittorrent download p2p transmission client queue media",
     "roles": ["admin"],
     "mirrors": [
       { "name": "Local LAN", "url": "http://192.168.1.100:9091" }
@@ -143,12 +222,12 @@
   {
     "id": "prowlarr",
     "name": "Prowlarr",
-    "url": "https://prowlarr.topearebi.xyz",
+    "url": "https://prowl.topearebi.xyz",
     "icon": "radio",
     "tab": "MEDIA",
     "subtab": "MANAGEMENT",
     "description": "Indexer proxy and tracker synchronization manager.",
-    "keywords": "indexers trackers torrents usenet prowlarr",
+    "keywords": "indexers trackers torrents usenet prowlarr nzb arr automation",
     "roles": ["admin"],
     "mirrors": []
   },
@@ -159,8 +238,56 @@
     "icon": "cpu",
     "tab": "STUDY",
     "subtab": "FLASHCARDS",
-    "description": "Interactive Mandarin character study and stroke drill cards.",
-    "keywords": "mandarin chinese hsk1 vocabulary flashcards study",
+    "description": "Interactive Mandarin character study, stroke drill cards, and 38-day dashboard.",
+    "keywords": "mandarin chinese hsk1 vocabulary flashcards study language",
+    "roles": ["kid", "guest", "admin"],
+    "mirrors": []
+  },
+  {
+    "id": "arch-chinese-tones",
+    "name": "Arch Chinese Tones",
+    "url": "https://www.archchinese.com/mandarin_chinese_tone_drill.html",
+    "icon": "volume-2",
+    "tab": "STUDY",
+    "subtab": "DRILLS",
+    "description": "Mandarin Chinese tone listening and practice drills.",
+    "keywords": "mandarin chinese tones drill listening practice study",
+    "roles": ["kid", "guest", "admin"],
+    "mirrors": []
+  },
+  {
+    "id": "tadou-chinese",
+    "name": "Tadou Chinese",
+    "url": "https://tadouchinese.com/",
+    "icon": "book-open",
+    "tab": "STUDY",
+    "subtab": "READING",
+    "description": "Extensive reading resources and graded readers for Chinese learners.",
+    "keywords": "mandarin chinese reading tadou graded literature study",
+    "roles": ["kid", "guest", "admin"],
+    "mirrors": []
+  },
+  {
+    "id": "kana-practice",
+    "name": "Kana Practice",
+    "url": "https://djtguide.neocities.org/kana/",
+    "icon": "type",
+    "tab": "STUDY",
+    "subtab": "FLASHCARDS",
+    "description": "Japanese Hiragana and Katakana character practice tool.",
+    "keywords": "japanese kana hiragana katakana practice study language",
+    "roles": ["kid", "guest", "admin"],
+    "mirrors": []
+  },
+  {
+    "id": "forvo",
+    "name": "Forvo",
+    "url": "https://forvo.com",
+    "icon": "mic",
+    "tab": "STUDY",
+    "subtab": "REFERENCE",
+    "description": "Crowdsourced native pronunciation audio dictionary in all languages.",
+    "keywords": "pronunciation audio dictionary forvo language accent study",
     "roles": ["kid", "guest", "admin"],
     "mirrors": []
   },
@@ -177,26 +304,98 @@
     "mirrors": []
   },
   {
+    "id": "freeconvert",
+    "name": "FreeConvert",
+    "url": "https://www.freeconvert.com",
+    "icon": "refresh-cw",
+    "tab": "STUDY",
+    "subtab": "REFERENCE",
+    "description": "Free web batch converter and compressor for images, videos, and docs.",
+    "keywords": "convert compress resize pdf image tools batch",
+    "roles": ["kid", "guest", "admin"],
+    "mirrors": []
+  },
+  {
     "id": "silverbullet",
     "name": "SilverBullet",
     "url": "https://notes.topearebi.xyz",
     "icon": "edit-3",
     "tab": "PROJECTS",
     "subtab": "NOTES",
-    "description": "Extensible, markdown-based personal notebook and knowledge base.",
-    "keywords": "notes markdown pkm wiki documentation silverbullet",
-    "roles": ["guest", "admin"],
+    "description": "Extensible, markdown-based personal notebook and research wiki.",
+    "keywords": "notes markdown pkm wiki documentation silverbullet writing knowledge",
+    "roles": ["admin"],
+    "mirrors": []
+  },
+  {
+    "id": "readover",
+    "name": "Readover",
+    "url": "https://topearebi.github.io/readover/",
+    "icon": "layers",
+    "tab": "PROJECTS",
+    "subtab": "NOTES",
+    "description": "Reels-style infinite feed for GitHub markdown note vaults and docs.",
+    "keywords": "notes markdown feed github reading pkm reels",
+    "roles": ["kid", "guest", "admin"],
+    "mirrors": []
+  },
+  {
+    "id": "my-portfolio",
+    "name": "My Portfolio",
+    "url": "https://topearebi.com",
+    "icon": "briefcase",
+    "tab": "PROJECTS",
+    "subtab": "PORTFOLIO",
+    "description": "Professional career portfolio and case studies.",
+    "keywords": "resume professional career portfolio projects cv",
+    "roles": ["kid", "guest", "admin"],
+    "mirrors": []
+  },
+  {
+    "id": "thoughtfood",
+    "name": "Thoughtfood",
+    "url": "https://thoughtfood.substack.com",
+    "icon": "file-text",
+    "tab": "PROJECTS",
+    "subtab": "PUBLICATIONS",
+    "description": "Substack newsletter and published essays.",
+    "keywords": "newsletter substack writing articles reading thoughtfood",
+    "roles": ["kid", "guest", "admin"],
+    "mirrors": []
+  },
+  {
+    "id": "the-nigerian-odyssey",
+    "name": "The Nigerian Odyssey",
+    "url": "https://thenigerianodyssey.substack.com/",
+    "icon": "compass",
+    "tab": "PROJECTS",
+    "subtab": "PUBLICATIONS",
+    "description": "Publication charting the stories of Nigerians in Nigeria.",
+    "keywords": "newsletter substack writing articles nigeria reading culture",
+    "roles": ["kid", "guest", "admin"],
+    "mirrors": []
+  },
+  {
+    "id": "aroamjti",
+    "name": "AROAMJTI",
+    "url": "https://AROAMJTI.topearebi.com",
+    "icon": "feather",
+    "tab": "PROJECTS",
+    "subtab": "PUBLICATIONS",
+    "description": "Jekyll based journal and writing log.",
+    "keywords": "blog journal writing log personal jekyll",
+    "roles": ["kid", "guest", "admin"],
     "mirrors": []
   },
   {
     "id": "localcontentshare",
     "name": "LocalContentShare",
-    "url": "https://share.topearebi.xyz",
+    "url": "https://paste.topearebi.xyz",
     "icon": "share-2",
     "tab": "PROJECTS",
     "subtab": "TOOLS",
-    "description": "Local network file drop and immediate snippet transfer.",
-    "keywords": "share transfer files local network p2p drop",
+    "description": "Temporary pastebin, local clipboard drop, and immediate snippet transfer.",
+    "keywords": "share transfer files local network p2p drop paste clipboard text temporary",
     "roles": ["kid", "guest", "admin"],
     "mirrors": []
   },
@@ -208,7 +407,7 @@
     "tab": "SYSTEMS",
     "subtab": "CONTAINERS",
     "description": "Docker container orchestration and stack manager.",
-    "keywords": "docker containers stacks homelab admin portainer",
+    "keywords": "docker containers stacks homelab admin portainer orchestration backend",
     "roles": ["admin"],
     "mirrors": [
       { "name": "Local LAN", "url": "http://192.168.1.100:9443" }
@@ -227,6 +426,18 @@
     "mirrors": []
   },
   {
+    "id": "hetzner-cloud",
+    "name": "Hetzner Cloud",
+    "url": "https://accounts.hetzner.com/account",
+    "icon": "server",
+    "tab": "SYSTEMS",
+    "subtab": "HOSTING",
+    "description": "VPS server and primary cloud host console.",
+    "keywords": "vps server cloud hosting infrastructure hetzner",
+    "roles": ["admin"],
+    "mirrors": []
+  },
+  {
     "id": "cloud-shell",
     "name": "Cloud Shell Terminal",
     "url": "https://shell.cloud.google.com/?show=terminal",
@@ -237,303 +448,5 @@
     "keywords": "terminal bash cli ssh cloud shell console",
     "roles": ["admin"],
     "mirrors": []
-  },
-  {
-    "name": "Calibre Web",
-    "url": "https://books.topearebi.xyz",
-    "icon": "local_library",
-    "tab": "library",
-    "description": "Digital E-Book Library & In-Browser Reader",
-    "keywords": ["books", "reading", "epub", "pdf", "kindle", "library"],
-    "guest": true
-  },
-  {
-    "name": "Audiobookshelf",
-    "url": "https://audibook.topearebi.xyz",
-    "icon": "headphones",
-    "tab": "library",
-    "description": "Audiobook & Podcast Streaming Server",
-    "keywords": ["audiobooks", "podcasts", "audio", "streaming", "library"],
-    "guest": true
-  },
-  {
-    "name": "Wallabag",
-    "url": "https://wallabag.topearebi.xyz",
-    "icon": "bookmarks",
-    "tab": "library",
-    "description": "Read-it-Later Clean Article Archiver",
-    "keywords": ["read-it-later", "articles", "pocket", "offline", "archive", "reading"],
-    "guest": false
-  },
-  {
-    "name": "FreshRSS",
-    "url": "https://rss.topearebi.xyz",
-    "icon": "rss_feed",
-    "tab": "library",
-    "description": "News & Article RSS Feed Aggregator",
-    "keywords": ["news", "feeds", "rss", "articles", "reading", "updates"],
-    "guest": false
-  },
-  {
-    "name": "Hardcover",
-    "url": "https://hardcover.app/@tope",
-    "icon": "menu_book",
-    "tab": "library",
-    "description": "Reading Log, Book Tracking & Annual Stats",
-    "keywords": ["reading", "books", "tracker", "log", "hardcover", "profile"],
-    "guest": true
-  },
-  {
-    "name": "SilverBullet",
-    "url": "https://notes.topearebi.xyz",
-    "icon": "edit_note",
-    "tab": "library",
-    "description": "PKM Markdown Notes & Research Wiki",
-    "keywords": ["notes", "writing", "markdown", "wiki", "pkm", "knowledge"],
-    "guest": false
-  },
-  {
-    "name": "Shelfmark",
-    "url": "https://annas.topearebi.xyz",
-    "icon": "download_for_offline",
-    "tab": "library",
-    "description": "Anna's Archive & Libgen Direct Book Ingestion",
-    "keywords": ["books", "download", "libgen", "annas", "archive"],
-    "guest": false
-  },
-  {
-    "name": "OpenBooks",
-    "url": "https://irc.topearebi.xyz",
-    "icon": "terminal",
-    "tab": "library",
-    "description": "IRC High-Speed E-Book Retrieval Engine",
-    "keywords": ["books", "irc", "download", "search", "ebooks"],
-    "guest": true
-  },
-  {
-    "name": "LitKeeper",
-    "url": "https://lit.topearebi.xyz",
-    "icon": "auto_stories",
-    "tab": "library",
-    "description": "Web Fiction & Serialized Story Downloader",
-    "keywords": ["stories", "fiction", "literotica", "download", "web"],
-    "guest": true
-  },
-  {
-    "name": "Anna's Archive",
-    "url": "https://annas-archive.pk",
-    "icon": "travel_explore",
-    "tab": "library",
-    "description": "Universal shadow library search engine for books and papers",
-    "keywords": ["books", "archive", "libgen", "annas", "search", "pdf", "epub"],
-    "guest": true,
-    "mirrors": [
-      { "label": ".gd", "url": "https://annas-archive.gd" },
-      { "label": ".gl", "url": "https://annas-archive.gl" }
-    ]
-  },
-  {
-    "name": "Z-Library",
-    "url": "https://z-lib.sk/",
-    "icon": "auto_stories",
-    "tab": "library",
-    "description": "Direct portal for digital books and article discovery",
-    "keywords": ["zlib", "books", "reading", "ebooks", "zlibrary"],
-    "guest": true
-  },
-  {
-    "name": "Sci-Hub",
-    "url": "https://sci-hub.ru",
-    "icon": "science",
-    "tab": "library",
-    "description": "Direct DOI lookup for academic research and papers",
-    "keywords": ["academic", "papers", "science", "research", "journal", "doi"],
-    "guest": true,
-    "mirrors": [
-      { "label": ".su", "url": "https://sci-hub.su" },
-      { "label": ".st", "url": "https://sci-hub.st" },
-      { "label": ".red", "url": "https://sci-hub.red" },
-      { "label": ".box", "url": "https://sci-hub.box" }
-    ]
-  },
-  {
-    "name": "AIOStreams",
-    "url": "https://streams.topearebi.xyz",
-    "icon": "filter_list",
-    "tab": "media",
-    "description": "Stremio Stream Provider & Filter Engine",
-    "keywords": ["stremio", "addons", "filtering", "video", "media"],
-    "guest": false
-  },
-  {
-    "name": "AIOMetadata",
-    "url": "https://metadata.topearebi.xyz",
-    "icon": "data_object",
-    "tab": "media",
-    "description": "Media Catalog & Cinemeta Metadata Provider",
-    "keywords": ["stremio", "metadata", "catalog", "info", "media"],
-    "guest": false
-  },
-  {
-    "name": "AIOManager",
-    "url": "https://aio.topearebi.xyz",
-    "icon": "settings_applications",
-    "tab": "media",
-    "description": "Stremio Addon Configuration Dashboard",
-    "keywords": ["stremio", "manager", "video", "streaming", "aio", "media"],
-    "guest": false
-  },
-  {
-    "name": "Poster Cache",
-    "url": "https://posters.topearebi.xyz",
-    "icon": "image",
-    "tab": "media",
-    "description": "Fast Media Poster & Image Proxy Cache",
-    "keywords": ["cache", "images", "posters", "nginx", "proxy", "media"],
-    "guest": false
-  },
-  {
-    "name": "Transmission",
-    "url": "https://p2p.topearebi.xyz",
-    "icon": "cloud_download",
-    "tab": "media",
-    "description": "BitTorrent Web Client & Download Queue",
-    "keywords": ["torrent", "p2p", "transmission", "download", "client", "media"],
-    "guest": false
-  },
-  {
-    "name": "HSK 1 Dashboard",
-    "url": "./hsk1/index.html",
-    "icon": "school",
-    "tab": "study",
-    "description": "38-day structured simplified character practice",
-    "keywords": ["mandarin", "hsk", "study", "language", "vocabulary", "flashcards"],
-    "guest": true
-  },
-  {
-    "name": "Arch Chinese Tones",
-    "url": "https://www.archchinese.com/mandarin_chinese_tone_drill.html",
-    "icon": "hearing",
-    "tab": "study",
-    "description": "Mandarin Chinese tone listening and practice drills",
-    "keywords": ["mandarin", "chinese", "tones", "drill", "listening", "practice"],
-    "guest": true
-  },
-  {
-    "name": "Tadou Chinese",
-    "url": "https://tadouchinese.com/",
-    "icon": "menu_book",
-    "tab": "study",
-    "description": "Extensive reading resources and graded readers for Chinese learners",
-    "keywords": ["mandarin", "chinese", "reading", "tadou", "graded", "literature"],
-    "guest": true
-  },
-  {
-    "name": "Kana Practice",
-    "url": "https://djtguide.neocities.org/kana/",
-    "icon": "language",
-    "tab": "study",
-    "description": "Japanese Hiragana and Katakana character practice tool",
-    "keywords": ["japanese", "kana", "hiragana", "katakana", "practice", "study"],
-    "guest": true
-  },
-  {
-    "name": "Forvo",
-    "url": "https://forvo.com",
-    "icon": "record_voice_over",
-    "tab": "study",
-    "description": "Crowdsourced native pronunciation audio dictionary in all languages",
-    "keywords": ["pronunciation", "audio", "dictionary", "forvo", "language", "accent"],
-    "guest": true
-  },
-  {
-    "name": "My Portfolio",
-    "url": "https://topearebi.com",
-    "icon": "work",
-    "tab": "projects",
-    "description": "Professional career portfolio and case studies",
-    "keywords": ["resume", "professional", "career", "portfolio", "projects", "cv"],
-    "guest": true
-  },
-  {
-    "name": "Thoughtfood",
-    "url": "https://thoughtfood.substack.com",
-    "icon": "newspaper",
-    "tab": "projects",
-    "description": "Substack newsletter and published essays",
-    "keywords": ["newsletter", "substack", "writing", "articles", "reading"],
-    "guest": true
-  },
-  {
-    "name": "The Nigerian Odyssey",
-    "url": "https://thenigerianodyssey.substack.com/",
-    "icon": "sailing",
-    "tab": "projects",
-    "description": "Publication charting the stories of Nigerians in Nigeria",
-    "keywords": ["newsletter", "substack", "writing", "articles", "nigeria", "reading", "culture"],
-    "guest": true
-  },
-  {
-    "name": "AROAMJTI",
-    "url": "https://AROAMJTI.topearebi.com",
-    "icon": "history_edu",
-    "tab": "projects",
-    "description": "Jekyll based journal and writing log",
-    "keywords": ["blog", "journal", "writing", "log", "personal"],
-    "guest": true
-  },
-  {
-    "name": "LocalContentShare",
-    "url": "https://paste.topearebi.xyz",
-    "icon": "content_paste_go",
-    "tab": "systems",
-    "description": "Temporary pastebin and local clipboard drop",
-    "keywords": ["paste", "share", "clipboard", "text", "temporary"],
-    "guest": true
-  },
-  {
-    "name": "FreeConvert",
-    "url": "https://www.freeconvert.com",
-    "icon": "transform",
-    "tab": "systems",
-    "description": "Free web batch converter and compressor for images, videos, and docs",
-    "keywords": ["convert", "compress", "resize", "pdf", "image", "tools"],
-    "guest": true
-  },
-  {
-    "name": "Portainer",
-    "url": "https://portainer.topearebi.xyz",
-    "icon": "grid_view",
-    "tab": "systems",
-    "description": "Docker container and stack orchestration manager",
-    "keywords": ["docker", "containers", "admin", "orchestration", "backend"],
-    "guest": false
-  },
-  {
-    "name": "Prowlarr",
-    "url": "https://prowl.topearebi.xyz",
-    "icon": "manage_search",
-    "tab": "systems",
-    "description": "Indexer sync manager for media automation",
-    "keywords": ["nzb", "torrent", "indexers", "arr", "automation"],
-    "guest": false
-  },
-  {
-    "name": "Hetzner Cloud",
-    "url": "https://accounts.hetzner.com/account",
-    "icon": "dns",
-    "tab": "systems",
-    "description": "VPS server and primary cloud host console",
-    "keywords": ["vps", "server", "cloud", "hosting", "infrastructure", "hetzner"],
-    "guest": false
-  },
-  {
-    "name": "Readover",
-    "url": "https://topearebi.github.io/readover/",
-    "icon": "dynamic_feed",
-    "tab": "projects",
-    "description": "Reels-style infinite feed for GitHub markdown note vaults and docs",
-    "keywords": ["notes", "markdown", "feed", "github", "reading", "pkm", "reels"],
-    "guest": true
   }
 ]
