@@ -1,32 +1,30 @@
 /**
  * HOMELAB SWITCHBOARD // CONTROLLER & STATE ENGINE
- * Vanilla ES6+ | Zero Third-Party Dependencies
+ * Optimized for touch accessibility, clean slicing, and direct navigation
  */
 
 (() => {
   'use strict';
 
-  // --- Configuration & State ---
   const CONFIG = {
     servicesPath: './services.json',
-    defaultRole: 'admin', // kid | guest | admin
-    adminPin: '1234', // Accidental tap/guardrail PIN
+    defaultRole: 'admin',
+    adminPin: '1234',
     telemetryTimeoutMs: 2500,
     rttPingTarget: 'https://1.1.1.1/cdn-cgi/trace',
-    weatherLat: 53.48, // Salford coordinates
+    weatherLat: 53.48, // Salford
     weatherLon: -2.27,
   };
 
   const state = {
     role: localStorage.getItem('hub_role') || CONFIG.defaultRole,
     services: [],
-    activeTab: 'ALL',
-    activeSubtab: 'ALL',
+    activeTab: '',       // Set dynamically to first available tab (e.g. LIBRARY)
+    activeSubtab: '',    // Set dynamically to first available subtab
     searchQuery: '',
     pinBuffer: '',
   };
 
-  // --- DOM Selectors ---
   const dom = {
     clock: document.getElementById('hud-clock'),
     ip: document.getElementById('hud-ip'),
@@ -48,14 +46,11 @@
     dropKidBtn: document.getElementById('btn-drop-kid'),
   };
 
-  // --- Utility Functions ---
   const triggerHaptic = (ms = 8) => {
     if ('vibrate' in navigator) {
       try {
         navigator.vibrate(ms);
-      } catch (_) {
-        // Suppress if vibration not permitted
-      }
+      } catch (_) {}
     }
   };
 
@@ -78,19 +73,17 @@
     }
   };
 
-  // --- Window App Container Launcher ---
   const openAppContainer = (url) => {
     triggerHaptic(12);
     if (!url) return;
 
-    // Relative links (e.g., HSK1 module) or internal paths
     if (url.startsWith('./') || url.startsWith('/')) {
       window.location.href = url;
       return;
     }
 
-    const width = Math.min(window.screen.availWidth * 0.9, 1440);
-    const height = Math.min(window.screen.availHeight * 0.88, 960);
+    const width = Math.min(window.screen.availWidth * 0.92, 1440);
+    const height = Math.min(window.screen.availHeight * 0.9, 960);
     const left = Math.max((window.screen.availWidth - width) / 2, 0);
     const top = Math.max((window.screen.availHeight - height) / 2, 0);
 
@@ -98,7 +91,6 @@
 
     try {
       const win = window.open(url, '_blank', windowFeatures);
-      // If popup was blocked or window returned null, fallback to clean standard tab
       if (!win || win.closed || typeof win.closed === 'undefined') {
         window.open(url, '_blank', 'noopener,noreferrer');
       }
@@ -107,11 +99,14 @@
     }
   };
 
-  // --- Role & Gatekeeper Management ---
   const setRole = (newRole) => {
     state.role = newRole;
     localStorage.setItem('hub_role', newRole);
     dom.roleBadge.textContent = newRole.toUpperCase();
+    
+    // Reset tab selections to ensure the user lands on an authorized view
+    state.activeTab = '';
+    state.activeSubtab = '';
     renderTabs();
     renderCards();
   };
@@ -162,7 +157,7 @@
     }
   };
 
-  // --- Telemetry Diagnostics ---
+  // --- Telemetry Diagnostics (High Legibility Readouts) ---
   const initClock = () => {
     const updateTime = () => {
       const now = new Date();
@@ -189,7 +184,7 @@
       const duration = Math.round(performance.now() - start);
       dom.ping.textContent = `${duration} ms`;
     } catch (_) {
-      dom.ping.textContent = 'EDGE ERR';
+      dom.ping.textContent = 'N/A';
     }
   };
 
@@ -206,22 +201,15 @@
     }
   };
 
-  // --- Filtering & Card Rendering ---
+  // --- Filtering & Card Rendering (No "ALL" view) ---
   const getVisibleServices = () => {
     return state.services.filter((item) => {
       // Role access check
       if (item.roles && !item.roles.includes(state.role)) {
         return false;
       }
-      // Tab filter
-      if (state.activeTab !== 'ALL' && item.tab !== state.activeTab) {
-        return false;
-      }
-      // Subtab filter
-      if (state.activeSubtab !== 'ALL' && item.subtab !== state.activeSubtab) {
-        return false;
-      }
-      // Search query check
+
+      // If actively searching, bypass tab/subtab filtering to surface matches everywhere
       if (state.searchQuery) {
         const query = state.searchQuery.toLowerCase();
         const matchName = item.name.toLowerCase().includes(query);
@@ -230,16 +218,26 @@
         const matchSubtab = (item.subtab || '').toLowerCase().includes(query);
         return matchName || matchDesc || matchKeywords || matchSubtab;
       }
+
+      // Discrete Tab & Subtab filter
+      if (item.tab !== state.activeTab) {
+        return false;
+      }
+      if (state.activeSubtab && item.subtab !== state.activeSubtab) {
+        return false;
+      }
+
       return true;
     });
   };
 
   const renderTabs = () => {
     const roleFiltered = state.services.filter((s) => !s.roles || s.roles.includes(state.role));
-    const tabs = ['ALL', ...new Set(roleFiltered.map((s) => s.tab).filter(Boolean))];
+    const tabs = [...new Set(roleFiltered.map((s) => s.tab).filter(Boolean))];
 
+    // Default to the first available tab if current selection is invalid
     if (!tabs.includes(state.activeTab)) {
-      state.activeTab = 'ALL';
+      state.activeTab = tabs[0] || '';
     }
 
     dom.primaryTabs.innerHTML = '';
@@ -253,7 +251,7 @@
       btn.addEventListener('click', () => {
         triggerHaptic(8);
         state.activeTab = tabName;
-        state.activeSubtab = 'ALL';
+        state.activeSubtab = ''; // Reset subtab on tab change
         renderTabs();
         renderSubFilters();
         renderCards();
@@ -266,19 +264,18 @@
 
   const renderSubFilters = () => {
     dom.subFilters.innerHTML = '';
-    if (state.activeTab === 'ALL') {
-      return;
-    }
+    if (!state.activeTab) return;
 
     const relevantServices = state.services.filter((s) => {
       const hasRole = !s.roles || s.roles.includes(state.role);
       return hasRole && s.tab === state.activeTab;
     });
 
-    const subtabs = ['ALL', ...new Set(relevantServices.map((s) => s.subtab).filter(Boolean))];
+    const subtabs = [...new Set(relevantServices.map((s) => s.subtab).filter(Boolean))];
 
+    // Auto-select first subtab if active one is no longer valid
     if (!subtabs.includes(state.activeSubtab)) {
-      state.activeSubtab = 'ALL';
+      state.activeSubtab = subtabs[0] || '';
     }
 
     subtabs.forEach((subName) => {
@@ -303,7 +300,7 @@
     if (items.length === 0) {
       dom.servicesGrid.innerHTML = `
         <div class="empty-state">
-          <span>NO RESOURCES LOCATED MATCHING CRITERIA</span>
+          <span>NO RESOURCES LOCATED IN THIS SECTION</span>
         </div>
       `;
       return;
@@ -332,9 +329,7 @@
       card.innerHTML = `
         <div>
           <div class="card-top">
-            <div class="card-title-group">
-              <span class="card-name">${sanitizeStr(item.name)}</span>
-            </div>
+            <span class="card-name">${sanitizeStr(item.name)}</span>
             ${item.subtab ? `<span class="card-subtab-badge">${sanitizeStr(item.subtab)}</span>` : ''}
           </div>
           <p class="card-desc">${sanitizeStr(item.description || '')}</p>
@@ -342,12 +337,10 @@
         ${mirrorsHtml}
       `;
 
-      // Main Card Click
       card.addEventListener('click', () => {
         openAppContainer(item.url);
       });
 
-      // Accessible Keyboard Enter/Space Launch
       card.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
@@ -355,7 +348,6 @@
         }
       });
 
-      // Prevent mirror link clicks from triggering main card container
       const mirrorLinks = card.querySelectorAll('.mirror-chip');
       mirrorLinks.forEach((chip) => {
         chip.addEventListener('click', (e) => {
@@ -370,17 +362,13 @@
     dom.servicesGrid.appendChild(fragment);
   };
 
-  // --- Global Event Bindings ---
   const bindEvents = () => {
-    // Shell launch
     dom.shellBtn.addEventListener('click', () => {
       openAppContainer('https://shell.cloud.google.com/?show=terminal');
     });
 
-    // Role Gatekeeper triggers
     dom.roleGateBtn.addEventListener('click', () => {
       if (state.role === 'admin') {
-        // Quick toggle back to guest if tapped in admin
         setRole('guest');
       } else {
         openPinModal();
@@ -394,7 +382,6 @@
       closePinModal();
     });
 
-    // Keypad actions
     dom.pinKeypad.addEventListener('click', (e) => {
       const btn = e.target.closest('.keypad-btn');
       if (!btn) return;
@@ -415,7 +402,6 @@
       }
     });
 
-    // Search input handling
     dom.searchInput.addEventListener('input', (e) => {
       state.searchQuery = e.target.value.trim();
       dom.searchClear.hidden = !state.searchQuery;
@@ -431,7 +417,6 @@
       dom.searchInput.focus();
     });
 
-    // Hotkeys: '/' focuses search, 'Escape' clears / unfocuses
     window.addEventListener('keydown', (e) => {
       const activeEl = document.activeElement;
       const isInput = activeEl.tagName === 'INPUT' || activeEl.tagName === 'TEXTAREA';
@@ -452,7 +437,6 @@
       }
     });
 
-    // Auto-resync when device wakes or tab regains visibility
     document.addEventListener('visibilitychange', () => {
       if (document.visibilityState === 'visible') {
         probeEdgePing();
@@ -460,14 +444,12 @@
       }
     });
 
-    // URL parameter overrides (e.g. ?role=admin&pin=1234)
     const params = new URLSearchParams(window.location.search);
     if (params.get('role') === 'admin' && params.get('pin') === CONFIG.adminPin) {
       setRole('admin');
     }
   };
 
-  // --- Initialization Lifecycle ---
   const init = async () => {
     dom.roleBadge.textContent = state.role.toUpperCase();
 
@@ -491,12 +473,9 @@
       `;
     }
 
-    // Service Worker Registration
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js').catch(() => {
-          // SW registration ignored silently in dev/unsupported contexts
-        });
+        navigator.serviceWorker.register('./sw.js').catch(() => {});
       });
     }
   };
