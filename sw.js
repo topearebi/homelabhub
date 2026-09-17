@@ -5,7 +5,7 @@
  *  - Services Manifest: Network-First (instant updates with cached fallback)
  */
 
-const CACHE_VERSION = 'v2.0.1';
+const CACHE_VERSION = 'v2.0.2';
 const STATIC_CACHE = `hub-static-${CACHE_VERSION}`;
 const DATA_CACHE = `hub-data-${CACHE_VERSION}`;
 
