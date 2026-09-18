@@ -457,7 +457,7 @@
     "roles": ["kid"],
     "mirrors": []
   },
- {
+  {
     "id": "BBC-Cebeebies",
     "name": "CBeebies",
     "url": "https://www.bbc.co.uk/games/embed/cbeebies-tier1-creative-lab-creative?exitGameUrl=https%3A%2F%2Fwww.bbc.co.uk%2Fcbeebies%2Fgames%2Fcbeebies-creative-lab",
@@ -468,6 +468,5 @@
     "keywords": "terminal bash cli ssh cloud shell console",
     "roles": ["kid"],
     "mirrors": []
-  },
-
+  }
 ]
