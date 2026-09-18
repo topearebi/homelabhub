@@ -284,7 +284,7 @@
     "subtab": "REFERENCE",
     "description": "Crowdsourced native pronunciation audio dictionary in all languages.",
     "keywords": "pronunciation audio dictionary forvo language accent study",
-    "roles": ["kid", "guest", "admin"],
+    "roles": ["guest", "admin"],
     "mirrors": []
   },
   {
@@ -296,7 +296,7 @@
     "subtab": "TOOLS",
     "description": "Free web batch converter and compressor for images, videos, and docs.",
     "keywords": "convert compress resize pdf image tools batch",
-    "roles": ["kid", "guest", "admin"],
+    "roles": ["guest", "admin"],
     "mirrors": []
   },
   {
@@ -320,7 +320,7 @@
     "subtab": "APPS",
     "description": "Reels-style infinite feed for GitHub markdown note vaults and docs.",
     "keywords": "notes markdown feed github reading pkm reels",
-    "roles": ["kid", "guest", "admin"],
+    "roles": ["guest", "admin"],
     "mirrors": []
   },
   {
@@ -332,7 +332,7 @@
     "subtab": "SITES",
     "description": "Professional career portfolio and case studies.",
     "keywords": "resume professional career portfolio projects cv",
-    "roles": ["kid", "guest", "admin"],
+    "roles": ["guest", "admin"],
     "mirrors": []
   },
   {
@@ -344,7 +344,7 @@
     "subtab": "PUBLICATIONS",
     "description": "Substack newsletter and published essays.",
     "keywords": "newsletter substack writing articles reading thoughtfood",
-    "roles": ["kid", "guest", "admin"],
+    "roles": ["guest", "admin"],
     "mirrors": []
   },
   {
@@ -356,7 +356,7 @@
     "subtab": "PUBLICATIONS",
     "description": "Publication charting the stories of Nigerians in Nigeria.",
     "keywords": "newsletter substack writing articles nigeria reading culture",
-    "roles": ["kid", "guest", "admin"],
+    "roles": ["guest", "admin"],
     "mirrors": []
   },
   {
@@ -368,7 +368,7 @@
     "subtab": "SITES",
     "description": "Jekyll based journal and writing log.",
     "keywords": "blog journal writing log personal jekyll",
-    "roles": ["kid", "guest", "admin"],
+    "roles": ["guest", "admin"],
     "mirrors": []
   },
   {
@@ -380,7 +380,7 @@
     "subtab": "TOOLS",
     "description": "Temporary pastebin, local clipboard drop, and immediate snippet transfer.",
     "keywords": "share transfer files local network p2p drop paste clipboard text temporary",
-    "roles": ["kid", "guest", "admin"],
+    "roles": ["guest", "admin"],
     "mirrors": []
   },
   {
@@ -432,5 +432,42 @@
     "keywords": "terminal bash cli ssh cloud shell console",
     "roles": ["admin"],
     "mirrors": []
-  }
+  },
+  {
+    "id": "photopea",
+    "name": "Photopea",
+    "url": "https://www.photopea.com",
+    "icon": "gallery",
+    "tab": "SYSTEMS",
+    "subtab": "TOOLS",
+    "description": "Zero-install Debian terminal container with Google Cloud SDK.",
+    "keywords": "terminal bash cli ssh cloud shell console",
+    "roles": ["admin"],
+    "mirrors": []
+  },
+  {
+    "id": "ABC Tracing",
+    "name": "Tiny Steps Learning",
+    "url": "https://tinystepslearning.com/free-letter-tracing-game-for-kids",
+    "icon": "game",
+    "tab": "SYSTEMS",
+    "subtab": "TOOLS",
+    "description": "Zero-install Debian terminal container with Google Cloud SDK.",
+    "keywords": "terminal bash cli ssh cloud shell console",
+    "roles": ["kid"],
+    "mirrors": []
+  },
+ {
+    "id": "BBC-Cebeebies",
+    "name": "CBeebies",
+    "url": "https://www.bbc.co.uk/games/embed/cbeebies-tier1-creative-lab-creative?exitGameUrl=https%3A%2F%2Fwww.bbc.co.uk%2Fcbeebies%2Fgames%2Fcbeebies-creative-lab",
+    "icon": "game",
+    "tab": "SYSTEMS",
+    "subtab": "TOOLS",
+    "description": "Zero-install Debian terminal container with Google Cloud SDK.",
+    "keywords": "terminal bash cli ssh cloud shell console",
+    "roles": ["kid"],
+    "mirrors": []
+  },
+
 ]
