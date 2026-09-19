@@ -8,7 +8,7 @@
     "subtab": "READING",
     "description": "E-book library catalog, reader, and OPDS distribution hub.",
     "keywords": "books epub mobi pdf reader calibre library kindle reading",
-    "roles": ["kid", "guest", "admin"],
+    "roles": ["guest", "admin"],
     "mirrors": []
   },
   {
@@ -20,7 +20,7 @@
     "subtab": "READING",
     "description": "Self-hosted audiobook and podcast streaming server.",
     "keywords": "audiobooks spoken podcasts mp3 m4b media audio streaming library",
-    "roles": ["kid", "guest", "admin"],
+    "roles": ["guest", "admin"],
     "mirrors": []
   },
   {
@@ -32,7 +32,7 @@
     "subtab": "DOWNLOADS",
     "description": "Automated book downloading, Libgen, and pipeline manager.",
     "keywords": "books download ingest automated shelfmark libgen annas archive",
-    "roles": ["admin"],
+    "roles": ["guest", "admin"],
     "mirrors": []
   },
   {
@@ -44,7 +44,7 @@
     "subtab": "DOWNLOADS",
     "description": "Fast e-book search and retrieval interface over IRC.",
     "keywords": "irc books epub download search ebooks",
-    "roles": ["guest", "admin"],
+    "roles": ["admin"],
     "mirrors": []
   },
   {
@@ -56,7 +56,7 @@
     "subtab": "READING",
     "description": "Literature preservation, web fiction scraping, and archive manager.",
     "keywords": "literature archive metadata books litkeeper stories fiction literotica download web",
-    "roles": ["guest", "admin"],
+    "roles": ["admin"],
     "mirrors": []
   },
   {
@@ -114,7 +114,7 @@
     "subtab": "TRACKING",
     "description": "Social reading tracker, reading logs, profile, and annual stats.",
     "keywords": "books tracking reviews reading log hardcover profile stats",
-    "roles": ["kid", "guest", "admin"],
+    "roles": ["admin"],
     "mirrors": []
   },
   {
@@ -198,7 +198,7 @@
     "subtab": "READING",
     "description": "Self-hosted aggregator for RSS and Atom feeds.",
     "keywords": "rss feeds news blogs aggregator freshrss updates",
-    "roles": ["admin"],
+    "roles": ["guest", "admin"],
     "mirrors": []
   },
   {
@@ -434,39 +434,171 @@
     "mirrors": []
   },
   {
-    "id": "photopea",
-    "name": "Photopea",
-    "url": "https://www.photopea.com",
-    "icon": "gallery",
-    "tab": "SYSTEMS",
-    "subtab": "TOOLS",
-    "description": "Zero-install Debian terminal container with Google Cloud SDK.",
-    "keywords": "terminal bash cli ssh cloud shell console",
+    "id": "audiobookbay",
+    "name": "AudioBook Bay",
+    "url": "https://audiobookbay.lu/",
+    "icon": "headphones",
+    "tab": "LIBRARY",
+    "subtab": "DOWNLOADS",
+    "description": "Audiobook community index and torrent search directory.",
+    "keywords": "audiobooks torrents audio spoken download library media abb",
     "roles": ["admin"],
     "mirrors": []
   },
   {
-    "id": "ABC Tracing",
-    "name": "Tiny Steps Learning",
-    "url": "https://tinystepslearning.com/free-letter-tracing-game-for-kids",
-    "icon": "game",
-    "tab": "SYSTEMS",
-    "subtab": "TOOLS",
-    "description": "Zero-install Debian terminal container with Google Cloud SDK.",
-    "keywords": "terminal bash cli ssh cloud shell console",
+    "id": "readest-web",
+    "name": "Readest",
+    "url": "https://web.readest.com/",
+    "icon": "book-open",
+    "tab": "LIBRARY",
+    "subtab": "READING",
+    "description": "Web-based e-book reader and synced document viewer.",
+    "keywords": "ebooks reader reading epub pdf sync library books",
+    "roles": ["guest", "admin"],
+    "mirrors": []
+  },
+  {
+    "id": "navidrome",
+    "name": "Navidrome",
+    "url": "https://music.topearebi.xyz",
+    "icon": "music",
+    "tab": "MEDIA",
+    "subtab": "AUDIO",
+    "description": "Self-hosted personal music streaming server and Subsonic endpoint.",
+    "keywords": "music songs audio streaming subsonic navidrome library player",
+    "roles": ["guest", "admin"],
+    "mirrors": []
+  },
+  {
+    "id": "listen-notes",
+    "name": "Listen Notes",
+    "url": "https://www.listennotes.com/",
+    "icon": "mic",
+    "tab": "MEDIA",
+    "subtab": "AUDIO",
+    "description": "Podcast search engine, episode transcripts, and database directory.",
+    "keywords": "podcasts search episodes audio spoken listening directory database",
+    "roles": ["guest", "admin"],
+    "mirrors": []
+  },
+  {
+    "id": "geforce-now",
+    "name": "GeForce NOW",
+    "url": "https://play.geforcenow.com/mall/#/layout/games",
+    "icon": "play",
+    "tab": "MEDIA",
+    "subtab": "GAMES",
+    "description": "Cloud gaming service streaming PC titles across devices.",
+    "keywords": "games gaming cloud stream geforce nvidia controller steam",
+    "roles": ["kid", "guest", "admin"],
+    "mirrors": []
+  },
+  {
+    "id": "pbs-kids-games",
+    "name": "PBS KIDS Games",
+    "url": "https://pbskids.org/games",
+    "icon": "smile",
+    "tab": "STUDY",
+    "subtab": "EARLY_LEARNING",
+    "description": "Curriculum-aligned educational games and interactive learning for children.",
+    "keywords": "kids learning educational preschool games pbs children literacy",
     "roles": ["kid"],
     "mirrors": []
   },
   {
-    "id": "BBC-Cebeebies",
-    "name": "CBeebies",
+    "id": "starfall",
+    "name": "Starfall",
+    "url": "https://www.starfall.com/h/",
+    "icon": "star",
+    "tab": "STUDY",
+    "subtab": "EARLY_LEARNING",
+    "description": "Phonics, early literacy, and elementary math learning activities.",
+    "keywords": "phonics reading literacy math preschool kindergarten early learning starfall",
+    "roles": ["kid",
+    "mirrors": []
+  },
+  {
+    "id": "teach-your-monster",
+    "name": "Teach Your Monster",
+    "url": "https://www.teachyourmonster.org/",
+    "icon": "award",
+    "tab": "STUDY",
+    "subtab": "EARLY_LEARNING",
+    "description": "Award-winning foundational reading, phonics, and math learning games.",
+    "keywords": "phonics reading math monsters early education literacy children learning",
+    "roles": ["kid"],
+    "mirrors": []
+  },
+  {
+    "id": "cbeebies-creative-lab",
+    "name": "CBeebies Creative Lab",
     "url": "https://www.bbc.co.uk/games/embed/cbeebies-tier1-creative-lab-creative?exitGameUrl=https%3A%2F%2Fwww.bbc.co.uk%2Fcbeebies%2Fgames%2Fcbeebies-creative-lab",
-    "icon": "game",
+    "icon": "palette",
+    "tab": "STUDY",
+    "subtab": "EARLY_LEARNING",
+    "description": "Early years drawing, sound design, and open-ended creative sandbox.",
+    "keywords": "cbeebies bbc creative art drawing toddlers preschool kids activities",
+    "roles": ["kid"],
+    "mirrors": []
+  },
+  {
+    "id": "tiny-steps-tracing",
+    "name": "Letter Tracing Game",
+    "url": "https://tinystepslearning.com/free-letter-tracing-game-for-kids",
+    "icon": "edit-2",
+    "tab": "STUDY",
+    "subtab": "EARLY_LEARNING",
+    "description": "Interactive alphabet stroke guidance and handwriting tracing for kids.",
+    "keywords": "letters tracing alphabet handwriting preschool handwriting fine motor skills",
+    "roles": ["kid"],
+    "mirrors": []
+  },
+  {
+    "id": "photopea",
+    "name": "Photopea",
+    "url": "https://www.photopea.com/",
+    "icon": "image",
+    "tab": "PROJECTS",
+    "subtab": "DESIGN",
+    "description": "Advanced raster and vector graphics editor supporting PSD and template workflows.",
+    "keywords": "graphics design photoshop psd photo editor vector templates export",
+    "roles": ["guest", "admin"],
+    "mirrors": []
+  },
+  {
+    "id": "diagrams-net",
+    "name": "diagrams.net",
+    "url": "https://app.diagrams.net/",
+    "icon": "git-branch",
+    "tab": "PROJECTS",
+    "subtab": "DESIGN",
+    "description": "Flowchart, architecture diagram, and network topology designer.",
+    "keywords": "diagrams flowcharts drawio architecture mindmap topology design",
+    "roles": ["guest", "admin"],
+    "mirrors": []
+  },
+  {
+    "id": "fourthwall",
+    "name": "Fourthwall",
+    "url": "https://fourthwall.com/",
+    "icon": "shopping-bag",
+    "tab": "PROJECTS",
+    "subtab": "COMMERCE",
+    "description": "Creator e-commerce platform and print-on-demand fulfillment dashboard.",
+    "keywords": "store shop merchandise apparel print on demand ecommerce creator",
+    "roles": ["admin"],
+    "mirrors": []
+  },
+  {
+    "id": "monochrome",
+    "name": "Monochrome",
+    "url": "https://monochrome.tf/",
+    "icon": "terminal",
     "tab": "SYSTEMS",
     "subtab": "TOOLS",
-    "description": "Zero-install Debian terminal container with Google Cloud SDK.",
-    "keywords": "terminal bash cli ssh cloud shell console",
-    "roles": ["kid"],
+    "description": "Minimalist, distraction-free text and utility interface.",
+    "keywords": "monochrome text tools minimal terminal utility",
+    "roles": ["guest", "admin"],
     "mirrors": []
   }
 ]
