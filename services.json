@@ -248,7 +248,7 @@
     "subtab": "DRILLS",
     "description": "Mandarin Chinese tone listening and practice drills.",
     "keywords": "mandarin chinese tones drill listening practice study",
-    "roles": ["kid", "guest", "admin"],
+    "roles": ["guest", "admin"],
     "mirrors": []
   },
   {
@@ -324,8 +324,8 @@
     "mirrors": []
   },
   {
-    "id": "my-portfolio",
-    "name": "My Portfolio",
+    "id": "tope-portfolio",
+    "name": "Tope Portfolio",
     "url": "https://topearebi.com",
     "icon": "briefcase",
     "tab": "PROJECTS",
@@ -490,7 +490,7 @@
     "subtab": "GAMES",
     "description": "Cloud gaming service streaming PC titles across devices.",
     "keywords": "games gaming cloud stream geforce nvidia controller steam",
-    "roles": ["kid", "guest", "admin"],
+    "roles": ["guest", "admin"],
     "mirrors": []
   },
   {
@@ -514,7 +514,7 @@
     "subtab": "EARLY_LEARNING",
     "description": "Phonics, early literacy, and elementary math learning activities.",
     "keywords": "phonics reading literacy math preschool kindergarten early learning starfall",
-    "roles": ["kid",
+    "roles": ["kid"],
     "mirrors": []
   },
   {
