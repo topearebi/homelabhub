@@ -600,5 +600,35 @@
     "keywords": "music songs audio streaming tidal lossless library player",
     "roles": ["guest", "admin"],
     "mirrors": []
+  },
+  {
+    "id": "armature-ops",
+    "name": "Armature Operations",
+    "url": "https://armatureops.co.uk",
+    "icon": "briefcase",
+    "tab": "PROJECTS",
+    "subtab": "SITES",
+    "description": "Consulting and professional services group delivering strategy, delivery, and process optimisation across digital and physical services.",
+    "keywords": "armature operations consulting strategy delivery process optimisation advisory labs press supply media business",
+    "roles": ["admin"],
+    "mirrors": [
+      { "name": "Media", "url": "https://media.armatureops.co.uk" },
+      { "name": "Supply", "url": "https://supply.armatureops.co.uk" },
+      { "name": "Advisory", "url": "https://advisory.armatureops.co.uk" },
+      { "name": "Press", "url": "https://press.armatureops.co.uk" },
+      { "name": "Labs", "url": "https://labs.armatureops.co.uk" }
+    ]
+  },
+  {
+    "id": "rally",
+    "name": "Rally",
+    "url": "https://topearebi.github.io/rally",
+    "icon": "clock",
+    "tab": "PROJECTS",
+    "subtab": "APPS",
+    "description": "Shared focus session time",
+    "keywords": "time timer clock team focus pomodoro",
+    "roles": ["guest", "admin"],
+    "mirrors": []
   }
 ]
