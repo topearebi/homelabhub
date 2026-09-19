@@ -630,5 +630,17 @@
     "keywords": "time timer clock team focus pomodoro",
     "roles": ["guest", "admin"],
     "mirrors": []
+  },
+  {
+    "id": "speed-recall",
+    "name": "Speed Recall",
+    "url": "https://topearebi.github.io/speedrecall/",
+    "icon": "brain",
+    "tab": "PROJECTS",
+    "subtab": "APPS",
+    "description": "Speed Flashcard Entry",
+    "keywords": "chinese french languages flashcards anki recall test learning",
+    "roles": ["guest", "admin"],
+    "mirrors": []
   }
 ]
