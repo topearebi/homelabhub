@@ -594,10 +594,10 @@
     "name": "Monochrome",
     "url": "https://monochrome.tf/",
     "icon": "terminal",
-    "tab": "SYSTEMS",
-    "subtab": "TOOLS",
-    "description": "Minimalist, distraction-free text and utility interface.",
-    "keywords": "monochrome text tools minimal terminal utility",
+    "tab": "MEDIA",
+    "subtab": "AUDIO",
+    "description": "Libre music streaming server.",
+    "keywords": "music songs audio streaming tidal lossless library player",
     "roles": ["guest", "admin"],
     "mirrors": []
   }
