@@ -14,7 +14,7 @@
   {
     "id": "audiobookshelf",
     "name": "Audiobookshelf",
-    "url": "https://audibook.topearebi.xyz",
+    "url": "https://audiobooks.topearebi.xyz",
     "icon": "headphones",
     "tab": "LIBRARY",
     "subtab": "READING",
@@ -26,7 +26,7 @@
   {
     "id": "shelfmark",
     "name": "Shelfmark",
-    "url": "https://annas.topearebi.xyz",
+    "url": "https://shelfmark.topearebi.xyz",
     "icon": "folder-plus",
     "tab": "LIBRARY",
     "subtab": "DOWNLOADS",
@@ -50,7 +50,7 @@
   {
     "id": "litkeeper",
     "name": "LitKeeper",
-    "url": "https://lit.topearebi.xyz",
+    "url": "https://litkeeper.topearebi.xyz",
     "icon": "archive",
     "tab": "LIBRARY",
     "subtab": "READING",
@@ -144,7 +144,7 @@
   {
     "id": "aiostreams",
     "name": "AIOStreams",
-    "url": "https://streams.topearebi.xyz",
+    "url": "https://aiostreams.topearebi.xyz",
     "icon": "filter",
     "tab": "MEDIA",
     "subtab": "MANAGEMENT",
@@ -156,7 +156,7 @@
   {
     "id": "aiometadata",
     "name": "AIOMetadata",
-    "url": "https://metadata.topearebi.xyz",
+    "url": "https://aiometadata.topearebi.xyz",
     "icon": "database",
     "tab": "MEDIA",
     "subtab": "MANAGEMENT",
@@ -168,7 +168,7 @@
   {
     "id": "aiomanager",
     "name": "AIOManager",
-    "url": "https://aio.topearebi.xyz",
+    "url": "https://aiomanager.topearebi.xyz",
     "icon": "sliders",
     "tab": "MEDIA",
     "subtab": "MANAGEMENT",
@@ -218,7 +218,7 @@
   {
     "id": "prowlarr",
     "name": "Prowlarr",
-    "url": "https://prowl.topearebi.xyz",
+    "url": "https://prowlarr.topearebi.xyz",
     "icon": "radio",
     "tab": "MEDIA",
     "subtab": "MANAGEMENT",
@@ -374,7 +374,7 @@
   {
     "id": "localcontentshare",
     "name": "LocalContentShare",
-    "url": "https://paste.topearebi.xyz",
+    "url": "https://pastebin.topearebi.xyz",
     "icon": "share-2",
     "tab": "SYSTEMS",
     "subtab": "TOOLS",
@@ -617,6 +617,7 @@
       { "name": "Advisory", "url": "https://advisory.armatureops.co.uk" },
       { "name": "Press", "url": "https://press.armatureops.co.uk" },
       { "name": "Labs", "url": "https://labs.armatureops.co.uk" }
+      { "name": "Forum", "url": "https://forum.armatureops.co.uk" }
     ]
   },
   {
@@ -642,5 +643,79 @@
     "keywords": "chinese french languages flashcards anki recall test learning",
     "roles": ["guest", "admin"],
     "mirrors": []
+  },
+  {
+    "id": "cloudflare",
+    "name": "Cloudflare",
+    "url": "https://dash.cloudflare.com/ef61b328f886b978bdca71790948a0c8/home",
+    "icon": "globe",
+    "tab": "SYSTEMS",
+    "subtab": "NETWORK",
+    "description": "DNS zone coordination, edge routing, SSL, and CDN dashboard.",
+    "keywords": "dns cloudflare edge domain network ssl proxy cdn routing security",
+    "roles": ["admin"],
+    "mirrors": []
+  },
+  {
+    "id": "jellyfin",
+    "name": "Jellyfin",
+    "url": "https://watch.topearebi.xyz",
+    "icon": "tv",
+    "tab": "MEDIA",
+    "subtab": "VIDEO",
+    "description": "Self-hosted media streaming server, player, and live transcode suite.",
+    "keywords": "jellyfin video streaming movies tv shows media player watch selfhosted",
+    "roles": ["guest", "admin"],
+    "mirrors": []
+  },
+  {
+    "id": "audiomuse-ai",
+    "name": "AudioMuse-AI",
+    "url": "https://audiomuse.topearebi.xyz",
+    "icon": "cpu",
+    "tab": "MEDIA",
+    "subtab": "MANAGEMENT",
+    "description": "Sonic analysis, groove-aware playlist generator, and Navidrome AI plugin.",
+    "keywords": "audiomuse ai sonic analysis navidrome music playlists recommendations audio smart mix",
+    "roles": ["admin"],
+    "mirrors": []
+  },
+  {
+    "id": "listenbrainz",
+    "name": "ListenBrainz",
+    "url": "https://listenbrainz.org",
+    "icon": "activity",
+    "tab": "MEDIA",
+    "subtab": "AUDIO",
+    "description": "Open-source scrobble logger, listening history tracker, and music graphs.",
+    "keywords": "scrobble listenbrainz music tracking stats history meta listening audio",
+    "roles": ["admin"],
+    "mirrors": []
+  },
+  {
+    "id": "last-fm",
+    "name": "Last.fm",
+    "url": "https://www.last.fm",
+    "icon": "radio",
+    "tab": "MEDIA",
+    "subtab": "AUDIO",
+    "description": "Music scrobbling profile, chart aggregation, and recommendation hub.",
+    "keywords": "lastfm scrobble charts music stats tracking audio recommendations profile",
+    "roles": ["admin"],
+    "mirrors": []
+  },
+  {
+    "id": "zoho-mail",
+    "name": "Zoho Mail",
+    "url": "https://mail.zoho.eu",
+    "icon": "mail",
+    "tab": "SYSTEMS",
+    "subtab": "TOOLS",
+    "description": "Custom domain business email client and webmail dashboard.",
+    "keywords": "email mail webmail zoho inbox messaging domain communication",
+    "roles": ["admin"],
+    "mirrors": [
+      { "name": "Global Portal", "url": "https://mail.zoho.com" }
+    ]
   }
 ]
