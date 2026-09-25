@@ -62,7 +62,7 @@
   {
     "id": "jellyfin",
     "name": "Jellyfin",
-    "url": "https://watch.topearebi.xyz",
+    "url": "https://videos.topearebi.xyz",
     "icon": "tv",
     "tab": "MEDIA",
     "subtab": "WATCH",
