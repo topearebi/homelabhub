@@ -537,7 +537,7 @@
   {
     "id": "hetzner-cloud",
     "name": "Hetzner Cloud",
-    "url": "https://accounts.hetzner.com/account",
+    "url": "https://accounts.hetzner.com",
     "icon": "server",
     "tab": "SYSTEMS",
     "subtab": "HOSTING_OPS",
