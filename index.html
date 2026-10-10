@@ -3,128 +3,91 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#0d0e12">
-  <meta name="description" content="Central jumpbox, telemetry switchboard, and homelab command hub.">
-  <title>HOMELAB // SWITCHBOARD</title>
-  
+  <meta name="theme-color" content="#f6f4ef" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1a1917" media="(prefers-color-scheme: dark)">
+  <meta name="description" content="Our links, in one place.">
+  <title>Hub</title>
   <link rel="manifest" href="./manifest.json">
   <link rel="icon" type="image/svg+xml" href="./icon.svg">
+  <script>
+    // Apply saved theme before first paint to avoid a flash.
+    try {
+      var t = localStorage.getItem('hub.theme');
+      if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+    } catch (_) {}
+  </script>
   <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-  <div class="app-viewport">
-    
-    <!-- Top Telemetry & Diagnostic Ribbon -->
-    <header class="telemetry-ribbon" role="region" aria-label="System Telemetry">
-      <div class="hud-item clock-block">
-        <span class="hud-label">CHRONO</span>
-        <span id="hud-clock" class="hud-val phosphor">00:00:00</span>
+  <div class="page">
+
+    <header class="top">
+      <div class="top-left">
+        <h1 id="today" class="today">&nbsp;</h1>
+        <p id="weather" class="weather"></p>
       </div>
-
-      <div class="hud-divider"></div>
-
-      <div class="hud-item ip-block">
-        <span class="hud-label">NET.IP</span>
-        <span id="hud-ip" class="hud-val">POLLING...</span>
-      </div>
-
-      <div class="hud-divider"></div>
-
-      <div class="hud-item edge-block">
-        <span class="hud-label">EDGE.RTT</span>
-        <span id="hud-ping" class="hud-val">-- ms</span>
-      </div>
-
-      <div class="hud-divider"></div>
-
-      <div class="hud-item weather-block">
-        <span class="hud-label">ATMOS</span>
-        <span id="hud-weather" class="hud-val">--°C</span>
-      </div>
-
-      <div class="hud-actions">
-        <button id="btn-shell" class="hud-btn" title="Open Cloud Shell Terminal" aria-label="Open Cloud Shell">
-          <span class="hud-icon">&gt;_</span>
-          <span class="btn-text">SHELL</span>
-        </button>
-
-        <button id="btn-role-gate" class="hud-btn role-indicator" aria-label="Switch User Access Role">
-          <span class="hud-label">CLEARANCE:</span>
-          <span id="current-role-label" class="role-badge">ADMIN</span>
-        </button>
+      <div class="top-right">
+        <button id="theme-btn" class="icon-btn" type="button" aria-label="Change theme"></button>
+        <div class="profile-wrap">
+          <button id="profile-btn" class="profile-btn" type="button" aria-haspopup="menu" aria-expanded="false">
+            <span id="profile-name">Guest</span>
+            <svg viewBox="0 0 24 24" class="chev" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div id="profile-menu" class="menu" role="menu" hidden></div>
+        </div>
       </div>
     </header>
 
-    <!-- Main Navigation & Search Controls -->
-    <section class="control-deck">
-      <div class="search-bracket">
-        <div class="search-prefix">SYS://SEARCH &gt;</div>
-        <input 
-          type="text" 
-          id="search-input" 
-          placeholder="Filter resources by name, tag, or keyword... [/ to focus]" 
-          autocomplete="off" 
-          spellcheck="false"
-          aria-label="Filter resources"
-        >
-        <button id="search-clear" class="search-clear-btn" aria-label="Clear search query" hidden>&times;</button>
-      </div>
-
-      <!-- Tier 1: Primary Category Tabs -->
-      <nav id="primary-tabs" class="primary-tabs" role="tablist" aria-label="Primary Navigation">
-        <!-- Rendered dynamically via script.js -->
-      </nav>
-
-      <!-- Tier 2: Contextual Sub-filters -->
-      <div id="sub-filters" class="sub-filters" role="toolbar" aria-label="Contextual Sub-filters">
-        <!-- Rendered dynamically based on active primary tab -->
-      </div>
-    </section>
-
-    <!-- Dynamic Card Grid -->
-    <main class="grid-viewport">
-      <div id="services-grid" class="services-grid" role="region" aria-live="polite">
-        <!-- Service cards rendered dynamically via script.js -->
-      </div>
-    </main>
-
-    <!-- PIN Pad Gatekeeper Modal -->
-    <div id="pin-modal" class="modal-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="pin-modal-title">
-      <div class="pin-terminal">
-        <div class="terminal-header">
-          <span class="terminal-title" id="pin-modal-title">SECURITY OVERRIDE</span>
-          <button id="pin-close-btn" class="terminal-close" aria-label="Close PIN Pad">&times;</button>
-        </div>
-        <div class="pin-display">
-          <span class="pin-prompt">ENTER 4-DIGIT AUTHORIZATION PIN</span>
-          <div class="pin-dots" id="pin-dots">
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-          </div>
-          <div id="pin-error" class="pin-error-msg" hidden>ACCESS CODE INVALID</div>
-        </div>
-        <div class="pin-keypad" id="pin-keypad">
-          <button type="button" class="keypad-btn" data-key="1">1</button>
-          <button type="button" class="keypad-btn" data-key="2">2</button>
-          <button type="button" class="keypad-btn" data-key="3">3</button>
-          <button type="button" class="keypad-btn" data-key="4">4</button>
-          <button type="button" class="keypad-btn" data-key="5">5</button>
-          <button type="button" class="keypad-btn" data-key="6">6</button>
-          <button type="button" class="keypad-btn" data-key="7">7</button>
-          <button type="button" class="keypad-btn" data-key="8">8</button>
-          <button type="button" class="keypad-btn" data-key="9">9</button>
-          <button type="button" class="keypad-btn keypad-action" data-action="clear">CLR</button>
-          <button type="button" class="keypad-btn" data-key="0">0</button>
-          <button type="button" class="keypad-btn keypad-action" data-action="back">DEL</button>
-        </div>
-        <div class="pin-footer-actions">
-          <button type="button" id="btn-drop-kid" class="pin-switch-kid-btn">LOCK TO KID PROFILE</button>
-        </div>
-      </div>
+    <div id="search-bar" class="search-bar">
+      <label class="search">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <input id="search" type="search" placeholder="Search or jump to…" autocomplete="off" spellcheck="false" enterkeyhint="go" aria-label="Search links">
+        <kbd class="search-hint" aria-hidden="true">/</kbd>
+      </label>
     </div>
 
+    <main id="main" class="main" aria-live="polite"></main>
+
+    <footer id="foot" class="foot"></footer>
+  </div>
+
+  <!-- Link details (mirrors, pin, description) -->
+  <div id="sheet" class="overlay" hidden>
+    <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-title">
+      <div class="sheet-head">
+        <span id="sheet-icon" class="tile-icon"></span>
+        <div>
+          <h2 id="sheet-title" class="sheet-title"></h2>
+          <p id="sheet-host" class="sheet-host"></p>
+        </div>
+        <button class="icon-btn sheet-close" type="button" data-close aria-label="Close">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+      <p id="sheet-desc" class="sheet-desc"></p>
+      <div id="sheet-mirrors" class="sheet-mirrors"></div>
+      <div class="sheet-actions">
+        <button id="sheet-pin" class="btn" type="button"></button>
+        <a id="sheet-open" class="btn btn-primary" target="_blank" rel="noopener">Open</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- PIN pad -->
+  <div id="pin" class="overlay" hidden>
+    <div class="pin" role="dialog" aria-modal="true" aria-labelledby="pin-title">
+      <h2 id="pin-title" class="pin-title">Enter PIN</h2>
+      <p id="pin-sub" class="pin-sub"></p>
+      <div id="pin-dots" class="pin-dots" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      <div class="pin-pad" id="pin-pad">
+        <button type="button" data-k="1">1</button><button type="button" data-k="2">2</button><button type="button" data-k="3">3</button>
+        <button type="button" data-k="4">4</button><button type="button" data-k="5">5</button><button type="button" data-k="6">6</button>
+        <button type="button" data-k="7">7</button><button type="button" data-k="8">8</button><button type="button" data-k="9">9</button>
+        <button type="button" data-a="cancel" class="pin-soft">Cancel</button><button type="button" data-k="0">0</button><button type="button" data-a="back" class="pin-soft" aria-label="Delete">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 5H9l-6 7 6 7h12z"/><path d="M13 10l4 4M17 10l-4 4"/></svg>
+        </button>
+      </div>
+    </div>
   </div>
 
   <script src="./script.js"></script>
