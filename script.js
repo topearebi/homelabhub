@@ -20,6 +20,7 @@
     defaultProfile: 'guest',     // what a brand-new device shows
     adminName: 'Tope',
     favicons: true,              // fetch site icons via Google's favicon service (sends hostnames to Google)
+    iconCdn: 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons', // for "icon": "<name>" in services.json
     weather: { lat: 53.48, lon: -2.27, place: 'Salford' },
     recentLimit: 6,
   };
@@ -108,23 +109,46 @@
     return `<span class="mono">${letter}</span>`;
   };
 
-  const attachFavicon = (iconEl, link) => {
-    if (!CONFIG.favicons || isLocal(link.url)) return;
+  // Icon sources, tried in order:
+  //   1. link.icon: a path/URL ("./icons/jellyfin.svg") or a dashboard-icons name ("jellyfin", "stremio.png")
+  //   2. the site's own favicon (if CONFIG.favicons)
+  //   3. the letter tile, which is always there underneath
+  const iconSources = (link) => {
+    const list = [];
+    if (link.icon) {
+      if (/[/:]/.test(link.icon)) list.push({ src: link.icon });
+      else {
+        const ext = /\.(png|webp)$/i.test(link.icon) ? link.icon.split('.').pop().toLowerCase() : 'svg';
+        const name = link.icon.replace(/\.(svg|png|webp)$/i, '');
+        list.push({ src: `${CONFIG.iconCdn}/${ext}/${name}.${ext}` });
+      }
+    }
     const host = hostOf(link.url);
-    if (!host || /^\d+\.\d+\.\d+\.\d+$/.test(host)) return;
-    const img = new Image();
-    img.alt = '';
-    img.decoding = 'async';
-    img.loading = 'lazy';
-    img.referrerPolicy = 'no-referrer';
-    img.onload = () => {
-      // Google returns a 16px generic globe when it has nothing; keep the monogram then.
-      if (img.naturalWidth >= 32) iconEl.classList.add('has-img');
-      else img.remove();
+    if (CONFIG.favicons && !isLocal(link.url) && host && !/^\d+\.\d+\.\d+\.\d+$/.test(host)) {
+      // Google returns a 16px generic globe when it has nothing; reject anything that small.
+      list.push({ src: `https://www.google.com/s2/favicons?domain=${encodeURIComponent(host)}&sz=64`, minSize: 32 });
+    }
+    return list;
+  };
+
+  const attachImage = (iconEl, link) => {
+    const sources = iconSources(link);
+    const tryNext = () => {
+      const s = sources.shift();
+      if (!s) return;
+      const img = new Image();
+      img.alt = '';
+      img.decoding = 'async';
+      img.referrerPolicy = 'no-referrer';
+      img.onload = () => {
+        if (s.minSize && img.naturalWidth < s.minSize) { img.remove(); tryNext(); return; }
+        iconEl.classList.add('has-img');
+      };
+      img.onerror = () => { img.remove(); tryNext(); };
+      img.src = s.src;
+      iconEl.appendChild(img);
     };
-    img.onerror = () => img.remove();
-    img.src = `https://www.google.com/s2/favicons?domain=${encodeURIComponent(host)}&sz=64`;
-    iconEl.appendChild(img);
+    tryNext();
   };
 
   const makeIcon = (link) => {
@@ -132,7 +156,7 @@
     el.className = 'tile-icon';
     el.style.setProperty('--h', hueOf(link.id));
     el.innerHTML = iconHtml(link);
-    attachFavicon(el, link);
+    attachImage(el, link);
     return el;
   };
 

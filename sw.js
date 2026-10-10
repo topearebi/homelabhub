@@ -5,7 +5,7 @@
  *  - Anything on another origin (weather, favicons) is left to the browser.
  * Bump CACHE_VERSION whenever you change index.html, style.css or script.js.
  */
-const CACHE_VERSION = 'v3.0.0';
+const CACHE_VERSION = 'v3.1.0';
 const STATIC_CACHE = `hub-static-${CACHE_VERSION}`;
 const DATA_CACHE = `hub-data-${CACHE_VERSION}`;
 

@@ -20,6 +20,7 @@ Each device remembers its profile, so you enter the PIN once per device.
   "name": "Jellyfin",
   "short": "Jelly",            // optional: shorter label for the tile
   "url": "https://videos.topearebi.xyz",
+  "icon": "./icons/jellyfin.svg", // optional, see "Icons" below
   "group": "watch",            // one of the ids in "groups"
   "description": "Shown in the details sheet",
   "keywords": "extra words search should match",
@@ -29,7 +30,17 @@ Each device remembers its profile, so you enter the PIN once per device.
 }
 ```
 
-To reorder or rename the groups, edit the `groups` list at the top of the file.
+Your own web apps go in `"group": "apps"` (My apps). To reorder or rename the groups, edit the `groups` list at the top of the file.
+
+## Icons
+
+You never have to add an icon. Each link tries these in order:
+
+1. **`icon`** if it's set. This can be a file in `./icons/`, any image URL, or just a name from the [dashboard-icons](https://dashboard-icons.homarr.dev) library, such as `"icon": "jellyfin"` or `"icon": "stremio.png"`. That library covers most self-hosted apps.
+2. **The site's own favicon**, fetched automatically.
+3. **A coloured letter tile.**
+
+The current icons are bundled in `./icons/` so they work offline.
 
 ## Settings (top of `script.js`)
 

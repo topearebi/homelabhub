@@ -25,8 +25,12 @@
       "name": "Kids"
     },
     {
-      "id": "make",
-      "name": "Make & work"
+      "id": "work",
+      "name": "Work & tools"
+    },
+    {
+      "id": "apps",
+      "name": "My apps"
     },
     {
       "id": "sites",
@@ -42,6 +46,7 @@
       "id": "jellyfin",
       "name": "Jellyfin",
       "url": "https://videos.topearebi.xyz",
+      "icon": "./icons/jellyfin.svg",
       "group": "watch",
       "description": "Self-hosted media streaming server, player, and live transcode suite.",
       "keywords": "jellyfin video streaming movies tv shows media player watch selfhosted",
@@ -55,6 +60,7 @@
       "name": "Stremio Web",
       "short": "Stremio",
       "url": "https://web.stremio.com",
+      "icon": "./icons/stremio.png",
       "group": "watch",
       "description": "Streaming aggregator, catalog, and web player.",
       "keywords": "movies tv shows video player streaming stremio",
@@ -66,6 +72,7 @@
       "id": "geforce-now",
       "name": "GeForce NOW",
       "url": "https://play.geforcenow.com/mall/#/layout/games",
+      "icon": "./icons/nvidia.svg",
       "group": "watch",
       "description": "Cloud gaming service streaming PC titles across devices.",
       "keywords": "games gaming cloud stream geforce nvidia controller steam",
@@ -77,6 +84,7 @@
       "id": "navidrome",
       "name": "Navidrome",
       "url": "https://music.topearebi.xyz",
+      "icon": "./icons/navidrome.svg",
       "group": "listen",
       "description": "Self-hosted personal music streaming server and Subsonic endpoint.",
       "keywords": "music songs audio streaming subsonic navidrome library player",
@@ -90,6 +98,7 @@
       "name": "Audiobookshelf",
       "short": "Audiobooks",
       "url": "https://audiobooks.topearebi.xyz",
+      "icon": "./icons/audiobookshelf.svg",
       "group": "listen",
       "description": "Self-hosted audiobook and podcast streaming server.",
       "keywords": "audiobooks spoken podcasts mp3 m4b media audio streaming library",
@@ -124,6 +133,7 @@
       "id": "listenbrainz",
       "name": "ListenBrainz",
       "url": "https://listenbrainz.org",
+      "icon": "./icons/listenbrainz.svg",
       "group": "listen",
       "description": "Open-source scrobble logger, listening history tracker, and music graphs.",
       "keywords": "scrobble listenbrainz music tracking stats history meta listening audio",
@@ -143,6 +153,7 @@
       "name": "Calibre-Web",
       "short": "Calibre",
       "url": "https://books.topearebi.xyz",
+      "icon": "./icons/calibre-web.svg",
       "group": "read",
       "description": "E-book library catalog, reader, and OPDS distribution hub.",
       "keywords": "books epub mobi pdf reader calibre library kindle reading",
@@ -166,6 +177,7 @@
       "id": "wallabag",
       "name": "Wallabag",
       "url": "https://wallabag.topearebi.xyz",
+      "icon": "./icons/wallabag.svg",
       "group": "read",
       "description": "Read-it-later article archiver and content extractor.",
       "keywords": "read later articles bookmark web archive wallabag pocket offline",
@@ -175,6 +187,7 @@
       "id": "freshrss",
       "name": "FreshRSS",
       "url": "https://rss.topearebi.xyz",
+      "icon": "./icons/freshrss.svg",
       "group": "read",
       "description": "Self-hosted aggregator for RSS and Atom feeds.",
       "keywords": "rss feeds news blogs aggregator freshrss updates",
@@ -265,6 +278,7 @@
       "id": "shelfmark",
       "name": "Shelfmark",
       "url": "https://shelfmark.topearebi.xyz",
+      "icon": "./icons/shelfmark.png",
       "group": "find",
       "description": "Automated book downloading, Libgen, and pipeline manager.",
       "keywords": "books download ingest automated shelfmark libgen annas archive",
@@ -351,17 +365,6 @@
       ]
     },
     {
-      "id": "speed-recall",
-      "name": "Speed Recall",
-      "url": "https://topearebi.github.io/speedrecall/",
-      "group": "learn",
-      "description": "Web-based rapid language flashcard and active recall drill application.",
-      "keywords": "chinese french languages flashcards anki recall test learning speedrecall",
-      "show": [
-        "guest"
-      ]
-    },
-    {
       "id": "pbs-kids-games",
       "name": "PBS KIDS Games",
       "short": "PBS Kids",
@@ -423,7 +426,8 @@
       "id": "zoho-mail",
       "name": "Zoho Mail",
       "url": "https://mail.zoho.eu",
-      "group": "make",
+      "icon": "./icons/zohomail.svg",
+      "group": "work",
       "description": "Custom domain business email client and webmail dashboard.",
       "keywords": "email mail webmail zoho inbox messaging domain communication",
       "show": [],
@@ -439,7 +443,8 @@
       "id": "silverbullet",
       "name": "SilverBullet",
       "url": "https://notes.topearebi.xyz",
-      "group": "make",
+      "icon": "./icons/silverbullet.png",
+      "group": "work",
       "description": "Extensible, markdown-based personal notebook and research wiki.",
       "keywords": "notes markdown pkm wiki documentation silverbullet writing knowledge",
       "show": [],
@@ -449,7 +454,8 @@
       "id": "photopea",
       "name": "Photopea",
       "url": "https://www.photopea.com/",
-      "group": "make",
+      "icon": "./icons/photopea.svg",
+      "group": "work",
       "description": "Advanced raster and vector graphics editor supporting PSD and template workflows.",
       "keywords": "graphics design photoshop psd photo editor vector templates export",
       "show": [
@@ -460,7 +466,8 @@
       "id": "diagrams-net",
       "name": "diagrams.net",
       "url": "https://app.diagrams.net/",
-      "group": "make",
+      "icon": "./icons/draw-io.svg",
+      "group": "work",
       "description": "Flowchart, architecture diagram, and network topology designer.",
       "keywords": "diagrams flowcharts drawio architecture mindmap topology design",
       "show": [
@@ -472,7 +479,7 @@
       "name": "LocalContentShare",
       "short": "Pastebin",
       "url": "https://pastebin.topearebi.xyz",
-      "group": "make",
+      "group": "work",
       "description": "Temporary pastebin, local clipboard drop, and immediate snippet transfer.",
       "keywords": "share transfer files local network p2p drop paste clipboard text temporary",
       "show": [
@@ -483,31 +490,9 @@
       "id": "freeconvert",
       "name": "FreeConvert",
       "url": "https://www.freeconvert.com",
-      "group": "make",
+      "group": "work",
       "description": "Free web batch converter and compressor for images, videos, and docs.",
       "keywords": "convert compress resize pdf image tools batch",
-      "show": [
-        "guest"
-      ]
-    },
-    {
-      "id": "rally",
-      "name": "Rally",
-      "url": "https://topearebi.github.io/rally",
-      "group": "make",
-      "description": "Shared focus session timer with WebRTC peer synchronization.",
-      "keywords": "time timer clock team focus pomodoro webrtc productivity",
-      "show": [
-        "guest"
-      ]
-    },
-    {
-      "id": "readover",
-      "name": "Readover",
-      "url": "https://topearebi.github.io/readover/",
-      "group": "make",
-      "description": "Reels-style infinite feed for GitHub markdown note vaults and docs.",
-      "keywords": "notes markdown feed github reading pkm reels",
       "show": [
         "guest"
       ]
@@ -516,10 +501,43 @@
       "id": "fourthwall",
       "name": "Fourthwall",
       "url": "https://fourthwall.com/",
-      "group": "make",
+      "group": "work",
       "description": "Creator e-commerce platform and print-on-demand fulfillment dashboard.",
       "keywords": "store shop merchandise apparel print on demand ecommerce creator",
       "show": []
+    },
+    {
+      "id": "rally",
+      "name": "Rally",
+      "url": "https://topearebi.github.io/rally",
+      "group": "apps",
+      "description": "Shared focus session timer with WebRTC peer synchronization.",
+      "keywords": "time timer clock team focus pomodoro webrtc productivity",
+      "show": [
+        "guest"
+      ]
+    },
+    {
+      "id": "speed-recall",
+      "name": "Speed Recall",
+      "url": "https://topearebi.github.io/speedrecall/",
+      "group": "apps",
+      "description": "Web-based rapid language flashcard and active recall drill application.",
+      "keywords": "chinese french languages flashcards anki recall test learning speedrecall",
+      "show": [
+        "guest"
+      ]
+    },
+    {
+      "id": "readover",
+      "name": "Readover",
+      "url": "https://topearebi.github.io/readover/",
+      "group": "apps",
+      "description": "Reels-style infinite feed for GitHub markdown note vaults and docs.",
+      "keywords": "notes markdown feed github reading pkm reels",
+      "show": [
+        "guest"
+      ]
     },
     {
       "id": "tope-portfolio",
@@ -560,6 +578,7 @@
       "id": "aroamjti",
       "name": "AROAMJTI",
       "url": "https://AROAMJTI.topearebi.com",
+      "icon": "./icons/jekyll.svg",
       "group": "sites",
       "description": "Jekyll based journal and writing log.",
       "keywords": "blog journal writing log personal jekyll",
@@ -607,6 +626,7 @@
       "id": "portainer",
       "name": "Portainer",
       "url": "https://portainer.topearebi.xyz",
+      "icon": "./icons/portainer.svg",
       "group": "admin",
       "description": "Docker container orchestration and stack manager.",
       "keywords": "docker containers stacks homelab admin portainer orchestration backend",
@@ -624,6 +644,7 @@
       "name": "Hetzner Cloud",
       "short": "Hetzner",
       "url": "https://accounts.hetzner.com",
+      "icon": "./icons/hetzner.svg",
       "group": "admin",
       "description": "VPS server and primary cloud host console.",
       "keywords": "vps server cloud hosting infrastructure hetzner",
@@ -634,6 +655,7 @@
       "name": "Tailscale Console",
       "short": "Tailscale",
       "url": "https://login.tailscale.com/admin/machines",
+      "icon": "./icons/tailscale.svg",
       "group": "admin",
       "description": "Tailscale mesh network topology, ACLs, and node coordinator.",
       "keywords": "tailscale vpn mesh network security nodes",
@@ -643,6 +665,7 @@
       "id": "cloudflare",
       "name": "Cloudflare",
       "url": "https://dash.cloudflare.com/ef61b328f886b978bdca71790948a0c8/home",
+      "icon": "./icons/cloudflare.svg",
       "group": "admin",
       "description": "DNS zone coordination, edge routing, SSL, and CDN dashboard.",
       "keywords": "dns cloudflare edge domain network ssl proxy cdn routing security",
@@ -653,6 +676,7 @@
       "name": "Cloud Shell Terminal",
       "short": "Cloud Shell",
       "url": "https://shell.cloud.google.com/?show=terminal",
+      "icon": "./icons/google-cloud-platform.svg",
       "group": "admin",
       "description": "Zero-install Debian terminal container with Google Cloud SDK.",
       "keywords": "terminal bash cli ssh cloud shell console",
@@ -663,6 +687,7 @@
       "name": "Transmission",
       "short": "Torrents",
       "url": "https://p2p.topearebi.xyz",
+      "icon": "./icons/transmission.svg",
       "group": "admin",
       "description": "BitTorrent client management interface and download queue.",
       "keywords": "torrents bittorrent download p2p transmission client queue media",
@@ -678,6 +703,7 @@
       "id": "prowlarr",
       "name": "Prowlarr",
       "url": "https://prowlarr.topearebi.xyz",
+      "icon": "./icons/prowlarr.svg",
       "group": "admin",
       "description": "Indexer proxy and tracker synchronization manager.",
       "keywords": "indexers trackers torrents usenet prowlarr nzb arr automation",
@@ -714,6 +740,7 @@
       "id": "aiomanager",
       "name": "AIOManager",
       "url": "https://aiomanager.topearebi.xyz",
+      "icon": "./icons/aiomanager.png",
       "group": "admin",
       "description": "Stremio addon configuration dashboard.",
       "keywords": "stremio manager video streaming aio media configuration",
@@ -732,6 +759,7 @@
       "id": "audiomuse-ai",
       "name": "AudioMuse-AI",
       "url": "https://audiomuse.topearebi.xyz",
+      "icon": "./icons/audiomuse-ai.png",
       "group": "admin",
       "description": "Sonic analysis, groove-aware playlist generator, and Navidrome AI plugin.",
       "keywords": "audiomuse ai sonic analysis navidrome music playlists recommendations audio smart mix",

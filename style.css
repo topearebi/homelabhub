@@ -191,10 +191,13 @@ button { font: inherit; color: inherit; }
   font-family: var(--serif); font-size: 21px; line-height: 1;
 }
 .tile-icon img {
-  position: absolute; inset: 0; margin: auto; width: 28px; height: 28px;
+  position: absolute; inset: 0; margin: auto; width: 30px; height: 30px; object-fit: contain;
   opacity: 0; transition: opacity .2s ease;
 }
-.tile-icon.has-img { background: var(--surface); box-shadow: inset 0 0 0 1px var(--line); }
+/* Real icons sit on a soft light tile in both themes, like app icons, so dark logos stay visible */
+.tile-icon.has-img { background: #fffdf9; box-shadow: inset 0 0 0 1px var(--line); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .tile-icon.has-img { background: #e9e5dd; box-shadow: none; } }
+:root[data-theme="dark"] .tile-icon.has-img { background: #e9e5dd; box-shadow: none; }
 .tile-icon.has-img img { opacity: 1; }
 .tile-icon.has-img .mono { visibility: hidden; }
 
