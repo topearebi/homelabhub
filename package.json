@@ -1,0 +1,14 @@
+{
+  "name": "hub",
+  "version": "1.0.0",
+  "description": "Our links, in one place.",
+  "main": "server.js",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js",
+    "build": "echo 'Build successful'"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

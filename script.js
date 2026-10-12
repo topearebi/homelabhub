@@ -18,11 +18,51 @@
     dataPath: './services.json',
     pinHash: '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4', // "1234"
     defaultProfile: 'guest',     // what a brand-new device shows
+    defaultEngine: 'google',     // default web search engine
     adminName: 'Tope',
     favicons: true,              // fetch site icons via Google's favicon service (sends hostnames to Google)
     iconCdn: 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons', // for "icon": "<name>" in services.json
     weather: { lat: 53.48, lon: -2.27, place: 'Salford' },
     recentLimit: 6,
+  };
+
+  const SEARCH_ENGINES = {
+    google: {
+      id: 'google',
+      name: 'Google',
+      short: 'Google',
+      tagline: 'AI Overviews & comprehensive web search',
+      endpoint: 'https://www.google.com/search',
+      url: (q) => `https://www.google.com/search?q=${encodeURIComponent(q)}`,
+      icon: '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.33 24 12 24z"/><path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.98 0 12s.45 3.82 1.25 5.42l4.03-3.15z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/></svg>',
+    },
+    duckduckgo: {
+      id: 'duckduckgo',
+      name: 'DuckDuckGo',
+      short: 'DuckDuckGo',
+      tagline: 'Privacy-focused, zero tracking or profiling',
+      endpoint: 'https://duckduckgo.com/',
+      url: (q) => `https://duckduckgo.com/?q=${encodeURIComponent(q)}`,
+      icon: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#DE5833"/><circle cx="10" cy="10" r="1.5" fill="#fff"/><circle cx="10" cy="10" r="0.75" fill="#1a1917"/><path d="M7 13.5c1.2 1.8 3.2 2.5 5 2.5 2.5 0 4.2-1.2 5-2.5-1.5 2-3.5 3-5 3s-3.5-1-5-3z" fill="#fff"/><path d="M12 11c1.5 0 3.5.5 4.5 1.5-1 1-3 1.5-4.5 1.5s-3.5-.5-4.5-1.5c1-1 3-1.5 4.5-1.5z" fill="#ECA23B"/></svg>',
+    },
+    ecosia: {
+      id: 'ecosia',
+      name: 'Ecosia',
+      short: 'Ecosia',
+      tagline: 'Eco-friendly, plants trees with searches',
+      endpoint: 'https://www.ecosia.org/search',
+      url: (q) => `https://www.ecosia.org/search?q=${encodeURIComponent(q)}`,
+      icon: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#2E7D32"/><path d="M12 5c-3 0-5 2-5 4.5 0 1.5.8 2.8 2 3.5v5h6v-5c1.2-.7 2-2 2-3.5C17 7 15 5 12 5z" fill="#fff"/><circle cx="12" cy="10" r="2.5" fill="#A5D6A7"/><path d="M12 14v4" stroke="#795548" stroke-width="2"/></svg>',
+    },
+    qwant: {
+      id: 'qwant',
+      name: 'Qwant',
+      short: 'Qwant',
+      tagline: 'European privacy & neutral results',
+      endpoint: 'https://www.qwant.com/',
+      url: (q) => `https://www.qwant.com/?q=${encodeURIComponent(q)}`,
+      icon: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#5C6BC0"/><path d="M12 7a4.5 4.5 0 1 0 3.2 7.7l2.1 2.1 1.4-1.4-2.1-2.1A4.5 4.5 0 0 0 12 7zm0 2a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5z" fill="#fff"/></svg>',
+    },
   };
 
   const PROFILES = {
@@ -44,6 +84,7 @@
 
   const state = {
     profile: store.get('hub.profile', CONFIG.defaultProfile),
+    searchEngine: store.get('hub.searchEngine', CONFIG.defaultEngine),
     groups: [],
     links: [],
     pins: store.get('hub.pins', null),          // null = use "pinned" flags from services.json
@@ -56,12 +97,17 @@
     editing: false,
   };
   if (!PROFILES[state.profile]) state.profile = CONFIG.defaultProfile;
+  if (!SEARCH_ENGINES[state.searchEngine]) state.searchEngine = CONFIG.defaultEngine;
 
   const $ = (id) => document.getElementById(id);
   const dom = {
     today: $('today'), weather: $('weather'), themeBtn: $('theme-btn'),
     profileBtn: $('profile-btn'), profileName: $('profile-name'), profileMenu: $('profile-menu'),
-    searchBar: $('search-bar'), search: $('search'), main: $('main'), foot: $('foot'),
+    searchBar: $('search-bar'), searchForm: $('search-form'),
+    enginePickerBtn: $('engine-picker-btn'), currentEngineIcon: $('current-engine-icon'),
+    engineDropdown: $('engine-dropdown'),
+    search: $('search'), searchEngines: $('search-engines'),
+    main: $('main'), foot: $('foot'),
     sheet: $('sheet'), sheetIcon: $('sheet-icon'), sheetTitle: $('sheet-title'), sheetHost: $('sheet-host'),
     sheetDesc: $('sheet-desc'), sheetMirrors: $('sheet-mirrors'), sheetPin: $('sheet-pin'), sheetOpen: $('sheet-open'),
     pin: $('pin'), pinSub: $('pin-sub'), pinDots: $('pin-dots'), pinPad: $('pin-pad'),
@@ -241,6 +287,10 @@
     document.body.classList.toggle('editing', state.profile === 'admin' && state.editing);
     dom.profileName.textContent = PROFILES[state.profile].label;
     dom.searchBar.hidden = state.profile === 'kid';
+    if (dom.searchEngines && (state.profile === 'kid' || !state.query)) {
+      dom.searchEngines.hidden = true;
+      dom.searchEngines.innerHTML = '';
+    }
 
     if (state.query) return renderResults();
 
@@ -290,6 +340,135 @@
     return 0;
   };
 
+  const updateEnginePickerUI = () => {
+    const activeEngine = SEARCH_ENGINES[state.searchEngine] || SEARCH_ENGINES.google;
+    if (dom.currentEngineIcon) dom.currentEngineIcon.innerHTML = activeEngine.icon;
+    if (dom.search) dom.search.placeholder = `Search links or ${activeEngine.name}…`;
+    if (dom.searchForm) dom.searchForm.action = activeEngine.endpoint;
+    if (dom.enginePickerBtn) dom.enginePickerBtn.setAttribute('title', `Search engine: ${activeEngine.name} (${activeEngine.tagline}). Click to switch.`);
+  };
+
+  const renderEngineDropdown = () => {
+    if (!dom.engineDropdown) return;
+    dom.engineDropdown.innerHTML = '';
+    const activeId = state.searchEngine;
+    Object.values(SEARCH_ENGINES).forEach((eng) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.setAttribute('role', 'menuitem');
+      b.innerHTML = `
+        <span class="ed-icon">${eng.icon}</span>
+        <span class="ed-info">
+          <span class="ed-name">${esc(eng.name)}</span>
+          <span class="ed-tag">${esc(eng.tagline)}</span>
+        </span>
+        ${eng.id === activeId ? ICONS.check : ''}
+      `;
+      b.addEventListener('click', (e) => {
+        e.stopPropagation();
+        state.searchEngine = eng.id;
+        store.set('hub.searchEngine', eng.id);
+        updateEnginePickerUI();
+        closeEngineDropdown();
+        dom.search.focus();
+        if (state.query) {
+          renderResults();
+        }
+      });
+      dom.engineDropdown.appendChild(b);
+    });
+  };
+
+  const openEngineDropdown = () => {
+    if (!dom.engineDropdown) return;
+    renderEngineDropdown();
+    dom.engineDropdown.hidden = false;
+    if (dom.enginePickerBtn) dom.enginePickerBtn.setAttribute('aria-expanded', 'true');
+  };
+
+  const closeEngineDropdown = () => {
+    if (!dom.engineDropdown) return;
+    dom.engineDropdown.hidden = true;
+    if (dom.enginePickerBtn) dom.enginePickerBtn.setAttribute('aria-expanded', 'false');
+  };
+
+  const openWebSearch = (query, engineId = state.searchEngine) => {
+    const engine = SEARCH_ENGINES[engineId] || SEARCH_ENGINES.google;
+    const q = (query || state.query || '').trim();
+    if (!q) return;
+    state.searchEngine = engine.id;
+    store.set('hub.searchEngine', engine.id);
+    updateEnginePickerUI();
+    const url = engine.url(q);
+
+    // Native anchor click navigation (works even inside sandboxed iframes)
+    const a = document.createElement('a');
+    a.href = url;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+
+    clearSearch();
+    if (dom.search) dom.search.blur();
+  };
+
+  const renderSearchEnginesStrip = () => {
+    if (!dom.searchEngines) return;
+    if (state.profile === 'kid' || !state.query.trim()) {
+      dom.searchEngines.hidden = true;
+      dom.searchEngines.innerHTML = '';
+      return;
+    }
+
+    const q = state.query.trim();
+    const activeEngine = SEARCH_ENGINES[state.searchEngine] || SEARCH_ENGINES.google;
+    dom.searchEngines.hidden = false;
+
+    const frag = document.createDocumentFragment();
+
+    const mainLink = document.createElement('a');
+    mainLink.href = activeEngine.url(q);
+    mainLink.target = '_blank';
+    mainLink.rel = 'noopener';
+    mainLink.className = 'engine-main-btn';
+    mainLink.setAttribute('aria-label', `Search ${activeEngine.name} for ${q}`);
+    mainLink.innerHTML = `
+      <span class="engine-main-icon">${activeEngine.icon}</span>
+      <span class="engine-main-text">Search <strong>${esc(activeEngine.name)}</strong> for &ldquo;<span class="engine-query-text">${esc(q)}</span>&rdquo;</span>
+      <span class="engine-main-key" aria-hidden="true">↵</span>
+    `;
+    mainLink.addEventListener('click', () => {
+      setTimeout(() => clearSearch(), 50);
+    });
+    frag.appendChild(mainLink);
+
+    const switchWrap = document.createElement('div');
+    switchWrap.className = 'engine-switch-wrap';
+
+    Object.values(SEARCH_ENGINES).forEach((eng) => {
+      const a = document.createElement('a');
+      a.href = eng.url(q);
+      a.target = '_blank';
+      a.rel = 'noopener';
+      a.className = 'engine-toggle-btn' + (eng.id === activeEngine.id ? ' is-active' : '');
+      a.title = `${eng.name}: ${eng.tagline}`;
+      a.setAttribute('aria-label', `Search ${eng.name} (${eng.tagline})`);
+      a.innerHTML = `<span class="engine-toggle-icon">${eng.icon}</span><span class="engine-toggle-name">${esc(eng.short)}</span>`;
+      a.addEventListener('click', () => {
+        state.searchEngine = eng.id;
+        store.set('hub.searchEngine', eng.id);
+        updateEnginePickerUI();
+        setTimeout(() => clearSearch(), 50);
+      });
+      switchWrap.appendChild(a);
+    });
+
+    frag.appendChild(switchWrap);
+    dom.searchEngines.replaceChildren(frag);
+  };
+
   const renderResults = () => {
     const q = state.query.toLowerCase();
     const terms = q.split(/\s+/).filter(Boolean);
@@ -301,16 +480,62 @@
     state.active = Math.min(state.active, Math.max(state.results.length - 1, 0));
 
     if (!state.results.length) {
-      dom.main.innerHTML = `<p class="empty">Nothing matches <strong>${esc(state.query)}</strong>.</p>`;
+      const rawQ = state.query.trim();
+      const activeEngine = SEARCH_ENGINES[state.searchEngine] || SEARCH_ENGINES.google;
+
+      const wrap = document.createElement('div');
+      wrap.className = 'search-fallback';
+
+      const head = document.createElement('div');
+      head.className = 'fallback-head';
+      head.innerHTML = `
+        <h2 class="fallback-title">Search the web for &ldquo;${esc(rawQ)}&rdquo;</h2>
+        <p class="fallback-sub">No matching local links &middot; Press <kbd class="fallback-kbd">Enter</kbd> to search with <strong>${esc(activeEngine.name)}</strong> or choose an engine below:</p>
+      `;
+      wrap.appendChild(head);
+
+      const grid = document.createElement('div');
+      grid.className = 'fallback-grid';
+
+      Object.values(SEARCH_ENGINES).forEach((eng) => {
+        const card = document.createElement('a');
+        card.href = eng.url(rawQ);
+        card.target = '_blank';
+        card.rel = 'noopener';
+        card.className = 'fallback-card' + (eng.id === activeEngine.id ? ' is-active' : '');
+        card.setAttribute('aria-label', `Search with ${eng.name}`);
+        card.innerHTML = `
+          <div class="fallback-card-icon">${eng.icon}</div>
+          <div class="fallback-card-info">
+            <div class="fallback-card-head">
+              <span class="fallback-card-name">${esc(eng.name)}</span>
+              ${eng.id === activeEngine.id ? '<span class="fallback-active-badge">Default ↵</span>' : ''}
+            </div>
+            <p class="fallback-card-tagline">${esc(eng.tagline)}</p>
+          </div>
+        `;
+        card.addEventListener('click', () => {
+          state.searchEngine = eng.id;
+          store.set('hub.searchEngine', eng.id);
+          updateEnginePickerUI();
+          setTimeout(() => clearSearch(), 50);
+        });
+        grid.appendChild(card);
+      });
+
+      wrap.appendChild(grid);
+      dom.main.replaceChildren(wrap);
+      renderSearchEnginesStrip();
       return;
     }
     const sec = makeSection({ id: '_results', title: 'Results', links: state.results, collapsible: false });
     const hint = document.createElement('p');
     hint.className = 'result-hint';
-    hint.textContent = 'Enter opens the highlighted link · arrow keys move · Esc clears';
+    hint.textContent = 'Enter opens the highlighted link · Shift+Enter searches the web · arrow keys move · Esc clears';
     sec.appendChild(hint);
     dom.main.replaceChildren(sec);
     highlight();
+    renderSearchEnginesStrip();
   };
 
   const highlight = () => {
@@ -328,6 +553,10 @@
     dom.search.value = '';
     state.query = '';
     state.active = 0;
+    if (dom.searchEngines) {
+      dom.searchEngines.hidden = true;
+      dom.searchEngines.innerHTML = '';
+    }
     if (rerender) render();
   };
 
@@ -491,8 +720,39 @@
       e.stopPropagation();
       dom.profileMenu.hidden ? openMenu() : closeMenu();
     });
+
+    if (dom.enginePickerBtn) {
+      dom.enginePickerBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        dom.engineDropdown.hidden ? openEngineDropdown() : closeEngineDropdown();
+      });
+    }
+
+    if (dom.searchForm) {
+      dom.searchForm.addEventListener('submit', (e) => {
+        if (!state.query) {
+          e.preventDefault();
+          return;
+        }
+        const link = state.results[state.active];
+        if (link && !e.shiftKey) {
+          e.preventDefault();
+          openLink(link, true);
+          clearSearch();
+          dom.search.blur();
+        } else if (!state.results.length || e.shiftKey) {
+          const activeEngine = SEARCH_ENGINES[state.searchEngine] || SEARCH_ENGINES.google;
+          dom.searchForm.action = activeEngine.endpoint;
+          setTimeout(() => clearSearch(), 50);
+        }
+      });
+    }
+
     document.addEventListener('click', (e) => {
       if (!dom.profileMenu.hidden && !dom.profileMenu.contains(e.target)) closeMenu();
+      if (dom.engineDropdown && !dom.engineDropdown.hidden && !dom.enginePickerBtn.contains(e.target) && !dom.engineDropdown.contains(e.target)) {
+        closeEngineDropdown();
+      }
     });
 
     dom.search.addEventListener('input', () => {
@@ -503,11 +763,14 @@
     dom.search.addEventListener('keydown', (e) => {
       if (e.key === 'Enter') {
         const link = state.results[state.active];
-        if (state.query && link) {
+        if (state.query && link && !e.shiftKey) {
           e.preventDefault();
-          openLink(link, !(e.shiftKey));
+          openLink(link, true);
           clearSearch();
           dom.search.blur();
+        } else if (state.query && (!state.results.length || e.shiftKey)) {
+          e.preventDefault();
+          openWebSearch(state.query, state.searchEngine);
         }
       } else if (e.key === 'ArrowDown' || e.key === 'ArrowRight' && dom.search.selectionStart === dom.search.value.length) {
         if (!state.results.length) return;
@@ -518,7 +781,9 @@
         e.preventDefault();
         state.active = (state.active - 1 + state.results.length) % state.results.length; highlight();
       } else if (e.key === 'Escape') {
-        if (state.query) clearSearch(); else dom.search.blur();
+        if (dom.engineDropdown && !dom.engineDropdown.hidden) { closeEngineDropdown(); dom.enginePickerBtn.focus(); }
+        else if (state.query) clearSearch();
+        else dom.search.blur();
       }
     });
 
@@ -552,6 +817,7 @@
         return;
       }
       if (e.key === 'Escape') {
+        if (dom.engineDropdown && !dom.engineDropdown.hidden) { closeEngineDropdown(); dom.enginePickerBtn.focus(); return; }
         if (!dom.sheet.hidden) return closeSheet();
         if (!dom.profileMenu.hidden) { closeMenu(); dom.profileBtn.focus(); return; }
       }
@@ -574,6 +840,7 @@
   // ---------- start ----------
   const init = async () => {
     applyTheme();
+    updateEnginePickerUI();
     paintDate();
     loadWeather();
     bind();
@@ -587,7 +854,9 @@
     } catch (_) {
       dom.main.innerHTML = '<p class="empty">Couldn’t load the links. Check your connection and refresh.</p>';
     }
-    if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js').catch(() => {});
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./sw.js').then((reg) => reg.update()).catch(() => {});
+    }
   };
 
   init();

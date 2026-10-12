@@ -1,0 +1,8 @@
+{
+  "name": "Hub",
+  "description": "Our links, in one place.",
+  "permissions": [],
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

@@ -6,6 +6,8 @@
   <meta name="theme-color" content="#f6f4ef" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#1a1917" media="(prefers-color-scheme: dark)">
   <meta name="description" content="Our links, in one place.">
+  <meta property="og:title" content="Hub">
+  <meta property="og:description" content="Our links, in one place.">
   <title>Hub</title>
   <link rel="manifest" href="./manifest.json">
   <link rel="icon" type="image/svg+xml" href="./icon.svg">
@@ -16,7 +18,7 @@
       if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
     } catch (_) {}
   </script>
-  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./style.css?v=3.2.0">
 </head>
 <body>
   <div class="page">
@@ -39,11 +41,20 @@
     </header>
 
     <div id="search-bar" class="search-bar">
-      <label class="search">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
-        <input id="search" type="search" placeholder="Search or jump to…" autocomplete="off" spellcheck="false" enterkeyhint="go" aria-label="Search links">
-        <kbd class="search-hint" aria-hidden="true">/</kbd>
-      </label>
+      <form id="search-form" class="search-form" action="https://www.google.com/search" method="get" target="_blank" role="search">
+        <div class="search">
+          <div class="engine-picker-wrap">
+            <button id="engine-picker-btn" class="engine-picker-btn" type="button" aria-haspopup="menu" aria-expanded="false" title="Change search engine">
+              <span id="current-engine-icon" class="current-engine-icon"></span>
+              <svg viewBox="0 0 24 24" class="chev" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div id="engine-dropdown" class="menu engine-dropdown" role="menu" hidden></div>
+          </div>
+          <input id="search" name="q" type="search" placeholder="Search links or Google…" autocomplete="off" spellcheck="false" enterkeyhint="go" aria-label="Search links or web">
+          <kbd class="search-hint" aria-hidden="true">/</kbd>
+        </div>
+        <div id="search-engines" class="search-engines" hidden></div>
+      </form>
     </div>
 
     <main id="main" class="main" aria-live="polite"></main>
@@ -90,6 +101,6 @@
     </div>
   </div>
 
-  <script src="./script.js"></script>
+  <script src="./script.js?v=3.2.0"></script>
 </body>
 </html>
